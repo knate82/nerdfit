@@ -8,6 +8,29 @@
         flex-direction: row;
         width: 100%;
       }
+      div.links {
+        width: 80%;
+        max-width: 1290px;
+      }
+      ul {
+        display: flex;
+        justify-content: flex-end;
+        width: 100%;
+      }
+      li {
+        list-style: none;
+      }
+      li a {
+        text-decoration: none;
+        color: black;
+      }
+      li a:hover {
+        color: deeppink;
+      }
+      li a:active {
+        background: darkgrey;
+        border-left: dimgrey;
+      }
     </style>
     <section>
       <div class="logo-container">
@@ -16,7 +39,7 @@
       <div class="links">
         <ul>
           <li>
-            Login
+            <a href="login.html">Login</a>
           </li>
         </ul>
       </div>
@@ -30,11 +53,7 @@
      */
     class NavBar extends Polymer.Element {
       static get is() { return 'nav-bar'; }
-      static get properties() {
-        return {
-          
-        };
-      }
+      static properties
     }
 
     window.customElements.define(NavBar.is, NavBar);
