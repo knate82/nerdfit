@@ -1,0 +1,19 @@
+{
+  "name": "nerdfit",
+  "version": "1.0.0",
+  "description": "A little fun with Fitbit",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/knate82/nerdfit.git"
+  },
+  "author": "Nathan Mihu",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/knate82/nerdfit/issues"
+  },
+  "homepage": "https://github.com/knate82/nerdfit#readme"
+}

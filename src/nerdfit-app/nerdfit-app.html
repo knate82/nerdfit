@@ -1,0 +1,34 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nerdfit-app">
+  <template>
+    <style>
+      :host {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+      }
+    </style>
+    <nav-bar></nav-bar>
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class NerdfitApp extends Polymer.Element {
+      static get is() { return 'nerdfit-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'nerdfit-app'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(NerdfitApp.is, NerdfitApp);
+  </script>
+</dom-module>
