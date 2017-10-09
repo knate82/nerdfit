@@ -53,7 +53,11 @@
      */
     class NavBar extends Polymer.Element {
       static get is() { return 'nav-bar'; }
-      static properties
+      static get properties() {
+          return {
+
+          }
+      }
     }
 
     window.customElements.define(NavBar.is, NavBar);
