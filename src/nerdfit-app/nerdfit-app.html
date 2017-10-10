@@ -1,5 +1,6 @@
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="nav-bar.html">
+<link rel="import" href="../../bower_components/paper-toolbar/index.html">
+<link rel="import" href="nf-hero.html">
 
 <dom-module id="nerdfit-app">
   <template>
@@ -9,8 +10,18 @@
         flex-direction: column;
         width: 100%;
       }
+      paper-toolbar div a {
+
+      }
     </style>
-    <nav-bar></nav-bar>
+    <div class="page-wrap">
+      <paper-toolbar>
+        <paper-icon-button slot="top" icon="menu" on-tap="menuAction"></paper-icon-button>
+        <div slot="top" class="title"><a href="/home">NerdFit</a></div>
+        <paper-icon-button slot="top" icon="more-vert" on-tap="moreAction"></paper-icon-button>
+      </paper-toolbar>
+      <nf-hero backgroundimage="//vignette.wikia.nocookie.net/lotr/images/7/79/Slider_-_One_Ring.jpg/revision/latest/scale-to-width-down/670?cb=20150328112455"></nf-hero>
+    </div>
   </template>
 
   <script>

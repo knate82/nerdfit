@@ -1,0 +1,51 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-hero">
+    <template>
+        <style>
+            :host {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+            }
+            section{
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-position: center;
+                min-height: 350px;
+                width: 100%;
+                padding: 60px 20px;
+            }
+
+            @media (min-width: 750px) {
+                section{
+                    min-height: 500px;
+                }
+            }
+        </style>
+        <section style$="background-image: url( [[ backgroundimage ]] );">
+            <slot></slot>
+        </section>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class nfHero extends Polymer.Element {
+            static get is() { return 'nf-hero'; }
+
+            static get properties() {
+                return {
+                    backgroundimage: {
+                        type: String,
+                        value: ""
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(nfHero.is, nfHero);
+    </script>
+</dom-module>
