@@ -1,6 +1,24 @@
+<!-- instantiate Polymer and Components -->
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../../bower_components/paper-toolbar/index.html">
-<link rel="import" href="nf-hero.html">
+<link rel="import" href="../../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-document.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-query.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-storage-multiupload.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-storage-ref.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-storage-upload-task.html">
+<link rel="import" href="../../bower_components/polymerfire/firebase-messaging.html">
+<!-- import Components -->
+<link rel="import" href="components/nf-hero.html">
+<link rel="import" href="components/nf-login.html">
+<!-- import Navbar and components -->
+<link rel="import" href="navbar/nf-navbar.html">
+<link rel="import" href="navbar/nf-links.html">
+<link rel="import" href="navbar/nf-logo.html">
+<!-- import Views -->
+<link rel="lazy-import" href="home-view.html">
+<link rel="lazy-import" href="user-dash.html">
 
 <dom-module id="nerdfit-app">
   <template>
@@ -10,18 +28,41 @@
         flex-direction: column;
         width: 100%;
       }
-      paper-toolbar div a {
-
-      }
     </style>
-    <div class="page-wrap">
-      <paper-toolbar>
-        <paper-icon-button slot="top" icon="menu" on-tap="menuAction"></paper-icon-button>
-        <div slot="top" class="title"><a href="/home">NerdFit</a></div>
-        <paper-icon-button slot="top" icon="more-vert" on-tap="moreAction"></paper-icon-button>
-      </paper-toolbar>
-      <nf-hero backgroundimage="//vignette.wikia.nocookie.net/lotr/images/7/79/Slider_-_One_Ring.jpg/revision/latest/scale-to-width-down/670?cb=20150328112455"></nf-hero>
-    </div>
+    <firebase-app
+            name="nerdfit"
+            auth-domain="nerdfit-app.firebaseapp.com"
+            database-url="https://nerdfit-app.firebaseio.com"
+            api-key="AIzaSyAe39ILnXlVAfKBexVM08_R5t2zVYJF6Qc"
+            storage-bucket=""
+            messaging-sender-id="1014331420709">
+    </firebase-app>
+
+    <app-location
+            route="{{route}}"
+            url-space-regex="^[[rootPath]]">
+    </app-location>
+
+    <app-route
+            route="{{route}}"
+            pattern="[[rootPath]]:page"
+            data="{{routeData}}"
+            tail="{{subroute}}">
+    </app-route>
+
+    <nf-navbar></nf-navbar>
+
+    <iron-pages
+            selected="[[page]]"
+            attr-for-selected="name"
+            fallback-selection="home-view"
+            role="main">
+      <home-view name="home-view"></home-view>
+      <user-dash name="user-dash"></user-dash>
+
+      <view-404 name="view-404"></view-404>
+    </iron-pages>
+
   </template>
 
   <script>
@@ -31,14 +72,51 @@
      */
     class NerdfitApp extends Polymer.Element {
       static get is() { return 'nerdfit-app'; }
-      static get properties() {
-        return {
-          prop1: {
-            type: String,
-            value: 'nerdfit-app'
-          }
-        };
-      }
+        static get properties() {
+            return {
+                page: {
+                    type: String,
+                    reflectToAttribute: true,
+                    observer: '_pageChanged',
+                },
+                routeData: Object,
+                subroute: String,
+                // This shouldn't be neccessary, but the Analyzer isn't picking up
+                // Polymer.Element#rootPath
+                rootPath: String,
+            };
+        }
+
+        static get observers() {
+            return [
+                '_routePageChanged(routeData.page)',
+            ];
+        }
+
+        _routePageChanged(page) {
+            // If no page was found in the route data, page will be an empty string.
+            // Default to 'view1' in that case.
+            this.page = page || 'home-view';
+
+            // Close a non-persistent drawer when the page & route are changed.
+            if (!this.$.drawer.persistent) {
+                this.$.drawer.close();
+            }
+        }
+
+        _pageChanged(page) {
+            // Load page import on demand. Show 404 page if fails
+            var resolvedPageUrl = "views/" + this.resolveUrl(page + '.html');
+            Polymer.importHref(
+                resolvedPageUrl,
+                null,
+                this._showPage404.bind(this),
+                true);
+        }
+
+        _showPage404() {
+            this.page = 'view404';
+        }
     }
 
     window.customElements.define(NerdfitApp.is, NerdfitApp);

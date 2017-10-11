@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-logo">
+    <template is="dom-if" if="!user.isLoggedIn">
+        <style>
+
+        </style>
+
+        <a href="/home-view.html"><img src="src/nerdfit-app/assets/nf-logo.png"></a>
+
+    </template>
+    <template is="dom-if" if="user.isLoggedIn">
+        <style>
+
+        </style>
+
+        <a href="/user-dash.html"><img src="src/nerdfit-app/assets/nf-logo.png"></a>
+
+    </template>
+
+    <script>
+        var user = {
+            "isLoggedIn": false
+        };
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfLogo extends Polymer.Element {
+            static get is() { return 'nf-logo'; }
+
+        }
+
+        window.customElements.define(NfLogo.is, NfLogo);
+
+    </script>
+
+</dom-module>

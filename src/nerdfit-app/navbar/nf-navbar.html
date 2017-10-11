@@ -1,0 +1,34 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="nf-logo.html">
+<link rel="import" href="nf-links.html">
+
+<dom-module id="nf-navbar">
+    <template>
+        <style>
+            section {
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+            }
+        </style>
+        <section id="nf-navigation">
+            <firebase-auth id="auth" user="{{user}}" provider="google" on-error="handleError">
+            </firebase-auth>
+            <nf-logo></nf-logo>
+            <nf-links></nf-links>
+        </section>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfNavbar extends Polymer.Element {
+            static get is() { return 'nf-navbar'; }
+
+        }
+
+        window.customElements.define(NfNavbar.is, NfNavbar);
+    </script>
+</dom-module>

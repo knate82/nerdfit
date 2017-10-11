@@ -1,0 +1,33 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-login">
+    <template>
+        <style include="shared-styles">
+            :host {
+                display: flex;
+                flex-direction: column;
+            }
+            section.login-popup {
+                width: 300px;
+                max-width: 100%;
+                background-color: white;
+            }
+            input[text] {
+                width: 90%;
+                height: 50px;
+            }
+        </style>
+        <section class="login-popup">
+            <input type="text" id="email" placeholder="Email">
+            <input type="text" id="password" placeholder="Password">
+        </section>
+    </template>
+
+    <script>
+        class NfLogin extends Polymer.Element {
+            static get is() { return 'nf-login'; }
+        }
+
+        window.customElements.define(NfLogin.is, NfLogin);
+    </script>
+</dom-module>

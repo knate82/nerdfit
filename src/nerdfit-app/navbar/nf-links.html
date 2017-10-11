@@ -1,0 +1,38 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-links">
+    <template is="dom-if" if="!user.isLoggedIn">
+        <style>
+
+        </style>
+    </template>
+    <template is="dom-if" if="user.isLoggedIn">
+        <style>
+
+        </style>
+
+        <a href="/user-dash.html"></a>
+
+    </template>
+
+    <script>
+        var user = {
+            "isLoggedIn": false
+        };
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfLinks extends Polymer.Element {
+            static get is() { return 'nf-links'; }
+            static get properties() {
+                return {
+                    login: this.$.auth.signInWithPopup().then(function(response) {_pageChanged("user-dash");})
+                }
+            }
+        }
+
+        window.customElements.define(NfLinks.is, NfLinks);
+
+    </script>
+
