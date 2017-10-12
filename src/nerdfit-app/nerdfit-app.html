@@ -27,8 +27,8 @@
 <link rel="import" href="navbar/nf-links.html">
 <link rel="import" href="navbar/nf-logo.html">
 <!-- import Views -->
-<link rel="lazy-import" href="home-view.html">
-<link rel="lazy-import" href="user-dash.html">
+<link rel="lazy-import" href="views/home-view.html">
+<link rel="lazy-import" href="views/user-dash.html">
 
 <dom-module id="nerdfit-app">
   <template>
@@ -65,10 +65,10 @@
     <iron-pages
             selected="[[page]]"
             attr-for-selected="name"
-            fallback-selection="home-view"
+            fallback-selection="views/home-view"
             role="main">
-      <home-view name="home-view"></home-view>
-      <user-dash name="user-dash"></user-dash>
+      <home-view name="views/home-view"></home-view>
+      <user-dash name="views/user-dash"></user-dash>
     </iron-pages>
 
   </template>
@@ -80,6 +80,10 @@
      */
     class NerdfitApp extends Polymer.Element {
       static get is() { return 'nerdfit-app'; }
+//        ready() {
+//          super.ready();
+//          console.log("in ready");
+//        }
         static get properties() {
             return {
                 page: {
@@ -104,17 +108,17 @@
         _routePageChanged(page) {
             // If no page was found in the route data, page will be an empty string.
             // Default to 'view1' in that case.
-            this.page = page || 'home-view';
+            this.page = page || 'views/home-view';
 
             // Close a non-persistent drawer when the page & route are changed.
-            if (!this.$.drawer.persistent) {
-                this.$.drawer.close();
-            }
+//            if (!this.$.drawer.persistent) {
+//                this.$.drawer.close();
+//            }
         }
 
         _pageChanged(page) {
             // Load page import on demand. Show 404 page if fails
-            var resolvedPageUrl = "views/" + this.resolveUrl(page + '.html');
+            var resolvedPageUrl = this.resolveUrl(page + '.html');
             Polymer.importHref(
                 resolvedPageUrl,
                 null,
@@ -122,9 +126,9 @@
                 true);
         }
 
-//        _showPage404() {
-//            this.page = 'view404';
-//        }
+        _showPage404() {
+            this.page = 'views/home-view';
+        }
     }
 
     window.customElements.define(NerdfitApp.is, NerdfitApp);
