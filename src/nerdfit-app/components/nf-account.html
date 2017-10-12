@@ -1,4 +1,4 @@
-<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="nf-account">
     <template>
@@ -7,7 +7,7 @@
             <style>
 
             </style>
-            <button onclick="login">Login</button>
+            <nf-login></nf-login>
         </template>
         <template is="dom-if" if="user.isLoggedIn">
             <style>

@@ -1,18 +1,20 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
 <dom-module id="nf-links">
-    <template is="dom-if" if="!user.isLoggedIn">
-        <style>
+    <template>
+        <template is="dom-if" if="!user.isLoggedIn">
+            <style>
 
-        </style>
-    </template>
-    <template is="dom-if" if="user.isLoggedIn">
-        <style>
+            </style>
+        </template>
+        <template is="dom-if" if="user.isLoggedIn">
+            <style>
 
-        </style>
+            </style>
 
-        <a href="/user-dash.html"></a>
+            <a href="/user-dash.html"></a>
 
+        </template>
     </template>
 
     <script>
@@ -36,3 +38,4 @@
 
     </script>
 
+</dom-module>
