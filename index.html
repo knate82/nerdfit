@@ -15,11 +15,43 @@
     <link rel="import" href="/src/nerdfit-app/nerdfit-app.html">
     <!-- <link rel="stylesheet" href="assets/compiled/css/style.css"> Getting a lot of issues in the console from this. -->
     <style>
+
+      @font-face {
+        font-family: 'Questrial';
+        src: url('src/nerdfit-app/assets/fonts/Questrial-Regular.ttf') format('truetype');
+      }
+
+
+
+      html {
+        --primary-font: 'Questrial';
+        --fallback-font: 'Helvetica Neue';
+
+        --black: #000000;
+        --white: #FFFFFF;
+        --blue: #173753;
+        --light-blue: #52E3F6;
+        --green: #FF007F;
+        --pink: #A7EC21;
+        --gray: #333333;
+
+        --nav-height: 80px;
+      }
       body {
         margin: 0;
         background-color: #F3FAFE;
         background-attachment: fixed;
-        font-family: 'Roboto', 'Noto', sans-serif;
+      }
+      *{
+        box-sizing: border-box;
+        font-family: var(--primary-font);
+        color: var(--gray);
+      }
+      p,h1,h2,h3,h4,h5,h6,label{
+        padding: 0;
+        margin: 0;
+        font-family: var(--fallback-font);
+        font-family: var(--primary-font);
       }
     </style>
   </head>

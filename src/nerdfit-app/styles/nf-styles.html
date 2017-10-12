@@ -1,0 +1,36 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-hero">
+    <template>
+        <style>
+            :host {
+                --black: #000000;
+                --white: #FFFFFF;
+                --blue: #173753;
+                --light-blue: #52E3F6;
+                --green: #FF007F;
+                --pink: #A7EC21;
+                --gray: #333333;
+            }
+            html {
+
+            }
+        </style>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfStyles extends Polymer.Element {
+            static get is() { return 'nf-styles'; }
+
+            static get properties() {
+                return;
+            }
+        }
+
+        window.customElements.define(NfStyles.is, NfStyles);
+    </script>
+</dom-module>

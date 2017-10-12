@@ -3,15 +3,31 @@
 <dom-module id="nf-logo">
     <template is="dom-if" if="!user.isLoggedIn">
         <style>
+            :host{
 
+            }
+            img{
+                height: auto;
+                max-height: 100%;
+                width: auto;
+                max-width: 100%;
+            }
         </style>
 
-        <a href="/home-view.html"><img src="src/nerdfit-app/assets/nf-logo.png"></a>
+        <a href="/home-view.html"><img src="src/nerdfit-app/assets/images/nf-logo.png"></a>
 
     </template>
     <template is="dom-if" if="user.isLoggedIn">
         <style>
+            :host{
 
+            }
+            img{
+                height: auto;
+                max-height: 100%;
+                width: auto;
+                max-width: 100%;
+            }
         </style>
 
         <a href="/user-dash.html"><img src="src/nerdfit-app/assets/nf-logo.png"></a>

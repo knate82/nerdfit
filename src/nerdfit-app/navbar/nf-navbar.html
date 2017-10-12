@@ -3,10 +3,23 @@
 <dom-module id="nf-navbar">
     <template>
         <style>
+            :host{
+
+            }
             section {
+                box-sizing: border-box;
                 display: flex;
                 flex-direction: row;
                 width: 100%;
+                height: var(--nav-height);
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                background-color: var(--white);
+                padding: 10px;
+                opacity: .9;
+                box-shadow: 0 -4px 10px 5px rgba(0,0,0,.5);
             }
         </style>
         <section id="nf-navigation">
