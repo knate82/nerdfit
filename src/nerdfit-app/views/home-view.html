@@ -8,12 +8,26 @@
                 flex-direction: column;
             }
         </style>
+        <nf-login hidden$="{{hide}}"></nf-login>
         <nf-hero></nf-hero>
     </template>
 
     <script>
         class HomeView extends Polymer.Element {
             static get is() { return 'home-view'; }
+            static get properties() {
+                return {
+                    hide: {
+                        type: Boolean,
+                        value: false,
+                        notify: true
+                    },
+                    showLogin:
+                        function() {
+                            this.hide = !this.hide;
+                    }
+                }
+            }
         }
 
         window.customElements.define(HomeView.is, HomeView);

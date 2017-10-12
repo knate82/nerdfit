@@ -1,6 +1,4 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="nf-logo.html">
-<link rel="import" href="nf-links.html">
 
 <dom-module id="nf-navbar">
     <template>
@@ -12,10 +10,9 @@
             }
         </style>
         <section id="nf-navigation">
-            <firebase-auth id="auth" user="{{user}}" provider="google" on-error="handleError">
-            </firebase-auth>
             <nf-logo></nf-logo>
             <nf-links></nf-links>
+            <nf-account></nf-account>
         </section>
     </template>
 
