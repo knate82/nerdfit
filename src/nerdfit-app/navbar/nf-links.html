@@ -4,8 +4,13 @@
     <template>
         <template is="dom-if" if="!user.isLoggedIn">
             <style>
-
+                :host {
+                    align-self: flex-end;
+                }
             </style>
+
+            <a href="/home-view.html">Home</a>
+
         </template>
         <template is="dom-if" if="user.isLoggedIn">
             <style>
@@ -20,9 +25,6 @@
     </template>
 
     <script>
-        var user = {
-            "isLoggedIn": false
-        };
         /**
          * @customElement
          * @polymer

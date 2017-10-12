@@ -7,7 +7,9 @@
             <style>
 
             </style>
-            <paper-button onclick="showLogin">Login</paper-button>
+
+            <button on-click="showLogin">Login</button>
+
         </template>
         <template is="dom-if" if="user.isLoggedIn">
             <style>
@@ -24,13 +26,17 @@
          * @customElement
          * @polymer
          */
-        class NfUser extends Polymer.Element {
-            static get is() { return 'nf-user'; }
-            static get properties() {
+        class NfAccount extends Polymer.Element {
+            static get is() { return 'nf-account'; }
 
+            showLogin() {
+                var loginForm = document.getElementById('nfLoginForm');
+                if(loginForm) {
+                    this.hide = !this.hide;
+                }
             }
         }
 
-        window.customElements.define(NfUser.is, NfUser);
+        window.customElements.define(NfAccount.is, NfAccount);
 
     </script>
