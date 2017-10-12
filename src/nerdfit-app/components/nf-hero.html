@@ -1,4 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="">
 
 <dom-module id="nf-hero">
     <template>
@@ -9,19 +10,21 @@
                 width: 100%;
             }
             section{
+                box-sizing: border-box;
                 background-size: cover;
                 background-repeat: no-repeat;
-                background-position: center;
-                min-height: 350px;
+                background-position: bottom center;
+                height: calc(100vh - var(--nav-height));
+                margin-top: var(--nav-height);
                 width: 100%;
                 padding: 60px 20px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                color: var(--white);
             }
 
-            @media (min-width: 750px) {
-                section{
-                    min-height: 500px;
-                }
-            }
         </style>
         <section style$="background-image: url( [[ backgroundimage ]] );">
             <slot></slot>
