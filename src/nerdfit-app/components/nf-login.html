@@ -17,10 +17,13 @@
                 height: 50px;
             }
         </style>
-        <section class="login-popup">
-            <input type="text" id="email" placeholder="Email">
-            <input type="text" id="password" placeholder="Password">
-        </section>
+        <paper-dialog>
+            <h2>Login</h2>
+
+            <div class="buttons">
+                <paper-button dialog-confirm autofocus>Login</paper-button>
+            </div>
+        </paper-dialog>
     </template>
 
     <script>
