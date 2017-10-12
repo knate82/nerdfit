@@ -5,10 +5,12 @@
         <firebase-auth id="auth" user="{{user}}" provider="google" on-error="handleError"></firebase-auth>
         <template is="dom-if" if="!user.isLoggedIn">
             <style>
-
+                :host {
+                    align-self: center;
+                }
             </style>
 
-            <button on-click="showLogin">Login</button>
+            <paper-button on-click="showLogin">Login</paper-button>
 
         </template>
         <template is="dom-if" if="user.isLoggedIn">
