@@ -11,8 +11,10 @@
             <style>
 
             </style>
-
-            <a href="/user-dash.html"></a>
+            <div class="nav-links">
+                <a href="/user-dash.html"></a>
+                <a href="/my-friends.html"></a>
+            </div>
 
         </template>
     </template>
@@ -27,11 +29,6 @@
          */
         class NfLinks extends Polymer.Element {
             static get is() { return 'nf-links'; }
-            static get properties() {
-                return {
-                    login: this.$.auth.signInWithPopup().then(function(response) {_pageChanged("user-dash");})
-                }
-            }
         }
 
         window.customElements.define(NfLinks.is, NfLinks);

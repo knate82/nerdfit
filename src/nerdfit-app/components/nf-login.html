@@ -17,18 +17,24 @@
                 height: 50px;
             }
         </style>
-        <paper-dialog>
-            <h2>Login</h2>
+        <iron-form>
+            <form>
+                <input type="text" name="email" placeholder="Email">
+                <input type="text" name="password" placeholder="Password">
+                <paper-button raised onclick="submitLogin">Login</paper-button>
+            </form>
 
-            <div class="buttons">
-                <paper-button dialog-confirm autofocus>Login</paper-button>
-            </div>
-        </paper-dialog>
+        </iron-form>
     </template>
 
     <script>
         class NfLogin extends Polymer.Element {
             static get is() { return 'nf-login'; }
+            static get properties() {
+                function submitLogin() {
+                    document.getElementById('iron-form').submit();
+                }
+            }
         }
 
         window.customElements.define(NfLogin.is, NfLogin);

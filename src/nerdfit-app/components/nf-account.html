@@ -7,14 +7,15 @@
             <style>
 
             </style>
-            <nf-login></nf-login>
+            <paper-button onclick="showLogin">Login</paper-button>
         </template>
         <template is="dom-if" if="user.isLoggedIn">
             <style>
 
             </style>
 
-            <a href="/user-dash.html"></a>
+            <!-- Profile Picture -->
+            <!-- Profile Specific Controls -->
 
         </template>
     </template>
@@ -26,9 +27,7 @@
         class NfUser extends Polymer.Element {
             static get is() { return 'nf-user'; }
             static get properties() {
-                return {
-                    login: this.$.auth.signInWithEmailAndPassword(email, password).then(function(response) {_pageChanged("user-dash");})
-                }
+
             }
         }
 
