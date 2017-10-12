@@ -6,10 +6,19 @@
             <style>
                 :host {
                     align-self: flex-end;
+                    width: 100%;
+                    margin: auto;
+                }
+                a {
+                    text-decoration: none;
+                    color: black;
+                    text-transform: uppercase;
                 }
             </style>
 
-            <a href="/home-view.html">Home</a>
+            <a href="views/home-view">What is it?</a>
+            <a href="views/home-view">How do I join?</a>
+            <a href="views/home-view">What trackers are supported?</a>
 
         </template>
         <template is="dom-if" if="user.isLoggedIn">
