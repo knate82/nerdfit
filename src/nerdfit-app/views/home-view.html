@@ -8,7 +8,10 @@
                 flex-direction: column;
             }
         </style>
-        <nf-login hidden$="{{hide}}"></nf-login>
+        <template>
+
+        </template>
+        <nf-login id="nfLoginForm" hidden$="{{hide}}"></nf-login>
         <nf-hero></nf-hero>
     </template>
 
@@ -19,12 +22,8 @@
                 return {
                     hide: {
                         type: Boolean,
-                        value: false,
+                        value: true,
                         notify: true
-                    },
-                    showLogin:
-                        function() {
-                            this.hide = !this.hide;
                     }
                 }
             }
