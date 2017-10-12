@@ -21,8 +21,6 @@
         src: url('src/nerdfit-app/assets/fonts/Questrial-Regular.ttf') format('truetype');
       }
 
-
-
       html {
         --primary-font: 'Questrial';
         --fallback-font: 'Helvetica Neue';
@@ -31,11 +29,17 @@
         --white: #FFFFFF;
         --blue: #173753;
         --light-blue: #52E3F6;
-        --green: #FF007F;
-        --pink: #A7EC21;
+        --pink: #FF007F;
+        --green: #A7EC21;
         --gray: #333333;
 
         --nav-height: 80px;
+
+        --link: {
+          text-decoration: none;
+          color: var(--blue);
+        };
+
       }
       body {
         margin: 0;
@@ -44,15 +48,15 @@
       }
       *{
         box-sizing: border-box;
+        -webkit-font-smoothing: antialiased;
         font-family: var(--primary-font);
         color: var(--gray);
       }
       p,h1,h2,h3,h4,h5,h6,label{
-        padding: 0;
-        margin: 0;
         font-family: var(--fallback-font);
         font-family: var(--primary-font);
       }
+
     </style>
   </head>
   <body>
