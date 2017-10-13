@@ -1,0 +1,149 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-container">
+    <template>
+        <style>
+            :host {
+                margin: 0 auto;
+            }
+            ::slotted(){
+
+            }
+            section{
+                box-sizing: border-box;
+            }
+            .container{
+                margin: 0 auto;
+                padding: 0 20px;
+                display: flex;
+            }
+            .container-fluid{
+                width: 100%;
+                margin: 0 auto;
+            }
+            .row{ flex-direction: row; }
+            .column{ flex-direction: column; }
+            .mobile-column-tabletup-row{ flex-direction: column; }
+
+            .justify-content--center{ justify-content: center; }
+            .justify-content--flex-end{ justify-content: flex-end; }
+            .justify-content--flex-start{ justify-content: flex-start; }
+            .justify-content--space-between{ justify-content: space-between; }
+            .justify-content--space-around{ justify-content: space-around; }
+
+            .align-items--center{ align-items: center; }
+            .align-items--flex-end{ align-items: flex-end; }
+            .align-items--flex-start{ align-items: flex-start; }
+
+            .align-content--center{ align-content: center; }
+            .align-content--flex-end{ align-content: flex-end; }
+            .align-content--flex-start{ align-content: flex-start; }
+
+            @media (min-width: 750px) {
+                .container{
+                    width: 750px;
+                    max-width: 100%;
+                }
+                .mobile-column-tabletup-row{ flex-direction: row; }
+            }
+            @media (min-width: 1000px) {
+                .container{
+                    width: 1000px;
+                    max-width: 100%;
+                }
+            }
+            @media (min-width: 1200px) {
+                .container{
+                    width: 1200px;
+                    max-width: 100%;
+                }
+            }
+
+            @media (max-width: 749px) {
+                .hidden-xs{ display: none; }
+
+                .hidden-md-down{ display: none; }
+                .hidden-sm-down{ display: none; }
+            }
+            @media (min-width: 750px) and (max-width: 999px) {
+                .hidden-sm{ display: none; }
+
+                .hidden-sm-up{ display: none; }
+
+                .hidden-md-down{ display: none; }
+                .hidden-sm-down{ display: none; }
+            }
+            @media (min-width: 1000px) and (max-width: 1199px) {
+                .hidden-md{ display: none; }
+
+                .hidden-sm-up{ display: none; }
+                .hidden-md-up{ display: none; }
+
+                .hidden-md-down{ display: none; }
+            }
+            @media (min-width: 1200px) {
+                .hidden-lg{ display: none; }
+
+                .hidden-sm-up{ display: none; }
+                .hidden-md-up{ display: none; }
+                .hidden-lg-up{ display: none; }
+            }
+
+        </style>
+
+        <section
+                class$="[[containertype]] [[direction]] justify-content--[[justifycontent]] align-items--[[alignitems]] align-content--[[aligncontent]] hidden-[[hidden]]"
+                style$="height: [[height]]; margin: [[margin]];">
+            <slot></slot>
+        </section>
+
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfContainer extends Polymer.Element {
+            static get is() { return 'nf-container'; }
+
+            static get properties() {
+                return {
+                    containertype: {
+                        type: "String",
+                        value: "container"
+                    },
+                    direction: {
+                        type: "String",
+                        value: "row"
+                    },
+                    justifycontent: {
+                        type: "String",
+                        value: "center"
+                    },
+                    alignitems: {
+                        type: "String",
+                        value: "center"
+                    },
+                    aligncontent: {
+                        type: "String",
+                        value: "center"
+                    },
+                    height: {
+                        type: "String",
+                        value: "100%"
+                    },
+                    margin: {
+                        type: "String",
+                        value: "0 auto"
+                    },
+                    hidden: {
+                        type: "String"
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(NfContainer.is, NfContainer);
+    </script>
+</dom-module>
