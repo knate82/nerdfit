@@ -14,7 +14,7 @@
             }
             .container{
                 margin: 0 auto;
-                padding: 0 20px;
+                padding: 0 10px;
                 display: flex;
             }
             .container-fluid{
@@ -93,7 +93,7 @@
 
         <section
                 class$="[[containertype]] [[direction]] justify-content--[[justifycontent]] align-items--[[alignitems]] align-content--[[aligncontent]] hidden-[[hidden]]"
-                style$="height: [[height]]; margin: [[margin]];">
+                style$="height: [[height]]; margin: [[margin]]; padding-top: [[paddingtop]]px; padding-bottom: [[paddingbottom]]px;">
             <slot></slot>
         </section>
 
@@ -110,35 +110,47 @@
             static get properties() {
                 return {
                     containertype: {
-                        type: "String",
+                        type: String,
                         value: "container"
                     },
                     direction: {
-                        type: "String",
+                        type: String,
                         value: "row"
                     },
                     justifycontent: {
-                        type: "String",
+                        type: String,
                         value: "center"
                     },
                     alignitems: {
-                        type: "String",
-                        value: "center"
+                        type: String,
+                        value: "flex-start"
                     },
                     aligncontent: {
-                        type: "String",
+                        type: String,
                         value: "center"
                     },
                     height: {
-                        type: "String",
+                        type: String,
                         value: "100%"
                     },
                     margin: {
-                        type: "String",
+                        type: String,
                         value: "0 auto"
                     },
+                    paddingtop: {
+                        type: Number,
+                        value: 0
+                    },
+                    paddingbottom: {
+                        type: Number,
+                        value: 0
+                    },
+                    backgroundcolor: {
+                        type: String,
+                        value: "white"
+                    },
                     hidden: {
-                        type: "String"
+                        type: String
                     }
                 }
             }

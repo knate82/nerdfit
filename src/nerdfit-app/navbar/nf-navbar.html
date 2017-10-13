@@ -21,7 +21,8 @@
                 right: 0;
                 background-color: var(--white);
                 padding: 10px 0;
-                opacity: .9;
+                opacity: .95;
+                z-index: var(--header-z);
                 /*box-shadow: 0 4px 2px -2px rgba(0,0,0,.5);*/
             }
 
@@ -29,45 +30,16 @@
                 content: "";
                 position: absolute;
                 bottom: -5px;
-                background-color: var(--blue);
                 height: var(--accent-bar-height);
                 width: 100%;
-            }
 
-            section .container{
-                display: flex;
-                flex-direction: row;
-                align-items: center;
-                justify-content: space-between;
-                margin: 0 auto;
-            }
-
-            .container{
-                margin: 0 auto;
-                padding: 0 20px;
-            }
-            @media (min-width: 750px) {
-                .container{
-                    width: 750px;
-                    max-width: 100%;
-                }
-            }
-            @media (min-width: 1000px) {
-                .container{
-                    width: 1000px;
-                    max-width: 100%;
-                }
-            }
-            @media (min-width: 1200px) {
-                .container{
-                    width: 1200px;
-                    max-width: 100%;
-                }
+                background-color: var(--blue);
+                background: linear-gradient(-90deg, var(--light-blue), var(--blue));
             }
 
         </style>
         <section id="nf-navigation">
-            <nf-container justifycontent="space-between">
+            <nf-container justifycontent="space-between" align-items="center">
                 <nf-logo></nf-logo>
                 <nf-links></nf-links>
                 <nf-account></nf-account>

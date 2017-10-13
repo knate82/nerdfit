@@ -42,7 +42,8 @@
         width: 100%;
       }
       *{margin: 0; padding: 0;}
-
+      h1,h2,h3,h4,h5,h6{ margin-bottom: 20px; }
+      p{ margin-bottom: 10px; }
     </style>
     <firebase-app
             name="nerdfit"
@@ -66,11 +67,16 @@
     </app-route>
 
     <nf-navbar></nf-navbar>
-    <nf-hero backgroundimage="src/nerdfit-app/assets/images/nf-logo-bg.png">
-      <nf-container>
+    <nf-hero backgroundimage="src/nerdfit-app/assets/images/nf-logo-bg.jpg" isfiltered="true">
+      <nf-container align-content="center">
         <h1>Nerding has never been so fun</h1>
       </nf-container>
     </nf-hero>
+    <nf-container paddingtop="60" paddingbottom="50" direction="column">
+      <div>
+        <h2>It's time to use your greatest strength against your greatest weakness <span style="font-weight: 100; font-size: .75em;">(it's super effective!)</span></h2>
+      </div>
+    </nf-container>
 
     <iron-pages
             selected="[[page]]"
