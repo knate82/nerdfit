@@ -10,7 +10,11 @@
                 }
             </style>
 
-            <paper-button on-click="showLogin">Login</paper-button>
+            <paper-button onclick="loginForm.toggle()">Login</paper-button>
+
+            <paper-dialog id="loginForm" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+                <h2>Login</h2>
+            </paper-dialog>
 
         </template>
         <template is="dom-if" if="user.isLoggedIn">
@@ -30,15 +34,14 @@
          */
         class NfAccount extends Polymer.Element {
             static get is() { return 'nf-account'; }
-
-            showLogin() {
-                var loginForm = document.getElementById('nfLoginForm');
-                if(loginForm) {
-                    this.hide = !this.hide;
-                }
-            }
+//            static get properties() {
+//                return {
+//
+//                }
+//            }
         }
 
         window.customElements.define(NfAccount.is, NfAccount);
 
     </script>
+</dom-module>
