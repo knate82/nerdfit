@@ -14,7 +14,7 @@
                 display: flex;
                 flex-direction: row;
                 width: 100%;
-                height: var(--nav-height);
+                height: var(--header-height);
                 position: fixed;
                 top: 0;
                 left: 0;
@@ -22,8 +22,16 @@
                 background-color: var(--white);
                 padding: 10px 0;
                 opacity: .9;
-                box-shadow: 0 -4px 10px 5px rgba(0,0,0,.5);
+                /*box-shadow: 0 4px 2px -2px rgba(0,0,0,.5);*/
+            }
 
+            section::after{
+                content: "";
+                position: absolute;
+                bottom: -5px;
+                background-color: var(--blue);
+                height: var(--accent-bar-height);
+                width: 100%;
             }
 
             section .container{
@@ -31,7 +39,7 @@
                 flex-direction: row;
                 align-items: center;
                 justify-content: space-between;
-                margin: auto;
+                margin: 0 auto;
             }
 
             .container{
@@ -56,6 +64,7 @@
                     max-width: 100%;
                 }
             }
+
         </style>
         <section id="nf-navigation">
             <div class="container">

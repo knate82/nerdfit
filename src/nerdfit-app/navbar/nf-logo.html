@@ -4,10 +4,8 @@
     <template is="dom-if" if="!user.isLoggedIn">
         <style>
             :host{
-
-            }
-            .wrapper{
-                height: fit-content;
+                flex-shrink: 1;
+                flex-basis: 209px;
             }
             img{
                 height: auto;
@@ -39,7 +37,9 @@
         </style>
 
         <div class="wrapper">
-            <a href="/user-dash.html"><img src="src/nerdfit-app/assets/nf-logo.png"></a>
+            <a href="/user-dash.html">
+                <img src="src/nerdfit-app/assets/nf-logo.png">
+            </a>
         </div>
 
     </template>
