@@ -21,7 +21,7 @@
 <link rel="import" href="../../bower_components/app-route/app-route.html">
 
 <!-- import Components -->
-<link rel="import" href="components/styles/nf-styles.html">
+<link rel="import" href="components/nf-container.html">
 <link rel="import" href="components/nf-hero.html">
 <link rel="import" href="components/nf-login.html">
 <link rel="import" href="components/nf-account.html">
@@ -67,7 +67,9 @@
 
     <nf-navbar></nf-navbar>
     <nf-hero backgroundimage="src/nerdfit-app/assets/images/nf-logo-bg.png">
-      <h1>Nerding has never been so fun</h1>
+      <nf-container>
+        <h1>Nerding has never been so fun</h1>
+      </nf-container>
     </nf-hero>
 
     <iron-pages
