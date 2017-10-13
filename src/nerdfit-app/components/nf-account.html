@@ -3,21 +3,22 @@
 <dom-module id="nf-account">
     <template>
         <firebase-auth id="auth" user="{{user}}" provider="google" on-error="handleError"></firebase-auth>
-        <template is="dom-if" if="!user.isLoggedIn">
+        <paper-button on-tap='toggleForm'>Login</paper-button>
+
+        <paper-dialog id="form" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+            <h2>Login</h2>
+        </paper-dialog>
+        <template is="dom-if" if="{{!user.isLoggedIn}}">
             <style>
                 :host {
                     align-self: center;
                 }
             </style>
 
-            <paper-button on-tap='toggleForm'>Login</paper-button>
 
-            <paper-dialog id="form" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
-                <h2>Login</h2>
-            </paper-dialog>
 
         </template>
-        <template is="dom-if" if="user.isLoggedIn">
+        <template is="dom-if" if="{{user.isLoggedIn}}">
             <style>
 
             </style>
@@ -34,8 +35,9 @@
          */
         class NfAccount extends Polymer.Element {
             static get is() { return 'nf-account'; }
+
             toggleForm() {
-                document.getElementById('form').toggle();
+                this.$.form.toggle();
             }
         }
 
