@@ -27,7 +27,7 @@
 <link rel="import" href="../../bower_components/app-route/app-route.html">
 
 <!-- import Components -->
-<link rel="import" href="components/styles/nf-styles.html">
+<link rel="import" href="components/nf-container.html">
 <link rel="import" href="components/nf-hero.html">
 <link rel="import" href="components/nf-login.html">
 <link rel="import" href="components/nf-account.html">
@@ -48,7 +48,6 @@
         width: 100%;
       }
       *{margin: 0; padding: 0;}
-
     </style>
     <firebase-app
             name="nerdfit"
@@ -72,6 +71,7 @@
     </app-route>
 
     <nf-navbar></nf-navbar>
+
     <home-view name="home-view"></home-view>
     <user-dash name="user-dash"></user-dash>
 

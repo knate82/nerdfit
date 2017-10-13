@@ -1,0 +1,6 @@
+{
+  "name": "nerdfit",
+  "short_name": "nerdfit",
+  "start_url": "/",
+  "display": "standalone"
+}

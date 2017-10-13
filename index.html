@@ -22,9 +22,11 @@
       }
 
       html {
+        /*font*/
         --primary-font: 'Questrial';
         --fallback-font: 'Helvetica Neue';
 
+        /*color*/
         --black: #000000;
         --white: #FFFFFF;
         --blue: #173753;
@@ -33,9 +35,13 @@
         --green: #A7EC21;
         --gray: #333333;
 
-        --nav-height: 80px;
+        /*height*/
+        --nav-height: 60px;
         --accent-bar-height: 5px;
         --header-height: calc(var(--nav-height) + var(--accent-bar-height));
+
+        /*z-index*/
+        --header-z: 5000;
 
         --link: {
           text-decoration: none;
@@ -45,7 +51,7 @@
       }
       body {
         margin: 0;
-        background-color: #F3FAFE;
+        background-color: var(--white);
         background-attachment: fixed;
       }
       *{

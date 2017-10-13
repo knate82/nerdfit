@@ -9,9 +9,10 @@
                 flex-direction: row;
                 width: 100%;
             }
-            ::slotted(h1){
-                font-size: 50px;
+            ::slotted(*){
+                font-size: 30px;
                 line-height: 60px;
+                z-index: 10;
             }
             section{
                 box-sizing: border-box;
@@ -27,13 +28,26 @@
                 align-items: center;
                 justify-content: center;
                 color: var(--white);
-                /*TODO: remove margin-bottom*/
-                margin-bottom: 100px;
+                position: relative;
+            }
+            .filtered--false{
+                display: none;
+            }
+            .filtered--true{
+                width: inherit;
+                height: inherit;
+                background-color: rgba(0,0,0,.5);
+                z-index: 10;
+                position: absolute;
+                top: 0;
+                left: 0;
+                right: 0;
             }
 
         </style>
         <section style$="background-image: url( [[ backgroundimage ]] );">
-            <slot></slot>
+            <div class$="filtered--[[isfiltered]]" style$=" background-color: rgba(0,0,0, .[[filteropacity]] );"></div>
+                <slot></slot>
         </section>
     </template>
 
@@ -50,6 +64,14 @@
                     backgroundimage: {
                         type: String,
                         value: ""
+                    },
+                    isfiltered: {
+                        type: String,
+                        value: "false"
+                    },
+                    filteropacity: {
+                        type: Number,
+                        value: 5
                     }
                 }
             }

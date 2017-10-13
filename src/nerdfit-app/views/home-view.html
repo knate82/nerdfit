@@ -7,13 +7,21 @@
                 display: flex;
                 flex-direction: column;
             }
+            *{margin: 0; padding: 0;}
         </style>
-        <nf-hero backgroundimage="src/nerdfit-app/assets/images/nf-logo-bg.png">
+        <nf-hero backgroundimage="src/nerdfit-app/assets/images/nf-logo-bg.jpg" isFiltered="true">
             <template is="dom-if" if="{{hide}}">
                 <nf-login id="nfLoginForm"></nf-login>
             </template>
-            <h1>Nerding has never been so fun</h1>
+            <nf-container align-content="center">
+                <h1>Nerding has never been so fun</h1>
+            </nf-container>
         </nf-hero>
+        <nf-container paddingtop="60" paddingbottom="60" direction="column">
+            <div>
+                <h2>It's time to use your greatest strength against your greatest weakness <span style="font-weight: 100; font-size: .75em;">(it's super effective!)</span></h2>
+            </div>
+        </nf-container>
     </template>
 
     <script>
