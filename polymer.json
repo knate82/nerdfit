@@ -1,7 +1,25 @@
 {
+  "entrypoint": "index.html",
+  "shell": "src/nerdfit-app/nerdfit-app.html",
+  "fragments": [
+    "src/views/*.html"
+  ],
+  "sources": [
+    "src/**/*",
+    "bower.json"
+  ],
+  "extraDependencies": [
+    "manifest.json",
+    "bower_components/webcomponentsjs/webcomponents-lite.js"
+  ],
   "lint": {
     "rules": [
       "polymer-2"
     ]
-  }
+  },
+  "builds": [
+    { "preset": "es5-bundled" },
+    { "preset": "es6-bundled" },
+    { "preset": "es6-unbundled" }
+  ]
 }

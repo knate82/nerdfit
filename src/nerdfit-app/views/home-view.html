@@ -8,11 +8,19 @@
                 flex-direction: column;
             }
         </style>
-        <template>
-
-        </template>
-        <nf-login id="nfLoginForm" hidden$="{{hide}}"></nf-login>
-        <nf-hero></nf-hero>
+        <nf-hero backgroundimage="src/nerdfit-app/assets/images/nf-logo-bg.jpg" isFiltered="true">
+            <template is="dom-if" if="{{hide}}">
+                <nf-login id="nfLoginForm"></nf-login>
+            </template>
+            <nf-container align-content="center">
+                <h1>Nerding has never been so fun</h1>
+            </nf-container>
+        </nf-hero>
+        <nf-container paddingtop="60" paddingbottom="50" direction="column">
+            <div>
+                <h2>It's time to use your greatest strength against your greatest weakness <span style="font-weight: 100; font-size: .75em;">(it's super effective!)</span></h2>
+            </div>
+        </nf-container>
     </template>
 
     <script>
@@ -22,7 +30,7 @@
                 return {
                     hide: {
                         type: Boolean,
-                        value: true,
+                        value: false,
                         notify: true
                     }
                 }

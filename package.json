@@ -17,5 +17,9 @@
   "bugs": {
     "url": "https://github.com/knate82/nerdfit/issues"
   },
-  "homepage": "https://github.com/knate82/nerdfit#readme"
+  "homepage": "https://github.com/knate82/nerdfit#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-vulcanize": "^6.1.0"
+  }
 }
