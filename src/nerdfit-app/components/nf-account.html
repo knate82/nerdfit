@@ -10,9 +10,9 @@
                 }
             </style>
 
-            <paper-button onclick="loginForm.toggle()">Login</paper-button>
+            <paper-button on-tap='toggleForm'>Login</paper-button>
 
-            <paper-dialog id="loginForm" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+            <paper-dialog id="form" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
                 <h2>Login</h2>
             </paper-dialog>
 
@@ -34,11 +34,9 @@
          */
         class NfAccount extends Polymer.Element {
             static get is() { return 'nf-account'; }
-//            static get properties() {
-//                return {
-//
-//                }
-//            }
+            toggleForm() {
+                document.getElementById('form').toggle();
+            }
         }
 
         window.customElements.define(NfAccount.is, NfAccount);
