@@ -1,0 +1,129 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-grid">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+            /*::slotted(nf-tile) {*/
+                /*grid-column-start: 1 !important;*/
+                /*grid-column-end: 1 !important;*/
+            /*}*/
+            section{
+                box-sizing: border-box;
+                display: grid;
+                height: 100%;
+                width: 100%;
+            }
+
+
+            @media (min-width: 750px) {
+
+            }
+            @media (min-width: 1000px) {
+
+            }
+            @media (min-width: 1200px) {
+
+            }
+
+            @media (max-width: 749px) {
+                .single-column--mobile{
+                    grid-template-columns: 1fr !important;
+                }
+                .single-column--mobile ::slotted(nf-tile) {
+                    grid-column-start: 1 !important;
+                    grid-column-end: 1 !important;
+                }
+            }
+            @media (min-width: 750px) and (max-width: 999px) {
+                .single-column--tablet{
+                    grid-template-columns: 1fr !important;
+                }
+                .single-column--tablet ::slotted(nf-tile) {
+                    grid-column-start: 1 !important;
+                    grid-column-end: 1 !important;
+                }
+            }
+            @media (min-width: 1000px) and (max-width: 1199px) {
+
+            }
+            @media (min-width: 1200px) {
+
+            }
+
+        </style>
+
+        <section
+                class$="single-column--[[singlecolumnbreakpoint]]"
+                style$="grid-template: repeat([[rows]], [[rowheight]]) / repeat([[columns]], [[columnwidth]]);
+                        grid-gap: [[gutterxy]]px; grid-column-gap: [[gutterx]]px; grid-row-gap: [[guttery]]px;
+                        height: [[height]];">
+
+            <slot></slot>
+        </section>
+
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfGrid extends Polymer.Element {
+            static get is() { return 'nf-grid'; }
+
+            static get properties() {
+                return {
+                    rows: {
+                        type: Number,
+                        value: 1
+                    },
+                    columns: {
+                        type: Number,
+                        value: 1
+                    },
+                    rowheight: {
+                        type: String,
+                        value: "1fr"
+                    },
+                    columnwidth: {
+                        type: String,
+                        value: "1fr"
+                    },
+                    columnwidthmin: {
+                        type: String,
+                        value: "300px"
+                    },
+                    columnwidthmax: {
+                        type: String,
+                        value: "1fr"
+                    },
+                    gutterxy: {
+                        type: Number,
+                        value: 0
+                    },
+                    gutterx: {
+                        type: Number,
+                        value: 20
+                    },
+                    guttery: {
+                        type: Number,
+                        value: 20
+                    },
+                    height: {
+                        type: String,
+                        value: "auto"
+                    },
+                    singlecolumnbreakpoint: {
+                        type: String,
+                        value: ""
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(NfGrid.is, NfGrid);
+    </script>
+</dom-module>

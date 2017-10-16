@@ -17,10 +17,24 @@
                 <h1>Nerding has never been so fun</h1>
             </nf-container>
         </nf-hero>
-        <nf-container paddingtop="60" paddingbottom="60" direction="column">
-            <div>
-                <h2>It's time to use your greatest strength against your greatest weakness <span style="font-weight: 100; font-size: .75em;">(it's super effective!)</span></h2>
-            </div>
+        <nf-container paddingtop="20" paddingbottom="20" direction="column">
+            <!--<div>-->
+                <!--<h2>It's time to use your greatest strength against your greatest weakness <span style="font-weight: 100; font-size: .75em;">(it's super effective!)</span></h2>-->
+            <!--</div>-->
+            <nf-grid columns="4" rows="2" singlecolumnbreakpoint="mobile">
+                <nf-tile>
+                    <div class="card" style="background-color: blue; min-height: 200px; height: 100%;"></div>
+                </nf-tile>
+                <nf-tile x="2" xspan="2" yspan="2">
+                    <div class="card" style="background-color: red; min-height: 200px; height: 100%;"></div>
+                </nf-tile>
+                <nf-tile x="1" y="2">
+                    <div class="card" style="background-color: purple; min-height: 200px; height: 100%;"></div>
+                </nf-tile>
+                <nf-tile yspan="2">
+                    <div class="card" style="background-color: green; min-height: 200px; height: 100%;"></div>
+                </nf-tile>
+            </nf-grid>
         </nf-container>
     </template>
 
