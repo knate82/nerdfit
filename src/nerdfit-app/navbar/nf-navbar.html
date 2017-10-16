@@ -4,7 +4,13 @@
     <template>
         <style>
             :host{
-
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: var(--header-z);
+                height: var(--header-height);
+                background-color: var(--white);
             }
             * {
                 max-height: 100%;
@@ -14,28 +20,18 @@
                 display: flex;
                 flex-direction: row;
                 width: 100%;
-                height: var(--header-height);
-                position: fixed;
-                top: 0;
-                left: 0;
-                right: 0;
-                background-color: var(--white);
                 padding: 10px 0;
                 opacity: .95;
-                z-index: var(--header-z);
-                /*box-shadow: 0 4px 2px -2px rgba(0,0,0,.5);*/
             }
 
-            /*section::after{*/
-                /*content: "";*/
-                /*position: absolute;*/
-                /*bottom: -5px;*/
-                /*height: var(--accent-bar-height);*/
-                /*width: 100%;*/
-
-                /*background-color: var(--blue);*/
-                /*background: linear-gradient(-90deg, var(--light-blue), var(--blue));*/
-            /*}*/
+            .accent-bar{
+                content: "";
+                height: var(--accent-bar-height);
+                width: 100%;
+                background-color: var(--blue);
+                background: linear-gradient(-90deg, var(--light-blue), var(--blue));
+                z-index: var(--gradient-bar-z);
+            }
 
         </style>
         <section id="nf-navigation">
@@ -45,6 +41,7 @@
                 <nf-account signed-in="{{signedIn}}"></nf-account>
             </nf-container>
         </section>
+        <div class="accent-bar"></div>
     </template>
 
     <script>

@@ -1,0 +1,86 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-tile">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+
+            section{
+                box-sizing: border-box;
+                height: 100%;
+                width: 100%;
+            }
+
+
+            @media (min-width: 750px) {
+
+            }
+            @media (min-width: 1000px) {
+
+            }
+            @media (min-width: 1200px) {
+
+            }
+
+            @media (max-width: 749px) {
+
+            }
+            @media (min-width: 750px) and (max-width: 999px) {
+
+            }
+            @media (min-width: 1000px) and (max-width: 1199px) {
+
+            }
+            @media (min-width: 1200px) {
+
+            }
+
+        </style>
+
+        <section>
+            <slot></slot>
+        </section>
+
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfTile extends Polymer.Element {
+            static get is() { return 'nf-tile'; }
+
+            static get properties() {
+                return {
+                    x: {
+                        type: Number
+                    },
+                    xspan: {
+                        type: Number,
+                        value: 1
+                    },
+                    y: {
+                        type: Number
+                    },
+                    yspan: {
+                        type: Number,
+                        value: 1
+                    }
+                }
+            }
+
+            ready() {
+                if (this.x) this.style.gridColumnStart = this.x;
+                this.style.gridColumnEnd = 'span ' + this.xspan;
+                if (this.y) this.style.gridRowStart = this.y;
+                this.style.gridRowEnd = 'span ' + this.yspan;
+            }
+
+        }
+
+        window.customElements.define(NfTile.is, NfTile);
+    </script>
+</dom-module>
