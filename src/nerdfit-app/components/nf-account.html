@@ -2,30 +2,85 @@
 
 <dom-module id="nf-account">
     <template>
-        <firebase-auth id="auth" user="{{user}}" provider="google" on-error="handleError"></firebase-auth>
-        <template is="dom-if" if="!user.isLoggedIn">
-            <style>
-                :host {
-                    align-self: center;
-                }
-            </style>
+        <style>
+            :host {
+                align-self: center;
+            }
+            iron-form {
+                margin: 0;
+                padding: 1.5em;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+            }
+            paper-dialog {
+                min-width: 300px;
+                max-width: 400px;
+                border-radius: 15px;
+            }
+            paper-dialog paper-button {
+                align-self: flex-end;
+                background-color: var(--blue);
+                color: var(--white);
+            }
+            #profile {
+                width: 8em;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+            }
+            #profile-image {
+                align-self: center;
+            }
+            #profile:hover .profile-links {
+                display: flex;
+            }
+            .profile-links {
+                background-color: var(--white);
+                display: none;
+                flex-direction: column;
+            }
+            .profile-links ul {
+                width: 100%;
+                padding: 0;
+                margin: 0;
+            }
+            .profile-links ul li {
+                list-style: none;
+                width: 100%;
+                text-align: center;
+            }
+            .profile-links li:hover {
+                background-color: var(--gray);
+                color: var(--white);
+            }
+        </style>
+        <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
+        <section id="login" hidden="{{signedIn}}">
+            <paper-button on-tap='toggleForm'>Login</paper-button>
 
-            <paper-button onclick="loginForm.toggle()">Login</paper-button>
-
-            <paper-dialog id="loginForm" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
-                <h2>Login</h2>
+            <paper-dialog id="form" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+                <iron-form id="loginForm" on-iron-form-presubmit="formPreSubmit">
+                    <form>
+                        <paper-input id="email" error-message="Invalid Email Address" label="Email" type="email" min-length="5"></paper-input>
+                        <paper-input id="password" label="Password" type="password"></paper-input>
+                        <paper-button on-tap="submitLogin" raised >Submit</paper-button>
+                    </form>
+                </iron-form>
             </paper-dialog>
-
-        </template>
-        <template is="dom-if" if="user.isLoggedIn">
-            <style>
-
-            </style>
-
-            <!-- Profile Picture -->
-            <!-- Profile Specific Controls -->
-
-        </template>
+        </section>
+        <section id="profile" hidden="{{!signedIn}}">
+            <div id="profile-image">
+                <iron-image style="width:50px; height:50px;" sizing="contain" src="src/nerdfit-app/assets/images/nf-no-profile.jpg"></iron-image>
+            </div>
+            <div class="profile-links">
+                <ul>
+                    <li><paper-button on-tap="logoutUser">Profile</paper-button></li>
+                    <li><paper-button on-tap="logoutUser">Friends</paper-button></li>
+                    <li><paper-button on-tap="logoutUser">Logout</paper-button></li>
+                </ul>
+            </div>
+        </section>
     </template>
     <script>
         /**
@@ -34,11 +89,48 @@
          */
         class NfAccount extends Polymer.Element {
             static get is() { return 'nf-account'; }
-//            static get properties() {
-//                return {
-//
-//                }
-//            }
+            ready() {
+                super.ready();
+                console.log(this.$.auth.signedIn);
+            }
+
+            toggleForm() {
+                this.$.form.toggle();
+            }
+            submitLogin() {
+                var email = this.$.email.value;
+                var password = this.$.password.value;
+
+                if(email && password) {
+                    console.log('email: ' + email + ' password: ' + password);
+                    this.$.auth.signInWithEmailAndPassword(email, password)
+                        .then(function(response) {
+                            console.log(response);
+
+                        })
+                        .catch(function(error){
+                            console.log(error);
+                        });
+                } else {
+                    switch(email, password) {
+                        case !email:
+                            alert('Must add email to proceed.');
+                            break;
+                        case !password:
+                            alert('Must add password to proceed.');
+                            break;
+                        case !email && !password:
+                            alert('Valid email and password are required to proceed.');
+                            break;
+                        default:
+                            alert('There was an issue with your submission. Please try again.');
+                            break;
+                    }
+                }
+            }
+            logoutUser() {
+                this.$.auth.signOut();
+            }
         }
 
         window.customElements.define(NfAccount.is, NfAccount);
