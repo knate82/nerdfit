@@ -25,12 +25,12 @@
             }
             #profile {
                 width: 8em;
-                display: flex;
                 flex-direction: column;
                 justify-content: center;
             }
             #profile-image {
-                align-self: center;
+                display: flex;
+                justify-content: flex-end;
             }
             #profile:hover .profile-links {
                 display: flex;
@@ -75,7 +75,7 @@
             </div>
             <div class="profile-links">
                 <ul>
-                    <li><paper-button on-tap="logoutUser">Profile</paper-button></li>
+                    <li><paper-button on-tap="getProfile">Profile</paper-button></li>
                     <li><paper-button on-tap="logoutUser">Friends</paper-button></li>
                     <li><paper-button on-tap="logoutUser">Logout</paper-button></li>
                 </ul>
@@ -89,13 +89,26 @@
          */
         class NfAccount extends Polymer.Element {
             static get is() { return 'nf-account'; }
-            ready() {
-                super.ready();
-                console.log(this.$.auth.signedIn);
+
+            static get properties() {
+                return {
+                    signedIn: {
+                        type: Boolean,
+                        notify: true
+                    },
+                    test: {
+                        type: String,
+                        value: 'test String',
+                        notify: true
+                    }
+                }
             }
 
             toggleForm() {
                 this.$.form.toggle();
+            }
+            getProfile() {
+                console.log(this.signedIn);
             }
             submitLogin() {
                 var email = this.$.email.value;
@@ -106,7 +119,6 @@
                     this.$.auth.signInWithEmailAndPassword(email, password)
                         .then(function(response) {
                             console.log(response);
-
                         })
                         .catch(function(error){
                             console.log(error);
