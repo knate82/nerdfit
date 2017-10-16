@@ -55,8 +55,7 @@
                 class$="single-column--[[singlecolumnbreakpoint]]"
                 style$="grid-template: repeat([[rows]], [[rowheight]]) / repeat([[columns]], [[columnwidth]]);
                         grid-gap: [[gutterxy]]px; grid-column-gap: [[gutterx]]px; grid-row-gap: [[guttery]]px;
-                        height: [[height]];">
-
+                        height: [[height]]; margin: [[margin]]; padding-top: [[paddingtop]]px; padding-bottom: [[paddingbottom]]px;">
             <slot></slot>
         </section>
 
@@ -115,6 +114,18 @@
                     singlecolumnbreakpoint: {
                         type: String,
                         value: ""
+                    },
+                    margin: {
+                        type: String,
+                        value: "0 auto"
+                    },
+                    paddingtop: {
+                        type: Number,
+                        value: 0
+                    },
+                    paddingbottom: {
+                        type: Number,
+                        value: 0
                     }
                 }
             }
