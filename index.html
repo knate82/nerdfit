@@ -42,12 +42,16 @@
 
         /*z-index*/
         --header-z: 5000;
+        --gradient-bar-z: var(--header-z);
         --header-dropdown-z: 6000;
 
-        --link: {
-          text-decoration: none;
-          color: var(--blue);
-        };
+        /*breakpoints (won't work in media queries)*/
+        --tablet: 750px;
+        --desktop: 1000px;
+        --desktophd: 1200px;
+        --below-tablet: calc(var(--tablet) - 1px);
+        --below-desktop: calc(var(--desktop) - 1px);
+        --below-desktophd: calc(var(--desktophd) - 1px);
 
       }
       body {
