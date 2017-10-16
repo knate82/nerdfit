@@ -38,12 +38,11 @@
             /*}*/
 
         </style>
-        <firebase-auth id="auth" user="{{user}}" provider="google" on-error="handleError"></firebase-auth>
         <section id="nf-navigation">
             <nf-container justifycontent="space-between" align-items="center">
                 <nf-logo></nf-logo>
-                <nf-links></nf-links>
-                <nf-account></nf-account>
+                <nf-links signed-in="{{signedIn}}"></nf-links>
+                <nf-account signed-in="{{signedIn}}"></nf-account>
             </nf-container>
         </section>
     </template>
@@ -55,7 +54,6 @@
          */
         class NfNavbar extends Polymer.Element {
             static get is() { return 'nf-navbar'; }
-
         }
 
         window.customElements.define(NfNavbar.is, NfNavbar);
