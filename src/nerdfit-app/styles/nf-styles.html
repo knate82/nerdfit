@@ -2,40 +2,74 @@
     <template>
         <style>
             /*typography*/
+
+            *{
+                -webkit-font-smoothing: antialiased;
+                font-family: var(--fallback-font);
+                font-family: var(--primary-font);
+                color: var(--gray);
+            }
             p{
                 font-size: var(--base-font-size);
                 line-height: calc(var(--base-font-size) + var(--line-height));
                 margin-bottom: 10px;
             }
-            p.small{
-                font-size: calc(var(--base-font-size) - var(--font-step));
-                line-height: calc(calc(var(--base-font-size) - var(--font-step)) + var(--line-height));
+            p.small, p .small{
+                font-size: calc(var(--base-font-size) * var(--small-font));
+                line-height: calc(calc(var(--base-font-size) + var(--line-height)) * var(--small-font));
             }
             h6{
                 font-size: var(--base-font-size);
                 line-height: calc(var(--base-font-size) + var(--line-height));
             }
+            h6.small, h6 .small{
+                font-size: calc(var(--base-font-size) * var(--small-font));
+                line-height: calc(calc(var(--base-font-size) + var(--line-height)) * var(--small-font));
+            }
             h5{
                 font-size: calc(var(--base-font-size) + calc(var(--font-step) * 2));
                 line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 2)) + --line-height);
+            }
+            h5.small, h5 .small{
+                font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 2)) * var(--small-font));
+                line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 2)) + --line-height) * var(--small-font));
             }
             h4{
                 font-size: calc(var(--base-font-size) + calc(var(--font-step) * 3));
                 line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 3)) + --line-height);
             }
+            h4.small, h4 .small{
+                font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 3)) * var(--small-font));
+                line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 3)) + --line-height) * var(--small-font));
+            }
             h3{
                 font-size: calc(var(--base-font-size) + calc(var(--font-step) * 4));
                 line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 4)) + --line-height);
+            }
+            h3.small, h3 .small{
+                font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 4)) * var(--small-font));
+                line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 4)) + --line-height) * var(--small-font));
             }
             h2{
                 font-size: calc(var(--base-font-size) + calc(var(--font-step) * 5));
                 line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 5)) + --line-height);
             }
-            h1{
-                font-size: calc(var(--base-font-size) + calc(var(--font-step) * 10));
-                line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 10)) + --line-height);
+            h2.small, h2 .small{
+                font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 5)) * var(--small-font));
+                line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 5)) + --line-height) * var(--small-font));
             }
-
+            h1{
+                font-size: calc(var(--base-font-size) + calc(var(--font-step) * 9));
+                line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 9)) + --line-height);
+            }
+            h1.small, h1 .small{
+                font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 9)) * var(--small-font));
+                line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 9)) + --line-height) * var(--small-font));
+            }
+            .font-inverse{
+                color: var(--white);
+            }
+            i, span{ color: inherit; }
             /*h1,h2,h3,h4,h5,h6{ margin-bottom: 40px; }*/
         </style>
     </template>

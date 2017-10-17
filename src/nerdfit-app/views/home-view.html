@@ -9,12 +9,13 @@
             }
             *{margin: 0; padding: 0;}
         </style>
+        <template is="dom-if" if="{{hide}}">
+            <nf-login id="nfLoginForm"></nf-login>
+        </template>
         <nf-hero backgroundimage="src/nerdfit-app/assets/images/nf-logo-bg.jpg" isFiltered="true">
-            <template is="dom-if" if="{{hide}}">
-                <nf-login id="nfLoginForm"></nf-login>
-            </template>
-            <nf-container align-content="center">
-                <h1>Nerding has never been so fun</h1>
+            <nf-container align-content="center" fontcolor="inverse" direction="column">
+                <h1>Nerdfit <span class="small">(<i>adjective</i>)</span></h1>
+                <h1 class="small">In good health, as leveraged by a person's propensity for indulging in pop culture</h1>
             </nf-container>
         </nf-hero>
         <nf-container paddingtop="80" paddingbottom="80" direction="column">

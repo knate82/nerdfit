@@ -6,8 +6,11 @@
             :host {
                 margin: 0 auto;
             }
-            ::slotted(){
-
+            .font-default ::slotted(*) {
+                color: var(--gray);
+            }
+            .font-inverse ::slotted(*) {
+                color: var(--white) !important;
             }
             section{
                 box-sizing: border-box;
@@ -92,7 +95,7 @@
         </style>
 
         <section
-                class$="[[containertype]] [[direction]] justify-content--[[justifycontent]] align-items--[[alignitems]] align-content--[[aligncontent]] hidden-[[hidden]]"
+                class$="[[containertype]] [[direction]] justify-content--[[justifycontent]] align-items--[[alignitems]] align-content--[[aligncontent]] hidden-[[hidden]] font-[[fontcolor]]"
                 style$="height: [[height]]; margin: [[margin]]; padding-top: [[paddingtop]]px; padding-bottom: [[paddingbottom]]px;">
             <slot></slot>
         </section>
@@ -151,6 +154,10 @@
                     },
                     hidden: {
                         type: String
+                    },
+                    fontcolor: {
+                        type: String,
+                        value: "default"
                     }
                 }
             }

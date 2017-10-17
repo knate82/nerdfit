@@ -9,10 +9,9 @@
                 flex-direction: row;
                 width: 100%;
             }
-            ::slotted(*){
-                font-size: 30px;
-                line-height: 60px;
+            section ::slotted(*){
                 z-index: 10;
+                color: var(--white);
             }
             section{
                 box-sizing: border-box;
@@ -26,7 +25,6 @@
                 flex-direction: column;
                 align-items: center;
                 justify-content: center;
-                color: var(--white);
                 position: relative;
             }
             .filtered--false{
@@ -73,6 +71,9 @@
                         value: 5
                     }
                 }
+            }
+            ready(){
+                super.ready();
             }
         }
 

@@ -14,11 +14,11 @@
 
     <link rel="import" href="/src/nerdfit-app/nerdfit-app.html">
     <!-- <link rel="stylesheet" href="assets/compiled/css/style.css"> Getting a lot of issues in the console from this. -->
-    <style>
+    <style include="nf-styles">
 
       @font-face {
         font-family: 'Questrial';
-        src: url('src/nerdfit-app/assets/fonts/Questrial-Regular.ttf') format('truetype');
+        src: url('/src/nerdfit-app/assets/fonts/Questrial-Regular.ttf') format('truetype');
       }
 
       html {
@@ -28,6 +28,7 @@
         --base-font-size: 18px;
         --line-height: 8px;
         --font-step: 4px;
+        --small-font: .6;
 
         /*color*/
         --black: #000000;
@@ -66,13 +67,6 @@
       }
       *{
         box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        font-family: var(--primary-font);
-        color: var(--gray);
-      }
-      p,h1,h2,h3,h4,h5,h6,label{
-        font-family: var(--fallback-font);
-        font-family: var(--primary-font);
       }
 
     </style>
