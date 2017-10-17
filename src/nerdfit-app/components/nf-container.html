@@ -12,6 +12,9 @@
             .font-inverse ::slotted(*) {
                 color: var(--white) !important;
             }
+            section ::slotted(:last-child){
+                margin-bottom: 0 !important;
+            }
             section{
                 box-sizing: border-box;
             }
@@ -96,7 +99,7 @@
 
         <section
                 class$="[[containertype]] [[direction]] justify-content--[[justifycontent]] align-items--[[alignitems]] align-content--[[aligncontent]] hidden-[[hidden]] font-[[fontcolor]]"
-                style$="height: [[height]]; margin: [[margin]]; padding-top: [[paddingtop]]px; padding-bottom: [[paddingbottom]]px;">
+                style$="height: [[height]]; margin-top: [[margintop]]px; margin-bottom: [[marginbottom]]px; padding-top: [[paddingtop]]px; padding-bottom: [[paddingbottom]]px;">
             <slot></slot>
         </section>
 
@@ -136,9 +139,13 @@
                         type: String,
                         value: "100%"
                     },
-                    margin: {
-                        type: String,
-                        value: "0 auto"
+                    margintop: {
+                        type: Number,
+                        value: 0
+                    },
+                    marginbottom: {
+                        type: Number,
+                        value: 0
                     },
                     paddingtop: {
                         type: Number,
@@ -163,7 +170,7 @@
             }
             ready(){
                 super.ready();
-                if(this.backgroundcolor.length > 0) this.style.backgroundColor = this.backgroundcolor;
+                if(this.backgroundcolor.length > 0) this.style.backgroundColor = "var(--" + this.backgroundcolor + ")";
             }
         }
 

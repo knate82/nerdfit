@@ -60,7 +60,7 @@
                 class$="single-column--[[singlecolumnbreakpoint]]"
                 style$="grid-template: repeat([[rows]], [[rowheight]]) / repeat([[columns]], [[columnwidth]]);
                         grid-gap: [[gutterxy]]px; grid-column-gap: [[gutterx]]px; grid-row-gap: [[guttery]]px;
-                        height: [[height]]; margin: [[margin]]; padding-top: [[paddingtop]]px; padding-bottom: [[paddingbottom]]px;">
+                        height: [[height]]; margin-top: [[margintop]]px; margin-bottom: [[marginbottom]]px; padding-top: [[paddingtop]]px; padding-bottom: [[paddingbottom]]px;">
             <slot></slot>
         </section>
 
@@ -120,9 +120,13 @@
                         type: String,
                         value: ""
                     },
-                    margin: {
-                        type: String,
-                        value: "0 auto"
+                    margintop: {
+                        type: Number,
+                        value: 0
+                    },
+                    marginbottom: {
+                        type: Number,
+                        value: 0
                     },
                     paddingtop: {
                         type: Number,

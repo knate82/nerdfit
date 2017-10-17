@@ -10,7 +10,7 @@
                 color: var(--gray);
             }
             .font-inverse ::slotted(*) {
-                color: var(--white);
+                color: var(--white) !important;
             }
             section{
                 box-sizing: border-box;
@@ -19,7 +19,7 @@
             }
 
             section ::slotted(:last-child){
-                margin-bottom: 0;
+                margin-bottom: 0 !important;
             }
 
             @media (min-width: 750px) {
