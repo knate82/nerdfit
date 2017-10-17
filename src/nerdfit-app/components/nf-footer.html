@@ -1,0 +1,47 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-footer">
+    <template>
+        <style include="nf-styles">
+            :host{
+                background: var(--blue);
+            }
+            * {
+                max-height: 100%;
+            }
+
+        </style>
+        <section id="nf-footer">
+            <nf-container justifycontent="space-between" align-items="center" paddingtop="40" paddingbottom="40">
+                <nf-grid columns="2" rows="2" singlecolumnbreakpoint="mobile">
+                    <nf-tile fontcolor="inverse">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </nf-tile>
+                    <nf-tile fontcolor="inverse">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
+                    </nf-tile>
+                    <nf-tile fontcolor="inverse">
+                        <p>Copyright © 2017 Nerdfit</p>
+                    </nf-tile>
+                    <nf-tile fontcolor="inverse">
+                        <a class="inverse" href="/" style="margin-right: 10px;">Privacy</a>
+                        <a class="inverse" href="/" style="margin-right: 10px;">Safety</a>
+                        <a class="inverse" href="/">Terms</a>
+                    </nf-tile>
+                </nf-grid>
+            </nf-container>
+        </section>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfFooter extends Polymer.Element {
+            static get is() { return 'nf-footer'; }
+        }
+
+        window.customElements.define(NfFooter.is, NfFooter);
+    </script>
+</dom-module>

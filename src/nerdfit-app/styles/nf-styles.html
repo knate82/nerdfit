@@ -4,17 +4,18 @@
             /*typography*/
 
             *{
+                margin: 0;
+                padding: 0;
                 -webkit-font-smoothing: antialiased;
                 font-family: var(--fallback-font);
                 font-family: var(--primary-font);
                 color: var(--gray);
             }
-            p{
+            p, a{
                 font-size: var(--base-font-size);
                 line-height: calc(var(--base-font-size) + var(--line-height));
-                margin-bottom: 10px;
             }
-            p.small, p .small{
+            p.small, p .small, a.small, a .small{
                 font-size: calc(var(--base-font-size) * var(--small-font));
                 line-height: calc(calc(var(--base-font-size) + var(--line-height)) * var(--small-font));
             }
@@ -66,7 +67,25 @@
                 font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 9)) * var(--small-font));
                 line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 9)) + --line-height) * var(--small-font));
             }
+            p{ margin-bottom: 10px; }
             h1,h2,h3,h4,h5,h6{ margin-bottom: 20px; }
+            a,a:visited{
+                text-decoration: none;
+                color: var(--blue);
+                transition: var(--default-transition);
+            }
+            a:hover,a:active{
+                text-decoration: none;
+                color: var(--light-blue);
+            }
+            a.inverse,a.inverse:visited{
+                text-decoration: underline;
+                color: var(--white);
+            }
+            a.inverse:hover,a.inverse:active{
+                text-decoration: underline;
+                color: var(--light-blue);
+            }
             .unbold{ font-weight: 100; }
             .font-inverse{ color: var(--white); }
             i, span{ color: inherit; }
