@@ -147,12 +147,16 @@
                     },
                     backgroundcolor: {
                         type: String,
-                        value: "white"
+                        value: ""
                     },
                     hidden: {
                         type: String
                     }
                 }
+            }
+            ready(){
+                super.ready();
+                if(this.backgroundcolor.length > 0) this.style.backgroundColor = this.backgroundcolor;
             }
         }
 

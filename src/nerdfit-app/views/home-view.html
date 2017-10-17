@@ -2,7 +2,7 @@
 
 <dom-module id="home-view">
     <template>
-        <style include="shared-styles">
+        <style include="nf-styles">
             :host {
                 display: flex;
                 flex-direction: column;
@@ -23,16 +23,20 @@
                     <h2>It's time to use your greatest strength against your greatest weakness <span style="font-weight: 100; font-size: .75em;">(it's super effective!)</span></h2>
                 </nf-tile>
             </nf-grid>
-            <nf-grid columns="2" singlecolumnbreakpoint="mobile">
+            <nf-grid columns="2" guttery="40" singlecolumnbreakpoint="mobile">
                 <nf-tile>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
                     </p>
-                </nf-tile>
-                <nf-tile>
                     <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Debitis et laborum magni modi officiis praesentium recusandae rerum sint totam ullam? Cupiditate ducimus recusandae reiciendis. Ea facilis odio placeat recusandae sint.
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
                     </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
+                    </p>
+                </nf-tile>
+                <nf-tile breakpointorder="-1">
+                    <nf-image filename="nf-logo-bg-fpo.png" title="fpo" shape="circle" width="300px" height="300px"></nf-image>
                 </nf-tile>
             </nf-grid>
         </nf-container>

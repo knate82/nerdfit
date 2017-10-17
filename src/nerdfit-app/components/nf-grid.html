@@ -15,10 +15,14 @@
 
 
             @media (min-width: 750px) {
-
+                .single-column--mobile ::slotted(nf-tile) {
+                    order: initial !important;
+                }
             }
             @media (min-width: 1000px) {
-
+                .single-column--tablet ::slotted(nf-tile) {
+                    order: initial !important;
+                }
             }
             @media (min-width: 1200px) {
 
@@ -32,6 +36,7 @@
                     grid-column-start: 1 !important;
                     grid-column-end: 1 !important;
                 }
+
             }
             @media (max-width: 999px) {
                 .single-column--tablet{

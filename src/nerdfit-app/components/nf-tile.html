@@ -6,13 +6,21 @@
             :host {
                 width: 100%;
             }
-
+            .font-default ::slotted(*) {
+                color: var(--gray);
+            }
+            .font-inverse ::slotted(*) {
+                color: var(--white);
+            }
             section{
                 box-sizing: border-box;
                 height: 100%;
                 width: 100%;
             }
 
+            section ::slotted(:last-child){
+                margin-bottom: 0;
+            }
 
             @media (min-width: 750px) {
 
@@ -39,7 +47,7 @@
 
         </style>
 
-        <section>
+        <section class$="font-[[fontcolor]]">
             <slot></slot>
         </section>
 
@@ -68,15 +76,26 @@
                     yspan: {
                         type: Number,
                         value: 1
+                    },
+                    breakpointorder: {
+                        type: String,
+                        value: "initial"
+                    },
+                    fontcolor: {
+                        type: String,
+                        value: "default"
                     }
                 }
             }
 
             ready() {
+                super.ready();
                 if (this.x) this.style.gridColumnStart = this.x;
                 this.style.gridColumnEnd = 'span ' + this.xspan;
                 if (this.y) this.style.gridRowStart = this.y;
                 this.style.gridRowEnd = 'span ' + this.yspan;
+
+                this.style.order = this.breakpointorder;
             }
 
         }
