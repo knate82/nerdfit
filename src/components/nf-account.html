@@ -56,6 +56,12 @@
             }
         </style>
         <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
+        <firebase-query
+                id="query"
+                app-name="nerdfit"
+                path="/users/[[user.uid]]"
+                data="{{user.profile}}">
+        </firebase-query>
         <section id="login" selected="[[page]]" hidden="{{signedIn}}">
             <paper-button on-tap='toggleForm'>Login</paper-button>
 
