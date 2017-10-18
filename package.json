@@ -1,25 +1,21 @@
 {
-  "name": "nerdfit",
-  "version": "1.0.0",
-  "description": "A little fun with Fitbit",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "polystart": "polymer serve & npm run watch",
-    "watch": "browser-sync start --no-notify --proxy localhost:8081 --files 'src/**' 'index.html'"
+  "name": "polymer-starter-kit",
+  "license": "BSD-3-Clause",
+  "devDependencies": {
+    "eslint": "^3.19.0",
+    "eslint-config-google": "^0.7.0",
+    "eslint-plugin-html": "^2.0.0"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/knate82/nerdfit.git"
   },
-  "author": "Nathan Mihu",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/knate82/nerdfit/issues"
-  },
-  "homepage": "https://github.com/knate82/nerdfit#readme",
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-vulcanize": "^6.1.0"
+  "scripts": {
+    "lint": "npm run lint:javascript && polymer lint",
+    "lint:javascript": "eslint . --ext js,html --ignore-path .gitignore",
+    "test": "polymer test",
+    "test:integration": "polymer build # test that psk builds without error with the CLI",
+    "polystart": "polymer serve & npm run watch",
+    "watch": "browser-sync start --no-notify --proxy localhost:8081 --files 'src/**' 'index.html'"
   }
 }

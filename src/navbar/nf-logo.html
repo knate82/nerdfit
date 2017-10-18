@@ -1,0 +1,64 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-logo">
+    <template is="dom-if" if="!user.isLoggedIn">
+        <style>
+            :host{
+                flex-shrink: 1;
+                flex-basis: 145px;
+            }
+            img{
+                height: auto;
+                max-height: 100%;
+                width: auto;
+                max-width: 100%;
+            }
+        </style>
+
+        <div class="wrapper">
+            <a name="home" href="[[rootPath]]home"><img src="src/assets/images/nf-logo.png"></a>
+        </div>
+
+    </template>
+    <template is="dom-if" if="user.isLoggedIn">
+        <style>
+            :host{
+                max-height: 100%;
+            }
+            .wrapper{
+                max-height: 100%;
+            }
+            img{
+                height: auto;
+                max-height: 100%;
+                width: auto;
+                max-width: 100%;
+            }
+        </style>
+
+        <div class="wrapper">
+            <a name="dashboard" href="[[rootPath]]dashboard">
+                <img src="src/assets/nf-logo.png">
+            </a>
+        </div>
+
+    </template>
+
+    <script>
+        var user = {
+            "isLoggedIn": false
+        };
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfLogo extends Polymer.Element {
+            static get is() { return 'nf-logo'; }
+
+        }
+
+        window.customElements.define(NfLogo.is, NfLogo);
+
+    </script>
+
+</dom-module>

@@ -1,0 +1,86 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="home-view">
+    <template>
+        <style include="nf-styles">
+            :host {
+                display: flex;
+                flex-direction: column;
+            }
+            *{margin: 0; padding: 0;}
+        </style>
+        <template is="dom-if" if="{{hide}}">
+            <nf-login id="nfLoginForm"></nf-login>
+        </template>
+        <nf-hero backgroundimage="src/assets/images/nf-logo-bg.jpg" isFiltered="true">
+            <nf-container align-content="center" fontcolor="inverse" direction="column">
+                <h1>Nerdfit <span class="small"><i>(adjective)</i></span></h1>
+                <h1 class="small">In good health, as leveraged by a person's propensity for indulging in pop culture</h1>
+            </nf-container>
+        </nf-hero>
+        <nf-container paddingtop="80" paddingbottom="80" direction="column">
+            <nf-grid columns="12" singlecolumnbreakpoint="tablet" marginbottom="40">
+                <nf-tile x="3" xspan="8">
+                    <h2>It's time to use your greatest strength against your greatest weakness <span class="small unbold">(it's super effective!)</span></h2>
+                </nf-tile>
+            </nf-grid>
+            <nf-grid columns="2" singlecolumnbreakpoint="mobile" guttery="40">
+                <nf-tile>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
+                    </p>
+                </nf-tile>
+                <nf-tile breakpointorder="-1">
+                    <nf-image filename="nf-logo-bg-fpo.png" title="fpo" shape="circle" width="300px" height="300px" y="left"></nf-image>
+                </nf-tile>
+            </nf-grid>
+        </nf-container>
+        <nf-container paddingtop="80" paddingbottom="80" backgroundcolor="gradient">
+            <nf-grid columns="12" singlecolumnbreakpoint="tablet">
+                <nf-tile x="3" xspan="8" fontcolor="inverse">
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+                </nf-tile>
+                <nf-tile x="3" xspan="8" fontcolor="inverse">
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
+                    </p>
+                </nf-tile>
+            </nf-grid>
+        </nf-container>
+        <nf-container paddingtop="80" paddingbottom="80">
+            <nf-grid columns="2" guttery="40" singlecolumnbreakpoint="tablet">
+                <nf-tile>
+                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+                </nf-tile>
+                <nf-tile>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
+                    </p>
+                </nf-tile>
+            </nf-grid>
+        </nf-container>
+    </template>
+
+    <script>
+        class HomeView extends Polymer.Element {
+            static get is() { return 'home-view'; }
+            static get properties() {
+                return {
+                    hide: {
+                        type: Boolean,
+                        value: false,
+                        notify: true
+                    }
+                }
+            }
+        }
+
+        window.customElements.define(HomeView.is, HomeView);
+    </script>
+</dom-module>

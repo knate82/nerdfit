@@ -1,0 +1,54 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-links">
+    <template >
+        <style>
+            :host {
+                flex-grow: 1;
+                align-self: center;
+            }
+            .nav-links {
+                margin: 0 20px;
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+            }
+            a{
+                padding: 0 20px;
+                text-decoration: none;
+                color: var(--blue);
+                font-size: 20px;
+                line-height: 28px;
+                transition: all .15s ease-in-out;
+            }
+            a:hover{
+                color: var(--light-blue);
+            }
+        </style>
+
+        <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
+            <a name="home-view" href="[[rootPath]]home">Store</a>
+            <a name="home-view" href="[[rootPath]]home">About</a>
+            <a name="home-view" href="[[rootPath]]home">Contact</a>
+            <a name="dashboard-view" href="[[rootPath]]dashboard" hidden="{{!signedIn}}">Dashboard</a>
+        </iron-selector>
+
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfLinks extends Polymer.Element {
+            static get is() { return 'nf-links'; }
+            yourMom() {
+                console.log(this.signedIn);
+            }
+        }
+
+        window.customElements.define(NfLinks.is, NfLinks);
+
+    </script>
+
+</dom-module>

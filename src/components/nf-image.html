@@ -1,0 +1,121 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-image">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+            }
+
+            section{
+                box-sizing: border-box;
+                height: 100%;
+                width: 100%;
+                overflow: hidden;
+            }
+
+            .center{ margin-left: auto; margin-right: auto; }
+            .left{ margin-left: 0; margin-right: auto; }
+            .right{ margin-left: auto; margin-right: 0; }
+
+            img{
+
+            }
+
+            .circle{
+                border-radius: 50%;
+            }
+
+            @media (min-width: 750px) {
+
+            }
+            @media (min-width: 1000px) {
+
+            }
+            @media (min-width: 1200px) {
+
+            }
+
+            @media (max-width: 749px) {
+
+            }
+            @media (min-width: 750px) and (max-width: 999px) {
+
+            }
+            @media (min-width: 1000px) and (max-width: 1199px) {
+
+            }
+            @media (min-width: 1200px) {
+
+            }
+
+        </style>
+
+        <section class$="[[shape]] [[justify]]" style$="width: [[width]]; max-width: [[maxwidth]]; height: [[height]]; max-height: [[maxheight]];">
+            <img src="src/assets/images/[[filename]]" alt="[[title]]" title="[[title]]"
+                 style$="object-fit: [[objectfit]]; object-position: [[x]] [[y]]; width: [[width]]; max-width: 100%; height: [[height]]; max-height: 100%;">
+        </section>
+
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfImage extends Polymer.Element {
+            static get is() { return 'nf-image'; }
+
+            static get properties() {
+                return {
+                    filename: {
+                        type: String,
+                        value: "nf-logo.png"
+                    },
+                    title: {
+                        type: String
+                    },
+                    objectfit: {
+                        type: String,
+                        value: "cover"
+                    },
+                    shape: {
+                        type: String,
+                        value: "square"
+                    },
+                    y: {
+                        type: String,
+                        value: "center"
+                    },
+                    x: {
+                        type: String,
+                        value: "center"
+                    },
+                    width: {
+                        type: String,
+                        value: "100%"
+                    },
+                    maxwidth: {
+                        type: String,
+                        value: "100%"
+                    },
+                    height: {
+                        type: String,
+                        value: "100%"
+                    },
+                    maxheight: {
+                        type: String,
+                        value: "100%"
+                    },
+                    justify: {
+                        type: String,
+                        value: "center"
+                    }
+                }
+            }
+
+        }
+
+        window.customElements.define(NfImage.is, NfImage);
+    </script>
+</dom-module>

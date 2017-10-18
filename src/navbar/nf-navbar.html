@@ -1,0 +1,58 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-navbar">
+    <template>
+        <style>
+            :host{
+                position: fixed;
+                top: 0;
+                left: 0;
+                right: 0;
+                z-index: var(--header-z);
+                height: var(--header-height);
+                background-color: var(--white);
+            }
+            * {
+                max-height: 100%;
+            }
+            section {
+                box-sizing: border-box;
+                display: flex;
+                flex-direction: row;
+                width: 100%;
+                padding: 10px 0;
+                opacity: .95;
+            }
+
+            .accent-bar{
+                content: "";
+                height: var(--accent-bar-height);
+                width: 100%;
+                background-color: var(--blue);
+                background: linear-gradient(-90deg, var(--light-blue), var(--blue));
+                z-index: var(--gradient-bar-z);
+            }
+
+        </style>
+        <section id="nf-navigation">
+            <nf-container justifycontent="space-between" align-items="center" selected="[[page]]">
+                <nf-logo></nf-logo>
+                <nf-links selected="[[page]]" signed-in="{{signedIn}}"></nf-links>
+                <nf-account signed-in="{{signedIn}}"></nf-account>
+            </nf-container>
+        </section>
+        <div class="accent-bar"></div>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfNavbar extends Polymer.Element {
+            static get is() { return 'nf-navbar'; }
+        }
+
+        window.customElements.define(NfNavbar.is, NfNavbar);
+    </script>
+</dom-module>

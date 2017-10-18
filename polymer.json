@@ -1,25 +1,34 @@
 {
   "entrypoint": "index.html",
-  "shell": "src/nerdfit-app/nerdfit-app.html",
+  "shell": "src/nf-app.html",
   "fragments": [
-    "src/views/*.html"
+    "src/my-view1.html",
+    "src/home-view.html",
+    "src/dashboard-view.html",
+    "src/my-view2.html",
+    "src/my-view3.html",
+    "src/my-view404.html"
   ],
   "sources": [
     "src/**/*",
-    "bower.json"
+    "images/**/*"
   ],
   "extraDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/webcomponents-lite.js"
+    "bower_components/webcomponentsjs/*.js"
   ],
   "lint": {
-    "rules": [
-      "polymer-2"
-    ]
+    "rules": ["polymer-2"]
   },
   "builds": [
-    { "preset": "es5-bundled" },
-    { "preset": "es6-bundled" },
-    { "preset": "es6-unbundled" }
+    {
+      "preset": "es5-bundled"
+    },
+    {
+      "preset": "es6-bundled"
+    },
+    {
+      "preset": "es6-unbundled"
+    }
   ]
 }
