@@ -32,6 +32,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymerfire/firebase-document.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-query.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-messaging.html">
+<!-- Global Styles -->
+<link rel="import" href="styles/nf-styles.html">
 <!-- import Components -->
 <link rel="import" href="components/nf-container.html">
 <link rel="import" href="components/nf-grid.html">
@@ -53,7 +55,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <dom-module id="nf-app">
   <template>
-    <style>
+    <style include="nf-styles">
       :host {
         --app-primary-color: #4285f4;
         --app-secondary-color: black;
@@ -125,6 +127,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           <dashboard-view name="dashboard"></dashboard-view>
           <my-view404 name="my-view404"></my-view404>
         </iron-pages>
+
+    <nf-footer></nf-footer>
+
     </app-drawer-layout>
   </template>
 
