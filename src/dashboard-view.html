@@ -9,7 +9,29 @@
             }
         </style>
 
-        <h1>The Dashboard</h1>
+        <nf-container paddingtop="80" paddingbottom="80" direction="column">
+            <nf-grid columns="12" singlecolumnbreakpoint="tablet" marginbottom="40">
+                <nf-tile x="3" xspan="8">
+                    <h2>Welcome {{userProfile.firstName}}</h2>
+                </nf-tile>
+            </nf-grid>
+            <nf-grid columns="2" singlecolumnbreakpoint="mobile" guttery="40">
+                <nf-tile>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
+                    </p>
+                    <p>
+                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
+                    </p>
+                </nf-tile>
+                <nf-tile breakpointorder="-1">
+                    <nf-image filename="nf-logo-bg-fpo.png" title="fpo" shape="circle" width="300px" height="300px" y="left"></nf-image>
+                </nf-tile>
+            </nf-grid>
+        </nf-container>
 
     </template>
 

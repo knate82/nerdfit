@@ -56,7 +56,7 @@
             }
         </style>
         <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
-        <section id="login" hidden="{{signedIn}}">
+        <section id="login" selected="[[page]]" hidden="{{signedIn}}">
             <paper-button on-tap='toggleForm'>Login</paper-button>
 
             <paper-dialog id="form" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
@@ -69,7 +69,7 @@
                 </iron-form>
             </paper-dialog>
         </section>
-        <section id="profile" hidden="{{!signedIn}}">
+        <section id="profile" selected="[[page]]" hidden="{{!signedIn}}">
             <div id="profile-image">
                 <iron-image style="width:50px; height:50px;" sizing="contain" src="src/assets/images/nf-no-profile.jpg"></iron-image>
             </div>
@@ -95,11 +95,6 @@
                     signedIn: {
                         type: Boolean,
                         notify: true
-                    },
-                    test: {
-                        type: String,
-                        value: 'test String',
-                        notify: true
                     }
                 }
             }
@@ -110,15 +105,29 @@
             getProfile() {
                 console.log(this.signedIn);
             }
+            changePage(status) {
+                switch (status) {
+                    case 'login':
+                        this.page = 'dashboard';
+                        break;
+                    case 'logout':
+                        this.page = 'home';
+                        break;
+                    default:
+                        this.page = this.$.page;
+                        break;
+                }
+            }
             submitLogin() {
                 var email = this.$.email.value;
                 var password = this.$.password.value;
-
+                var cb = this.changePage;
                 if(email && password) {
                     console.log('email: ' + email + ' password: ' + password);
                     this.$.auth.signInWithEmailAndPassword(email, password)
-                        .then(function(response) {
-                            console.log(response);
+                        .then(function(response, cbfunct = cb) {
+                            var status = 'login';
+                            cbfunct(status).apply(this);
                         })
                         .catch(function(error){
                             console.log(error);
@@ -142,6 +151,7 @@
             }
             logoutUser() {
                 this.$.auth.signOut();
+                this.page = 'home';
             }
         }
 
