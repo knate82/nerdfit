@@ -99,9 +99,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       html {
+
         /*font*/
         --primary-font: 'Questrial';
         --fallback-font: 'Helvetica Neue';
+        --base-font-size: 18px;
+        --line-height: 8px;
+        --font-step: 4px;
+        --small-font: .6;
 
         /*color*/
         --black: #000000;
@@ -111,6 +116,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --pink: #FF007F;
         --green: #A7EC21;
         --gray: #333333;
+        --lightgray: #888888;
+        --gradient: linear-gradient(-90deg, var(--light-blue), var(--blue));
+        --gradient-reverse: linear-gradient(-90deg, var(--blue), var(--light-blue));
 
         /*height*/
         --nav-height: 60px;
@@ -129,6 +137,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --below-tablet: calc(var(--tablet) - 1px);
         --below-desktop: calc(var(--desktop) - 1px);
         --below-desktophd: calc(var(--desktophd) - 1px);
+
+        /*misc*/
+        --default-transition: all .15s ease-in-out;
 
       }
       body {
