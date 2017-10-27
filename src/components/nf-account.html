@@ -56,14 +56,14 @@
             }
         </style>
         <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
-        <firebase-query
+        <firebase-document
                 id="query"
                 app-name="nerdfit"
                 path="/users/[[user.uid]]"
-                data="{{user.profile}}">
-        </firebase-query>
+                data="{{userData}}">
+        </firebase-document>
         <section id="login" selected="[[page]]" hidden="{{signedIn}}">
-            <paper-button on-tap='toggleForm'>Login</paper-button>
+            <paper-button on-tap='toggleLoginForm'>Login</paper-button>
 
             <paper-dialog id="form" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
                 <iron-form id="loginForm" on-iron-form-presubmit="formPreSubmit">
@@ -81,11 +81,21 @@
             </div>
             <div class="profile-links">
                 <ul>
-                    <li><paper-button on-tap="getProfile">Profile</paper-button></li>
+                    <li><paper-button on-tap="toggleProfileForm">Edit Profile</paper-button></li>
                     <li><paper-button on-tap="logoutUser">Friends</paper-button></li>
                     <li><paper-button on-tap="logoutUser">Logout</paper-button></li>
                 </ul>
             </div>
+            <paper-dialog id="profileEdit" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+                <iron-form id="editProfileForm" on-iron-form-presubmit="formPreSubmit">
+                    <form>
+                        <paper-input id="user.firstName" error-message="First name is required" label="First Name" type="text" min-length="2" required></paper-input>
+                        <paper-input id="user.lastName" error-message="Last name is required" label="Last Name" type="text" min-length="2" required></paper-input>
+                        <paper-input id="userName" label="User Name" min-length="5"></paper-input>
+                        <paper-button on-tap="submitProfileEdit" raised >Submit</paper-button>
+                    </form>
+                </iron-form>
+            </paper-dialog>
         </section>
     </template>
     <script>
@@ -95,21 +105,24 @@
          */
         class NfAccount extends Polymer.Element {
             static get is() { return 'nf-account'; }
-
             static get properties() {
                 return {
                     signedIn: {
                         type: Boolean,
                         notify: true
+                    },
+                    userData: {
+                        type: Object,
+                        observer: "_userDataChanged",
+                        notify: true
                     }
                 }
             }
-
-            toggleForm() {
+            toggleLoginForm() {
                 this.$.form.toggle();
             }
-            getProfile() {
-                console.log(this.signedIn);
+            toggleProfileForm() {
+                this.$.profileEdit.toggle();
             }
             changePage(status) {
                 switch (status) {
@@ -158,6 +171,10 @@
             logoutUser() {
                 this.$.auth.signOut();
                 this.page = 'home';
+            }
+            _userDataChanged(newValue, oldValue) {
+                console.log(newValue);
+                console.log(this.userData.profile.userName);
             }
         }
 

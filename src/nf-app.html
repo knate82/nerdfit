@@ -114,7 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         tail="{{subroute}}">
     </app-route>
 
-    <nf-navbar selected="[[page]]" role="navigation"></nf-navbar>
+    <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar>
 
       <!-- Main content -->
 
@@ -124,7 +124,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="home"
             role="main">
           <home-view name="home"></home-view>
-          <dashboard-view name="dashboard"></dashboard-view>
+          <dashboard-view user-data="{{userData}}" name="dashboard"></dashboard-view>
           <my-view404 name="my-view404"></my-view404>
         </iron-pages>
 
