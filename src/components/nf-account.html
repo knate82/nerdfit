@@ -54,6 +54,9 @@
                 background-color: var(--gray);
                 color: var(--white);
             }
+            .buttons {
+                display: flex;
+            }
         </style>
         <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
         <firebase-document
@@ -68,9 +71,27 @@
             <paper-dialog id="form" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
                 <iron-form id="loginForm" on-iron-form-presubmit="formPreSubmit">
                     <form>
-                        <paper-input id="email" error-message="Invalid Email Address" label="Email" type="email" min-length="5"></paper-input>
-                        <paper-input id="password" label="Password" type="password"></paper-input>
-                        <paper-button on-tap="submitLogin" raised >Submit</paper-button>
+                        <paper-input id="loginEmail" error-message="Invalid Email Address" label="Email" type="email" min-length="5"></paper-input>
+                        <paper-input id="loginPassword" label="Password" type="password"></paper-input>
+                        <div class="buttons">
+                            <paper-button on-tap="submitLogin" raised >Login</paper-button>
+                            <paper-button on-tap="newUser">Sign Up</paper-button>
+                        </div>
+                    </form>
+                </iron-form>
+            </paper-dialog>
+            <paper-dialog id="signupForm" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+                <iron-form id="signupForm" on-iron-form-presubmit="formPreSubmit">
+                    <form>
+                        <paper-input id="firstName" label="First Name" type="text" required></paper-input>
+                        <paper-input id="lastName" label="Last Name" type="text" required></paper-input>
+                        <paper-input id="userName" label="User Name" type="text" required></paper-input>
+                        <paper-input id="email" label="Email" type="email" min-length="5" required></paper-input>
+                        <paper-input id="password" label="Password" type="password" min-length="8" required></paper-input>
+                        <div class="buttons">
+                            <paper-button on-tap="submitSignup" raised>Submit</paper-button>
+                            <paper-button on-tap="cancelSignup">Cancel</paper-button>
+                        </div>
                     </form>
                 </iron-form>
             </paper-dialog>
@@ -115,6 +136,10 @@
                         type: Object,
                         observer: "_userDataChanged",
                         notify: true
+                    },
+                    signUp: {
+                        type: Boolean,
+                        notify: true
                     }
                 }
             }
@@ -138,8 +163,8 @@
                 }
             }
             submitLogin() {
-                var email = this.$.email.value;
-                var password = this.$.password.value;
+                var email = this.$.loginEmail.value;
+                var password = this.$.loginPassword.value;
                 var cb = this.changePage;
                 if(email && password) {
                     console.log('email: ' + email + ' password: ' + password);
@@ -167,6 +192,16 @@
                             break;
                     }
                 }
+            }
+            submitSignup() {
+
+            }
+            newUser() {
+                this.$.form.toggle();
+                this.$.signupForm.toggle();
+            }
+            cancelSignup() {
+                this.$.signupForm.toggle();
             }
             logoutUser() {
                 this.$.auth.signOut();
