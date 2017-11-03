@@ -80,7 +80,7 @@
                     </form>
                 </iron-form>
             </paper-dialog>
-            <paper-dialog id="signupForm" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+            <paper-dialog id="signupForm" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
                 <iron-form id="signupForm" on-iron-form-presubmit="formPreSubmit">
                     <form>
                         <paper-input id="firstName" label="First Name" type="text" required></paper-input>
@@ -134,11 +134,14 @@
                     },
                     userData: {
                         type: Object,
-                        observer: "_userDataChanged",
                         notify: true
                     },
                     signUp: {
                         type: Boolean,
+                        notify: true
+                    },
+                    page: {
+                        type: String,
                         notify: true
                     }
                 }
@@ -149,53 +152,24 @@
             toggleProfileForm() {
                 this.$.profileEdit.toggle();
             }
-            changePage(status) {
-                switch (status) {
-                    case 'login':
-                        this.page = 'dashboard';
-                        break;
-                    case 'logout':
-                        this.page = 'home';
-                        break;
-                    default:
-                        this.page = this.$.page;
-                        break;
-                }
-            }
             submitLogin() {
                 var email = this.$.loginEmail.value;
                 var password = this.$.loginPassword.value;
-                var cb = this.changePage;
+                var page = this.page;
                 if(email && password) {
-                    console.log('email: ' + email + ' password: ' + password);
                     this.$.auth.signInWithEmailAndPassword(email, password)
-                        .then(function(response, cbfunct = cb) {
-                            var status = 'login';
-                            cbfunct(status).apply(this);
+                        .then((response) => {
+                            this.page = 'dashboard';
+                            this.$.form.close();
                         })
                         .catch(function(error){
                             console.log(error);
                         });
-                } else {
-                    switch(email, password) {
-                        case !email:
-                            alert('Must add email to proceed.');
-                            break;
-                        case !password:
-                            alert('Must add password to proceed.');
-                            break;
-                        case !email && !password:
-                            alert('Valid email and password are required to proceed.');
-                            break;
-                        default:
-                            alert('There was an issue with your submission. Please try again.');
-                            break;
-                    }
                 }
             }
-            submitSignup() {
-
-            }
+//            submitSignup() {
+//
+//            }
             newUser() {
                 this.$.form.toggle();
                 this.$.signupForm.toggle();
@@ -206,10 +180,6 @@
             logoutUser() {
                 this.$.auth.signOut();
                 this.page = 'home';
-            }
-            _userDataChanged(newValue, oldValue) {
-                console.log(newValue);
-                console.log(this.userData.profile.userName);
             }
         }
 

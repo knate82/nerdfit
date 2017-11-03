@@ -37,8 +37,8 @@
         <section id="nf-navigation">
             <nf-container justifycontent="space-between" align-items="center" selected="[[page]]">
                 <nf-logo></nf-logo>
-                <nf-links selected="[[page]]" signed-in="{{signedIn}}"></nf-links>
-                <nf-account user-data="{{userData}}" selected="[[page]]" signed-in="{{signedIn}}"></nf-account>
+                <nf-links page="[[page]]" signed-in="{{signedIn}}"></nf-links>
+                <nf-account user-data="{{userData}}" page="{{page}}" signed-in="{{signedIn}}"></nf-account>
             </nf-container>
         </section>
         <div class="accent-bar"></div>
@@ -55,13 +55,13 @@
                 return {
                     userData: {
                         type: Object,
-                        observer: "_userDataChanged",
+                        notify: true
+                    },
+                    page: {
+                        type: String,
                         notify: true
                     }
                 }
-            }
-            _userDataChanged(newValue, oldValue) {
-                console.log("nav: ", newValue);
             }
         }
 
