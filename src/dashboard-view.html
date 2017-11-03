@@ -10,20 +10,7 @@
         </style>
 
         <nf-container paddingtop="80" paddingbottom="80" direction="column">
-            <nf-grid columns="2" singlecolumnbreakpoint="mobile" guttery="40">
-                <nf-tile breakpointorder="-1">
-                    <h2>{{userData.profile.userName}} Dashboard</h2>
-                    <nf-image filename="nf-logo-bg-fpo.png" title="fpo" shape="circle" width="300px" height="300px" y="left"></nf-image>
-                </nf-tile>
-                <nf-tile>
-                    <h2>Stats</h2>
-                    <nf-image filename="nf-logo-bg-fpo.png" title="fpo" shape="circle" width="300px" height="300px" y="left"></nf-image>
-                </nf-tile>
-                <nf-tile>
-                    <h2>Your Mom</h2>
-                    <nf-image filename="nf-logo-bg-fpo.png" title="fpo" shape="circle" width="300px" height="300px" y="left"></nf-image>
-                </nf-tile>
-            </nf-grid>
+            <ticket-to-run userData="{{userData}}"></ticket-to-run>
         </nf-container>
 
     </template>
