@@ -7,15 +7,27 @@
                 display: flex;
                 flex-direction: column;
             }
-            *{margin: 0; padding: 0;}
+            *{ margin: 0; padding: 0; }
+
+            .icon-pointer{
+                font-size: 25px;
+                line-height: 25px;
+            }
+            .icon.green{ color: #65ff3a; }
+            .icon.red{ color: #ff2114; }
+            .icon.purple{ color: #b20592; }
+            .icon.orange{ color: #ff6e21; }
+            .icon.yellow{ color: #fcff56; }
+            .icon.blue{ color: #1c80cc; }
+            .icon.gray{ color: #a0a9b2; }
         </style>
         <nf-hero backgroundimage="src/assets/images/nf-logo-bg.jpg" isFiltered="true">
-            <nf-container align-content="center" fontcolor="inverse" direction="column">
+            <nf-container alignitems="flex-start" fontcolor="inverse" direction="column" contained>
                 <h1>Nerdfit <span class="small"><i>(adjective)</i></span></h1>
                 <h1 class="small">In good health, as leveraged by a person's propensity for indulging in pop culture</h1>
             </nf-container>
         </nf-hero>
-        <nf-container paddingtop="80" paddingbottom="80" direction="column">
+        <nf-container paddingtop="80" paddingbottom="80" direction="column" contained>
             <nf-grid columns="12" singlecolumnbreakpoint="tablet" marginbottom="40">
                 <nf-tile x="3" xspan="8">
                     <h2>It's time to use your greatest strength against your greatest weakness <span class="small unbold">(it's super effective!)</span></h2>
@@ -23,6 +35,13 @@
             </nf-grid>
             <nf-grid columns="2" singlecolumnbreakpoint="mobile" guttery="40">
                 <nf-tile>
+                    <i class="icon icon-pointer green"></i>
+                    <i class="icon icon-pointer red"></i>
+                    <i class="icon icon-pointer purple"></i>
+                    <i class="icon icon-pointer orange"></i>
+                    <i class="icon icon-pointer yellow"></i>
+                    <i class="icon icon-pointer blue"></i>
+                    <i class="icon icon-pointer gray"></i>
                     <p>
                         Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
                     </p>
@@ -39,18 +58,20 @@
             </nf-grid>
         </nf-container>
         <nf-container paddingtop="80" paddingbottom="80" backgroundcolor="gradient">
-            <nf-grid columns="12" singlecolumnbreakpoint="tablet">
-                <nf-tile x="3" xspan="8" fontcolor="inverse">
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-                </nf-tile>
-                <nf-tile x="3" xspan="8" fontcolor="inverse">
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
-                    </p>
-                </nf-tile>
-            </nf-grid>
+            <nf-container contained>
+                <nf-grid columns="12" singlecolumnbreakpoint="tablet">
+                    <nf-tile x="3" xspan="8" fontcolor="inverse">
+                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
+                    </nf-tile>
+                    <nf-tile x="3" xspan="8" fontcolor="inverse">
+                        <p>
+                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
+                        </p>
+                    </nf-tile>
+                </nf-grid>
+            </nf-container>
         </nf-container>
-        <nf-container paddingtop="80" paddingbottom="80">
+        <nf-container paddingtop="80" paddingbottom="80" contained>
             <nf-grid columns="2" guttery="40" singlecolumnbreakpoint="tablet">
                 <nf-tile>
                     <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>

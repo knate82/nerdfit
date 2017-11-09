@@ -3,103 +3,161 @@
 <dom-module id="nf-container">
     <template>
         <style>
-            :host {
+
+            :host{ margin: 0 auto !important; }
+
+            :host([fontcolor="inverse"]) ::slotted(*) { color: var(--white) !important; }
+
+            :host(:not([direction="column"])) ::slotted(*) { min-height: inherit; }
+
+            /*:host, :host ::slotted(*){ width: 100%; flex-basis: 100%; }*/
+
+            :host, :host *, :host ::slotted(*) { box-sizing: border-box; -webkit-font-smoothing: antialiased; }
+
+            :host ::slotted(:last-child) { margin-bottom: 0 !important; }
+
+            :host ::slotted(.flex-grow), :host(.flex-grow){ flex-grow: 1; }
+            :host([flexgrow="this"]) section  { flex-grow: 1; }
+            :host([flexgrow="all"]) ::slotted(*)  { flex-grow: 1; }
+            :host([flexgrow="1"]) ::slotted:nth-child(1)  { flex-grow: 1; }
+            :host([flexgrow="2"]) ::slotted:nth-child(2)  { flex-grow: 1; }
+            :host([flexgrow="3"]) ::slotted:nth-child(3)  { flex-grow: 1; }
+            :host([flexgrow="4"]) ::slotted:nth-child(4)  { flex-grow: 1; }
+            :host([flexgrow="5"]) ::slotted:nth-child(5)  { flex-grow: 1; }
+            :host([flexgrow="6"]) ::slotted:nth-child(6)  { flex-grow: 1; }
+
+            :host([direction="row"][gutter="10"]) ::slotted(*) { margin-right: 5px; margin-left: 5px; }
+            :host([direction="row"][gutter="20"]) ::slotted(*) { margin-right: 10px; margin-left: 10px; }
+            :host([direction="row"][gutter="30"]) ::slotted(*) { margin-right: 15px; margin-left: 15px; }
+            :host([direction="row"][gutter="40"]) ::slotted(*) { margin-right: 20px; margin-left: 20px; }
+            :host([direction="row"][gutter]) ::slotted(:first-child) { margin-left: 0; }
+            :host([direction="row"][gutter]) ::slotted(:last-child) { margin-right: 0; }
+
+            :host(:not([direction="row"])[gutter="10"]) ::slotted(*) { margin-bottom: 10px; }
+            :host(:not([direction="row"])[gutter="20"]) ::slotted(*) { margin-bottom: 20px; }
+            :host(:not([direction="row"])[gutter="30"]) ::slotted(*) { margin-bottom: 30px; }
+            :host(:not([direction="row"])[gutter="40"]) ::slotted(*) { margin-bottom: 40px; }
+            :host(:not([direction="row"])[gutter]) ::slotted(:last-child) { margin-bottom: 0; }
+
+            :host([contained]) section{
                 margin: 0 auto;
+                padding-left: 20px !important;
+                padding-right: 20px !important;
             }
-            .font-default ::slotted(*) {
-                color: var(--gray);
-            }
-            .font-inverse ::slotted(*) {
-                color: var(--white) !important;
-            }
-            section ::slotted(:last-child){
-                margin-bottom: 0 !important;
-            }
-            section{
-                box-sizing: border-box;
-            }
-            .container{
-                margin: 0 auto;
-                padding: 0 20px;
-                display: flex;
-            }
-            .container-fluid{
+            :host(:not([contained])){
                 width: 100%;
                 margin: 0 auto;
             }
-            .row{ flex-direction: row; }
-            .column{ flex-direction: column; }
-            .mobile-column-tabletup-row{ flex-direction: column; }
+            :host([full]) { width: 100vw !important; }
 
-            .justify-content--center{ justify-content: center; }
-            .justify-content--flex-end{ justify-content: flex-end; }
-            .justify-content--flex-start{ justify-content: flex-start; }
-            .justify-content--space-between{ justify-content: space-between; }
-            .justify-content--space-around{ justify-content: space-around; }
+            :host(:not([inlineflex])) section { display: flex; }
+            :host([inlineflex]) section{ display: inline-flex; }
 
-            .align-items--center{ align-items: center; }
-            .align-items--flex-end{ align-items: flex-end; }
-            .align-items--flex-start{ align-items: flex-start; }
+            :host(:not([flexwrap])) section{ flex-wrap: nowrap; }
+            :host([flexwrap]) section{ flex-wrap: wrap; }
 
-            .align-content--center{ align-content: center; }
-            .align-content--flex-end{ align-content: flex-end; }
-            .align-content--flex-start{ align-content: flex-start; }
+            :host section, :host([direction="row"]) section{ flex-direction: row; }
+
+            :host([direction="column"]) section,
+            :host([direction="mobile-column-tabletup-row"]) section,
+            :host([direction="tabletdown-column-desktopup-row"]) section{ flex-direction: column; }
+
+            :host([direction="mobile-column-tabletup-row"][reversebreakpoint]) section,
+            :host([direction="tabletdown-column-desktopup-row"][reversebreakpoint]) section{ flex-direction: column-reverse; }
+
+            :host section, :host([justifycontent="center"]) section { justify-content: center; }
+            :host([justifycontent="flex-start"]) section { justify-content: flex-start; }
+            :host([justifycontent="flex-end"]) section { justify-content: flex-end; }
+            :host([justifycontent="space-between"]) section { justify-content: space-between; }
+            :host([justifycontent="space-around"]) section { justify-content: space-around; }
+
+            :host section, :host([alignitems="center"]) section { align-items: center; }
+            :host([alignitems="flex-start"]) section { align-items: flex-start; }
+            :host([alignitems="flex-end"]) section { align-items: flex-end; }
+
+            :host section, :host([alignitems="center"]) section { align-content: center; }
+            :host([aligncontent="flex-start"]) section { align-content: flex-start; }
+            :host([aligncontent="flex-end"]) section { align-content: flex-end; }
+
+            :host, :host([alignself="flex-start"]) { align-self: flex-start; }
+            :host([aligncontent="flex-end"]) { align-self: flex-end; }
+            :host([aligncontent="flex-start"]) { align-self: center; }
 
             @media (min-width: 750px) {
-                .container{
-                    width: 750px;
+                :host([contained]){
+                    width: 750px !important;
                     max-width: 100%;
                 }
-                .mobile-column-tabletup-row{ flex-direction: row; }
+                :host([direction="mobile-column-tabletup-row"]) section { flex-direction: row; }
+
+                :host([direction="mobile-column-tabletup-row"][gutter="10"]) ::slotted(*) { margin-right: 5px; margin-left: 5px; }
+                :host([direction="mobile-column-tabletup-row"][gutter="20"]) ::slotted(*) { margin-right: 10px; margin-left: 10px; }
+                :host([direction="mobile-column-tabletup-row"][gutter="30"]) ::slotted(*) { margin-right: 15px; margin-left: 15px; }
+                :host([direction="mobile-column-tabletup-row"][gutter="40"]) ::slotted(*) { margin-right: 20px; margin-left: 20px; }
+                :host([direction="mobile-column-tabletup-row"][gutter]) ::slotted(:first-child) { margin-left: 0; }
+                :host([direction="mobile-column-tabletup-row"][gutter]) ::slotted(:last-child) { margin-right: 0; }
+                :host([direction="mobile-column-tabletup-row"][gutter]) ::slotted(*) { margin-bottom: 0; }
+
+                :host([tabletdirection="row"]) section { flex-direction: row; }
+                :host([tabletdirection="column"]) section { flex-direction: column; }
             }
             @media (min-width: 1000px) {
-                .container{
-                    width: 1000px;
+                :host([contained]){
+                    width: 1000px !important;
                     max-width: 100%;
                 }
+                :host([direction="tabletdown-column-desktopup-row"]) section{ flex-direction: row; }
+
+                :host([direction="tabletdown-column-desktopup-row"][gutter="10"]) ::slotted(*) { margin-right: 5px; margin-left: 5px; }
+                :host([direction="tabletdown-column-desktopup-row"][gutter="20"]) ::slotted(*) { margin-right: 10px; margin-left: 10px; }
+                :host([direction="tabletdown-column-desktopup-row"][gutter="30"]) ::slotted(*) { margin-right: 15px; margin-left: 15px; }
+                :host([direction="tabletdown-column-desktopup-row"][gutter="40"]) ::slotted(*) { margin-right: 20px; margin-left: 20px; }
+                :host([direction="tabletdown-column-desktopup-row"][gutter]) ::slotted(:first-child) { margin-left: 0; }
+                :host([direction="tabletdown-column-desktopup-row"][gutter]) ::slotted(:last-child) { margin-right: 0; }
+                :host([direction="tabletdown-column-desktopup-row"][gutter]) ::slotted(*) { margin-bottom: 0; }
+
+                :host([desktopdirection="row"]) section { flex-direction: row; }
+                :host([desktopdirection="column"]) section { flex-direction: column; }
             }
             @media (min-width: 1200px) {
-                .container{
-                    width: 1200px;
+                :host([contained]){
+                    width: 1200px !important;
                     max-width: 100%;
                 }
             }
 
+            .hidden--all { display: none !important; }
+
+            /*mobile*/
             @media (max-width: 749px) {
-                .hidden-xs{ display: none; }
-
-                .hidden-md-down{ display: none; }
-                .hidden-sm-down{ display: none; }
+                .hidden--mobile      { display: none !important; }
+                .hidden--tablet-down { display: none !important; }
+                .hidden--desktop-down{ display: none !important; }
             }
+            /*tablet*/
             @media (min-width: 750px) and (max-width: 999px) {
-                .hidden-sm{ display: none; }
-
-                .hidden-sm-up{ display: none; }
-
-                .hidden-md-down{ display: none; }
-                .hidden-sm-down{ display: none; }
+                .hidden--tablet      { display: none !important; }
+                .hidden--tablet-down { display: none !important; }
+                .hidden--tablet-up   { display: none !important; }
+                .hidden--desktop-down{ display: none !important; }
             }
+            /*desktop*/
             @media (min-width: 1000px) and (max-width: 1199px) {
-                .hidden-md{ display: none; }
-
-                .hidden-sm-up{ display: none; }
-                .hidden-md-up{ display: none; }
-
-                .hidden-md-down{ display: none; }
+                .hidden--desktop     { display: none !important; }
+                .hidden--tablet-up   { display: none !important; }
+                .hidden--desktop-down{ display: none !important; }
+                .hidden--desktop-up  { display: none !important; }
             }
+            /*desktophd*/
             @media (min-width: 1200px) {
-                .hidden-lg{ display: none; }
-
-                .hidden-sm-up{ display: none; }
-                .hidden-md-up{ display: none; }
-                .hidden-lg-up{ display: none; }
+                .hidden--desktophd   { display: none !important; }
+                .hidden--tablet-up   { display: none !important; }
+                .hidden--desktop-up  { display: none !important; }
             }
 
         </style>
 
-        <section
-                class$="[[containertype]] [[direction]] justify-content--[[justifycontent]] align-items--[[alignitems]] align-content--[[aligncontent]] hidden-[[hidden]] font-[[fontcolor]]"
-                style$="height: [[height]]; margin-top: [[margintop]]px; margin-bottom: [[marginbottom]]px; padding-top: [[paddingtop]]px; padding-bottom: [[paddingbottom]]px;">
+        <section style$="width: {{width}}; height: [[height]]; min-height: [[minheight]]; margin: [[margintop]]px auto [[marginbottom]]px; padding: [[paddingtop]]px [[paddingright]]px [[paddingbottom]]px [[paddingleft]]px;">
             <slot></slot>
         </section>
 
@@ -139,6 +197,10 @@
                         type: String,
                         value: "100%"
                     },
+                    width: {
+                        type: String,
+                        value: "inherit"
+                    },
                     margintop: {
                         type: Number,
                         value: 0
@@ -152,6 +214,14 @@
                         value: 0
                     },
                     paddingbottom: {
+                        type: Number,
+                        value: 0
+                    },
+                    paddingleft: {
+                        type: Number,
+                        value: 0
+                    },
+                    paddingright: {
                         type: Number,
                         value: 0
                     },
