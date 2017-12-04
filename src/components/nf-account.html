@@ -110,9 +110,9 @@
             <paper-dialog id="profileEdit" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
                 <iron-form id="editProfileForm" on-iron-form-presubmit="formPreSubmit">
                     <form>
-                        <paper-input id="user.firstName" error-message="First name is required" label="First Name" type="text" min-length="2" required></paper-input>
-                        <paper-input id="user.lastName" error-message="Last name is required" label="Last Name" type="text" min-length="2" required></paper-input>
-                        <paper-input id="userName" label="User Name" min-length="5"></paper-input>
+                        <paper-input id="newFirstName" error-message="First name is required" label="First Name" type="text" min-length="2" required></paper-input>
+                        <paper-input id="newLastName" error-message="Last name is required" label="Last Name" type="text" min-length="2" required></paper-input>
+                        <paper-input id="newUserName" label="User Name" min-length="5"></paper-input>
                         <paper-button on-tap="submitProfileEdit" raised >Submit</paper-button>
                     </form>
                 </iron-form>

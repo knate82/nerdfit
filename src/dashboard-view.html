@@ -1,4 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="components/games/ticket-to-run.html">
 
 <dom-module id="dashboard-view">
     <template>
@@ -9,9 +10,9 @@
             }
         </style>
 
-        <nf-container paddingtop="80" paddingbottom="80" direction="column">
+        <nf-gamewrapper>
             <ticket-to-run userData="{{userData}}"></ticket-to-run>
-        </nf-container>
+        </nf-gamewrapper>
 
     </template>
 
@@ -21,13 +22,9 @@
             static get properties() {
                 return {
                     userData: {
-                        type: Object,
-                        observer: "_userDataChanged"
+                        type: Object
                     }
                 }
-            }
-            _userDataChanged(newValue, oldValue) {
-                console.log("dash: " + newValue);
             }
         }
 

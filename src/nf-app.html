@@ -158,15 +158,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         ];
       }
 
-      _routePageChanged(page) {
+      _routePageChanged(page, userData) {
         // If no page was found in the route data, page will be an empty string.
         // Default to 'view1' in that case.
         this.page = page || 'home';
-
-        // Close a non-persistent drawer when the page & route are changed.
-//        if (!this.$.drawer.persistent) {
-//          this.$.drawer.close();
-//        }
       }
 
       _pageChanged(page) {
