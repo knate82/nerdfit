@@ -1,7 +1,8 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="components/nf-game-wrapper.html">
 <link rel="import" href="components/games/ticket-to-run.html">
 
-<dom-module id="dashboard-view">
+<dom-module id="ttr-view">
     <template>
         <style include="shared-styles">
             :host {
@@ -10,20 +11,28 @@
             }
         </style>
 
+        <nf-gamewrapper>
+            <ticket-to-run userData="{{userData}}"></ticket-to-run>
+        </nf-gamewrapper>
+
     </template>
 
     <script>
-        class DashboardView extends Polymer.Element {
-            static get is() { return 'dashboard-view'; }
+        class TtrView extends Polymer.Element {
+            static get is() { return 'ttr-view'; }
             static get properties() {
                 return {
                     userData: {
                         type: Object
+                    },
+                    hideNav: {
+                        type: Boolean,
+                        value: true
                     }
                 }
             }
         }
 
-        window.customElements.define(DashboardView.is, DashboardView);
+        window.customElements.define(TtrView.is, TtrView);
     </script>
 </dom-module>

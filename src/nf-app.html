@@ -114,7 +114,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         tail="{{subroute}}">
     </app-route>
 
-    <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar>
+    <nf-navbar hidden="{{hideNav}}" user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar>
 
       <!-- Main content -->
 
@@ -125,6 +125,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             role="main">
           <home-view name="home"></home-view>
           <dashboard-view user-data="{{userData}}" name="dashboard"></dashboard-view>
+          <ttr-view user-data="{{userData}}" name="ttr" hide-nav="{{hideNav}}"></ttr-view>
           <my-view404 name="my-view404"></my-view404>
         </iron-pages>
 
@@ -149,6 +150,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           // This shouldn't be neccessary, but the Analyzer isn't picking up
           // Polymer.Element#rootPath
           rootPath: String,
+          hideNav: {
+              type: Boolean,
+              value: false
+          }
         };
       }
 
