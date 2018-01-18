@@ -1,5 +1,4 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="components/nf-game-wrapper.html">
 <link rel="import" href="components/games/ticket-to-run.html">
 
 <dom-module id="ttr-view">
@@ -11,9 +10,7 @@
             }
         </style>
 
-        <nf-gamewrapper>
-            <ticket-to-run userData="{{userData}}"></ticket-to-run>
-        </nf-gamewrapper>
+        <ticket-to-run></ticket-to-run>
 
     </template>
 
@@ -28,7 +25,9 @@
                     hideNav: {
                         type: Boolean,
                         value: true
-                    }
+                    },
+                    gameWidth: String,
+                    gameHeight: String
                 }
             }
         }

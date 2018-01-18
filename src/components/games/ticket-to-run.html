@@ -6,6 +6,11 @@
             svg {
                 margin-top: 69px;
             }
+            .city:hover {
+                transform: scale(1.25, 1.25);
+                transform-origin: center center;
+                transition: transform .5s ease-in-out;
+            }
         </style>
 
         <svg width="100%" height="100%" viewBox="0 0 1688 1087" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
@@ -15,7 +20,7 @@
                 <g id="make_png">
                     <use xlink:href="#path0_fill" fill="url(#pattern0)" transform="translate(-6746 -2105)"/>
                 </g>
-                <g id="denver" class="city">
+                <g id="denver" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6160 -1607)" fill="#828282"/>
                         <mask id="mask0_outline_out">
@@ -187,7 +192,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="helena" class="city">
+                <g id="helena" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6201 -1872)" fill="#828282"/>
                         <mask id="mask1_outline_out">
@@ -359,7 +364,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="calgary" class="city">
+                <g id="calgary" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6346 -2092)" fill="#828282"/>
                         <mask id="mask2_outline_out">
@@ -531,7 +536,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="phoenix" class="city">
+                <g id="phoenix" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6367 -1439)" fill="#828282"/>
                         <mask id="mask3_outline_out">
@@ -703,7 +708,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="santaFe" class="city">
+                <g id="santaFe" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6190 -1454)" fill="#828282"/>
                         <mask id="mask4_outline_out">
@@ -875,7 +880,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="oklahomaCity" class="city">
+                <g id="oklahomaCity" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5908 -1465)" fill="#828282"/>
                         <mask id="mask5_outline_out">
@@ -1047,7 +1052,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="kansasCity" class="city">
+                <g id="kansasCity" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5847 -1596)" fill="#828282"/>
                         <mask id="mask6_outline_out">
@@ -1219,7 +1224,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="omaha" class="city">
+                <g id="omaha" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5886 -1677)" fill="#828282"/>
                         <mask id="mask7_outline_out">
@@ -1391,7 +1396,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="deluth" class="city">
+                <g id="deluth" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5795 -1819)" fill="#828282"/>
                         <mask id="mask8_outline_out">
@@ -1563,7 +1568,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="saulStMarie" class="city">
+                <g id="saulStMarie" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5540 -1905)" fill="#828282"/>
                         <mask id="mask9_outline_out">
@@ -1735,7 +1740,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="toronto" class="city">
+                <g id="toronto" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5420 -1797)" fill="#828282"/>
                         <mask id="mask10_outline_out">
@@ -1907,7 +1912,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="montreal" class="city">
+                <g id="montreal" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5255 -1946)" fill="#828282"/>
                         <mask id="mask11_outline_out">
@@ -2079,7 +2084,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="boston" class="city">
+                <g id="boston" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5173 -1824)" fill="#828282"/>
                         <mask id="mask12_outline_out">
@@ -2251,7 +2256,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="newYork" class="city">
+                <g id="newYork" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5233 -1722)" fill="#828282"/>
                         <mask id="mask13_outline_out">
@@ -2423,7 +2428,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="washington" class="city">
+                <g id="washington" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5308 -1607)" fill="#828282"/>
                         <mask id="mask14_outline_out">
@@ -2595,7 +2600,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="nashville" class="city">
+                <g id="nashville" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5561 -1459)" fill="#828282"/>
                         <mask id="mask15_outline_out">
@@ -2767,7 +2772,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="saintLouis" class="city">
+                <g id="saintLouis" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5714 -1575)" fill="#828282"/>
                         <mask id="mask16_outline_out">
@@ -2939,7 +2944,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="littleRock" class="city">
+                <g id="littleRock" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5762 -1437)" fill="#828282"/>
                         <mask id="mask17_outline_out">
@@ -3111,7 +3116,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="newOrleans" class="city">
+                <g id="newOrleans" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5679 -1218)" fill="#828282"/>
                         <mask id="mask18_outline_out">
@@ -3283,7 +3288,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="raleigh" class="city">
+                <g id="raleigh" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5403 -1481)" fill="#828282"/>
                         <mask id="mask19_outline_out">
@@ -3455,7 +3460,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="charleston" class="city">
+                <g id="charleston" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5366 -1373)" fill="#828282"/>
                         <mask id="mask20_outline_out">
@@ -3627,7 +3632,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="atlanta" class="city">
+                <g id="atlanta" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5494 -1403)" fill="#828282"/>
                         <mask id="mask21_outline_out">
@@ -3799,7 +3804,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="miami" class="city">
+                <g id="miami" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5344 -1112)" fill="#828282"/>
                         <mask id="mask22_outline_out">
@@ -3971,7 +3976,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="pittsburg" class="city">
+                <g id="pittsburg" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5388 -1683)" fill="#828282"/>
                         <mask id="mask23_outline_out">
@@ -4143,7 +4148,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="chicago" class="city">
+                <g id="chicago" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5642 -1688)" fill="#828282"/>
                         <mask id="mask24_outline_out">
@@ -4315,7 +4320,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="winnipeg" class="city">
+                <g id="winnipeg" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5990 -2041)" fill="#828282"/>
                         <mask id="mask25_outline_out">
@@ -4487,7 +4492,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="elPaso" class="city">
+                <g id="elPaso" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6208 -1308)" fill="#828282"/>
                         <mask id="mask26_outline_out">
@@ -4659,7 +4664,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="houston" class="city">
+                <g id="houston" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5858 -1226)" fill="#828282"/>
                         <mask id="mask27_outline_out">
@@ -4831,7 +4836,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="dallas" class="city">
+                <g id="dallas" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-5886 -1323)" fill="#828282"/>
                         <mask id="mask28_outline_out">
@@ -5003,7 +5008,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="lasVegas" class="city">
+                <g id="lasVegas" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6455 -1542)" fill="#828282"/>
                         <mask id="mask29_outline_out">
@@ -5175,7 +5180,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="losAngeles" class="city">
+                <g id="losAngeles" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6580 -1461)" fill="#828282"/>
                         <mask id="mask30_outline_out">
@@ -5347,7 +5352,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="sanFrancisco" class="city">
+                <g id="sanFrancisco" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6667 -1618)" fill="#828282"/>
                         <mask id="mask31_outline_out">
@@ -5519,7 +5524,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="portland" class="city">
+                <g id="portland" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6591 -1929)" fill="#828282"/>
                         <mask id="mask32_outline_out">
@@ -5691,7 +5696,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="seattle" class="city">
+                <g id="seattle" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6569 -2019)" fill="#828282"/>
                         <mask id="mask33_outline_out">
@@ -5863,7 +5868,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="saltLake" class="city">
+                <g id="saltLake" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6335 -1688)" fill="#828282"/>
                         <mask id="mask34_outline_out">
@@ -6035,7 +6040,7 @@
                         </g>
                     </g>
                 </g>
-                <g id="vancouver" class="city">
+                <g id="vancouver" class="city" on-tap="cityOptions">
                     <g id="Ellipse">
                         <use xlink:href="#path1_fill" transform="translate(-6564 -2097)" fill="#828282"/>
                         <mask id="mask35_outline_out">
@@ -9199,9 +9204,14 @@
                     }
                 }
             }
-            ready() {
-              super.ready();
 
+            cityOptions(e) {
+                console.log('You did it! ', e.target);
+            }
+
+            ready() {
+                super.ready();
+            
             }
         }
 

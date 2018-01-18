@@ -19,6 +19,7 @@
     "watch": "browser-sync start --no-notify --proxy localhost:8081 --files 'src/**' 'index.html'"
   },
   "dependencies": {
-    "firebase-functions": "^0.7.1"
+    "firebase-functions": "^0.7.1",
+    "phaser-ce": "^2.9.4"
   }
 }
