@@ -1,0 +1,41 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-game-menu">
+    <template>
+        <style>
+            :host {
+                width: 100vw;
+                height: 100%;
+            }
+
+            #gameBar{
+                width: 100%;
+                height:50px;
+            }
+            @media only screen and (min-width:720px) {
+                :host{width:90vw;height:100%;margin:auto;}
+            }
+
+        </style>
+        <div id="gameBar">
+            Hi!
+        </div>
+    </template>
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfGameMenu extends Polymer.Element {
+            static get is() { return 'nf-game-menu'; }
+            static get properties() {
+                return {
+
+                }
+            }
+        }
+
+        window.customElements.define(NfGameMenu.is, NfGameMenu);
+
+    </script>
+</dom-module>
