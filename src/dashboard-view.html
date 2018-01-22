@@ -1,5 +1,4 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
-<link rel="import" href="components/games/ticket-to-run.html">
 
 <dom-module id="dashboard-view">
     <template>
@@ -9,6 +8,11 @@
                 flex-direction: column;
             }
         </style>
+       
+        <nf-container>
+                {{userData.name}}
+            <nf-profile-card user-data={{userData}}></nf-profile-card>
+        </nf-container>
 
     </template>
 
