@@ -21,6 +21,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <link rel="import" href="../bower_components/iron-image/iron-image.html">
+<link rel="import" href="../bower_components/iron-icon/iron-icon.html">
 <!-- Paper shiz -->
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
@@ -51,6 +52,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="lazy-import" href="home-view.html">
 <link rel="lazy-import" href="dashboard-view.html">
+<link rel="lazy-import" href="ttr-view.html">
 <link rel="lazy-import" href="nf-view404.html">
 
 <dom-module id="nf-app">
@@ -114,22 +116,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         tail="{{subroute}}">
     </app-route>
 
-    <nf-navbar hidden="{{hideNav}}" user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar>
+    <nf-navbar hidden$="{{isGame}}" user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar>
 
       <!-- Main content -->
 
-        <iron-pages
-            selected="[[page]]"
-            attr-for-selected="name"
-            fallback-selection="home"
-            role="main">
-          <home-view name="home"></home-view>
-          <dashboard-view user-data="{{userData}}" name="dashboard"></dashboard-view>
-          <ttr-view user-data="{{userData}}" name="ttr" hide-nav="{{hideNav}}"></ttr-view>
-          <my-view404 name="my-view404"></my-view404>
-        </iron-pages>
+    <iron-pages
+        selected="[[page]]"
+        attr-for-selected="name"
+        fallback-selection="home"
+        role="main" is-game="{{isGame}}">
+      <home-view name="home" is-game="{{isGame}}"></home-view>
+      <dashboard-view user-data="{{userData}}" name="dashboard" is-game="{{isGame}}"></dashboard-view>
+      <ttr-view user-data="{{userData}}" name="ttr" is-game="{{isGame}}"></ttr-view>
+      <my-view404 name="my-view404"></my-view404>
+    </iron-pages>
 
-    <nf-footer></nf-footer>
+    <nf-footer hidden$="{{isGame}}"></nf-footer>
 
   </template>
 
@@ -149,11 +151,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           subroute: String,
           // This shouldn't be neccessary, but the Analyzer isn't picking up
           // Polymer.Element#rootPath
-          rootPath: String,
-          hideNav: {
-              type: Boolean,
-              value: false
-          }
+          rootPath: String
         };
       }
 

@@ -1,0 +1,56 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="game-button">
+    <template>
+        <style>
+            :host {
+                width: 100%;
+                height: 100%;
+                background-color: #173753;
+                cursor: pointer;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                box-shadow: inset 5px 5px 5px rgba(0,0,0,.4);
+            }
+            :host([circle]) {
+                border-radius: 50%;
+            }
+            div {
+                width: 100%;
+                height: 100%;
+                text-align: center;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            }
+        </style>
+
+        <div>
+            <slot></slot>
+        </div>
+
+    </template>
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class GameButton extends Polymer.Element {
+            static get is() { return 'game-button'; }
+            static get properties() {
+                return {
+                    circle: Boolean,
+                    href: String,
+                    background: String,
+                    color: String,
+                    primary: Boolean
+                }
+            }
+        }
+
+        window.customElements.define(GameButton.is, GameButton);
+
+    </script>
+</dom-module>

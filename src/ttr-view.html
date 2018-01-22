@@ -1,5 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="components/games/ticket-to-run.html">
+<link rel="import" href="components/nf-game-dashboard.html">
 
 <dom-module id="ttr-view">
     <template>
@@ -7,6 +8,7 @@
             :host {
                 display: flex;
                 flex-direction: column;
+                background-color: black;
             }
         </style>
 
@@ -22,9 +24,10 @@
                     userData: {
                         type: Object
                     },
-                    hideNav: {
+                    isGame: {
                         type: Boolean,
-                        value: true
+                        value: true,
+                        notify: true
                     },
                     gameWidth: String,
                     gameHeight: String
