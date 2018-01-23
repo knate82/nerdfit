@@ -1,0 +1,42 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-profile-card">
+    <template>
+        <style>
+            :host {
+                width: 100vw;
+                height: 100%;
+            }
+          
+        </style>
+
+        <section class="profile-section">
+          <div class="image">
+            <img src="{{userData.imgSrc}}">
+            <h2 class="user-name">{{userData.userName}}</h2>
+          </div>
+          <div class="data">
+            <p>Steps: {{userData.steps}}</p>
+            <p>Floors: {{userData.floors}}</p>
+          </div>
+        </section>
+        
+    </template>
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfProfileCard extends Polymer.Element {
+            static get is() { return 'nf-profile-card'; }
+            static get properties() {
+                return {
+                  userData: Object
+                }
+            }
+        }
+
+        window.customElements.define(NfProfileCard.is, NfProfileCard);
+
+    </script>
+</dom-module>

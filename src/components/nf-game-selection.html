@@ -1,0 +1,65 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-game-selection">
+    <template>
+        <style>
+            :host {
+                width: 100vw;
+                height: 100%;
+            }
+            section {
+              display: flex;
+              flex-direction: column;
+            }
+            .item {
+              display: flex;
+              max-width: 33.3%;
+            }
+          
+        </style>
+        <!-- <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth> -->
+        <firebase-document
+          id="query"
+          app-name="nerdfit"
+          path="/gameConstructors"
+          data="{{games}}">
+        </firebase-document>
+
+        <section class="game-selection">
+          <template is="dom-repeat" items="{{_toArray(games)}}">
+            <div class="item" on-tap="selectGame">
+              <h2>{{item.name}}</h2>
+              <p>Up To {{item.playersAvailable}} Players</p>
+            </div>
+          </template>
+        </section>
+        
+    </template>
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfGameSelection extends Polymer.Element {
+            static get is() { return 'nf-game-selection'; }
+            static get properties() {
+                return {
+                  userData: Object,
+                  games: Object
+                }
+            }
+            _toArray(obj) {
+              console.log(obj);
+              return Object.keys(obj).map(function(key) {
+                  return {
+                      name: key,
+                      value: obj[key]
+                  };
+              });
+            }
+        }
+
+        window.customElements.define(NfGameSelection.is, NfGameSelection);
+
+    </script>
+</dom-module>
