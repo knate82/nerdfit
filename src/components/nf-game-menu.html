@@ -28,14 +28,18 @@
                 --iron-icon-fill-color:black;
             }
 
-            iron-icon:hover{
-                background-color:rgba(0,0,0,0.75);
-                -webkit-animation-timing-function: ease;
-                -moz-animation-timing-function: ease;
-                -o-animation-timing-function: ease;
-                animation-timing-function: ease;
+            iron-icon:hover, iron-icon.active{
                 --iron-icon-fill-color:white;
                 cursor:pointer;
+                animation-timing: ease;
+                animation-name: inappmenuhover;
+                animation-duration: 1s;
+            }
+
+            @keyframes inappmenuhover {
+                0%   {background-color:rgba(0,0,0,0.75);}
+                50%  {background-color:rgba(0,0,0,0.95);}
+                100% {background-color:rgba(0,0,0,0.75);}
             }
 
             .touch-icon{
@@ -49,8 +53,8 @@
 
         </style>
         <div id="gameBar">
+            <iron-icon icon="maps:map" title="Map" class="touch-icon active"></iron-icon>
             <iron-icon icon="icons:flag" title="Game Pieces" class="touch-icon"></iron-icon>
-            <iron-icon icon="maps:map" title="Map" class="touch-icon"></iron-icon>
             <iron-icon icon="icons:account-circle" title="Profile" class="touch-icon"></iron-icon>
             <iron-icon icon="icons:star" title="Badges" class="touch-icon"></iron-icon>
         </div>
