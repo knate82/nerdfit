@@ -9,9 +9,9 @@
             }
         </style>
        
-        <nf-container>
-                {{userData.name}}
-            <nf-profile-card user-data={{userData}}></nf-profile-card>
+        <nf-container paddingtop="80" paddingbottom="80" direction="column">
+            <nf-profile-card user-data="{{userData}}"></nf-profile-card>
+            <nf-game-selection user-data="{{userData}}"></nf-game-selection>
         </nf-container>
 
     </template>
@@ -31,6 +31,7 @@
                     }
                 }
             }
+
         }
 
         window.customElements.define(DashboardView.is, DashboardView);
