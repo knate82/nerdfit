@@ -4,18 +4,23 @@
     <template>
         <style>
             :host {
-                width: 100vw;
+                width: 100%;
                 height: 100%;
             }
             section {
               display: flex;
-              flex-direction: column;
             }
             .item {
               display: flex;
-              max-width: 33.3%;
+              flex-direction: column;
+              min-width: 33.3%;
             }
-          
+            @media screen and (min-width:992px) {
+              section {
+                padding-left: 20px;
+                padding-right: 20px;
+              }
+            }
         </style>
         <!-- <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth> -->
         <firebase-document
@@ -26,10 +31,14 @@
         </firebase-document>
 
         <section class="game-selection">
-          <template is="dom-repeat" items="{{_toArray(games)}}">
+          <template is="dom-repeat" items="{{gamesArr}}">
             <div class="item" on-tap="selectGame">
-              <h2>{{item.name}}</h2>
-              <p>Up To {{item.playersAvailable}} Players</p>
+              <div>
+                <h2>{{item.name}}</h2>
+                <p>{{item.playersAvailable}} Player Max</p>
+              </div>
+              <!-- <iron-image src="{{item.imgSrc}}" preload sizing="cover" hidden="{{!item.imgSrc}}"></iron-image> -->
+              
             </div>
           </template>
         </section>
@@ -45,17 +54,19 @@
             static get properties() {
                 return {
                   userData: Object,
-                  games: Object
+                  games: Object,
+                  gamesArr: Array
                 }
             }
-            _toArray(obj) {
-              console.log(obj);
-              return Object.keys(obj).map(function(key) {
-                  return {
-                      name: key,
-                      value: obj[key]
-                  };
-              });
+            static get observers() {
+              return [
+                  '_gamesChanged(games)'
+              ]
+            }
+            _gamesChanged(games) {
+              console.log(games);
+              this.gamesArr =  Object.keys(games).map(key => games[key]);
+              console.log(this.gamesArr);
             }
         }
 
