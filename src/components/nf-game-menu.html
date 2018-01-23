@@ -15,16 +15,33 @@
                 position:fixed;
                 bottom:0;
                 left:0;
-                background-color:rgba(0,255,255,0.9);
+                background-color:rgba(255,255,255,0.9);
                 text-align:center;
             }
+
+            iron-icon{
+                padding:20px;
+                margin-top:-20px;
+                border-top-left-radius: 50%;
+                border-top-right-radius: 50%;
+                background-color:rgba(0,0,0,0.1);
+            }
+
+            .touch-icon{
+                --iron-icon-height: 40px;
+                --iron-icon-width: 40px;
+            }
+
             @media only screen and (min-width:720px) {
                 :host{width:90vw;height:100%;margin:auto;}
             }
 
         </style>
         <div id="gameBar">
-            <iron-icon icon="maps:map"></iron-icon><span>Icon 2</span><span>Icon 3</span><span>Icon 4</span>
+            <iron-icon icon="icons:flag" title="Game Pieces" class="touch-icon"></iron-icon>
+            <iron-icon icon="maps:map" title="Map" class="touch-icon"></iron-icon>
+            <iron-icon icon="icons:account-circle" title="Profile" class="touch-icon"></iron-icon>
+            <iron-icon icon="icons:star" title="Badges" class="touch-icon"></iron-icon>
         </div>
     </template>
     <script>
