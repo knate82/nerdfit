@@ -6,9 +6,16 @@
             :host {
                 width: 100%;
                 height: 100%;
+                border: 2px solid gray;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
             }
             section {
               display: flex;
+              justify-content: center;
+              align-items: center;
             }
             .item {
               display: flex;
@@ -34,6 +41,9 @@
           <template is="dom-repeat" items="{{gamesArr}}">
             <div class="item" on-tap="selectGame">
               <div>
+                
+                <img src="{{item.imgSrc}}"></img>
+                
                 <h2>{{item.name}}</h2>
                 <p>{{item.playersAvailable}} Player Max</p>
               </div>

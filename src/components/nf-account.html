@@ -98,7 +98,7 @@
         </section>
         <section id="profile" selected="[[page]]" hidden="{{!signedIn}}">
             <div id="profile-image">
-                <iron-image style="width:50px; height:50px;" sizing="contain" src="{{downloadUrl}}"></iron-image>
+                <iron-image style="width:50px; height:50px;" sizing="contain" src="{{userData.imgSrc}}" ></iron-image>x
             </div>
             <div class="profile-links">
                 <ul>
@@ -134,6 +134,7 @@
                     },
                     userData: {
                         type: Object,
+                        observer: "_userDataChanged",
                         notify: true
                     },
                     signUp: {
@@ -167,6 +168,11 @@
                         });
                 }
             }
+            _userDataChanged(newVal) {
+                if(this.userData) {
+                    this.userData.uid = user.uid;
+                }
+            },
 //            submitSignup() {
 //
 //            }

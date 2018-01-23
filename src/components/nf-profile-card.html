@@ -3,24 +3,48 @@
 <dom-module id="nf-profile-card">
     <template>
         <style>
-            :host {
+             :host {
                 width: 100%;
                 height: 100%;
+                border: 2px solid gray;
             }
-            
+
+            .image {
+                border-radius: 50%;
+                width: 100px;
+                height: 100px;
+                overflow: hidden;
+            }
+
+            iron-image {
+                width: 150px;
+                height: 200px;
+            }
         </style>
 
+        <firebase-storage-ref id="storageShiz"
+            path="users/[[userData.uid]]" 
+            metadata="{{metadata}}" 
+            storage-uri="{{gsUri}}" 
+            download-url="{{downloadUrl}}"
+            on-metadata-changed="_dlUrlChange">
+        </firebase-storage-ref>
+
         <section class="profile-section">
-          <div class="image">
-            <img src="{{userData.imgSrc}}">
-            <h2 class="user-name">{{userData.userName}}</h2>
-          </div>
-          <div class="data">
-            <p>Steps: {{userData.steps}}</p>
-            <p>Floors: {{userData.floors}}</p>
-          </div>
+            <div class="main-content">
+                <div class="image">
+                    <iron-image src="{{userData.imgSrc}}" sizing="cover"></iron-image>
+                </div>
+                <div class="user-name">
+                    <h2>{{userData.userName}}</h2>
+                </div>
+            </div>
+            <div class="data">
+                <p>Steps: {{userData.steps}}</p>
+                <p>Floors: {{userData.floors}}</p>
+            </div>
         </section>
-        
+
     </template>
     <script>
         /**
@@ -28,15 +52,26 @@
          * @polymer
          */
         class NfProfileCard extends Polymer.Element {
-            static get is() { return 'nf-profile-card'; }
+            static get is() {
+                return 'nf-profile-card';
+            }
             static get properties() {
                 return {
-                  userData: Object
+                    userData: {
+                        type: Object,
+                        observer: "_userDataChange"
+                    }
                 }
+            }
+            ready() {
+                super.ready();
+                console.log("hello");
+            }
+            _userDataChange(newVal) {
+                console.log(newVal);
             }
         }
 
         window.customElements.define(NfProfileCard.is, NfProfileCard);
-
     </script>
 </dom-module>
