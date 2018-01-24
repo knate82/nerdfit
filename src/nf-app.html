@@ -40,7 +40,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="styles/nf-styles.html">
 <!-- import Components -->
 <link rel="import" href="components/nf-container.html">
-<link rel="import" href="components/games/nf-game-menu.html">
 <link rel="import" href="components/nf-grid.html">
 <link rel="import" href="components/nf-tile.html">
 <link rel="import" href="components/nf-hero.html">
@@ -67,36 +66,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         --app-secondary-color: black;
 
         display: block;
-      }
-
-      app-drawer-layout:not([narrow]) [drawer-toggle] {
-        display: none;
-      }
-
-      app-header {
-        color: #fff;
-        background-color: var(--app-primary-color);
-      }
-
-      app-header paper-icon-button {
-        --paper-icon-button-ink-color: white;
-      }
-
-      .drawer-list {
-        margin: 0 20px;
-      }
-
-      .drawer-list a {
-        display: block;
-        padding: 0 16px;
-        text-decoration: none;
-        color: var(--app-secondary-color);
-        line-height: 40px;
-      }
-
-      .drawer-list a.iron-selected {
-        color: black;
-        font-weight: bold;
       }
     </style>
     <firebase-app
