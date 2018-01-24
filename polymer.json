@@ -3,7 +3,8 @@
   "shell": "src/nf-app.html",
   "fragments": [
     "src/home-view.html",
-    "src/dashboard-view.html"
+    "src/dashboard-view.html",
+    "src/ttr-view.html"
   ],
   "sources": [
     "src/**/*",
