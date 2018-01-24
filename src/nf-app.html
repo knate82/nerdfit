@@ -89,7 +89,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         tail="{{subroute}}">
     </app-route>
 
-    <nf-navbar hidden$="{{isGame}}" user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar>
+    <!-- <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar> -->
 
       <!-- Main content -->
 
@@ -98,13 +98,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         attr-for-selected="name"
         fallback-selection="home"
         role="main">
-      <home-view name="home" is-game="{{isGame}}"></home-view>
-      <dashboard-view user-data="{{userData}}" name="dashboard" is-game="{{isGame}}"></dashboard-view>
-      <ttr-view user-data="{{userData}}" name="ttr" is-game="{{isGame}}"></ttr-view>
+      <home-view name="home" selected="[[page]]"></home-view>
+      <dashboard-view user-data="{{userData}}" name="dashboard" selected="[[page]]"></dashboard-view>
+      <ttr-view user-data="{{userData}}" name="ttr" selected="[[page]]"></ttr-view>
       <my-view404 name="my-view404"></my-view404>
     </iron-pages>
 
-    <nf-footer hidden$="{{isGame}}"></nf-footer>
+    <!-- <nf-footer></nf-footer> -->
 
   </template>
 

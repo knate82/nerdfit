@@ -19,12 +19,12 @@
               max-width: 100%;
             }
         </style>
-       
+       <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar> 
         <nf-container paddingtop="80" paddingbottom="80" direction="column">
             <nf-profile-card user-data="{{userData}}"></nf-profile-card>
             <nf-game-selection user-data="{{userData}}"></nf-game-selection>
         </nf-container>
-
+        <nf-footer></nf-footer>
     </template>
 
     <script>

@@ -33,6 +33,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .icon.white{ color: #fff; }
             .icon.black{ color: #000; }
         </style>
+        <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar> 
         <nf-hero backgroundimage="src/assets/images/nf-logo-bg.jpg" isFiltered="true">
             <nf-container alignitems="flex-start" fontcolor="inverse" direction="column" contained>
                 <h1>Nerdfit <span class="small"><i>(adjective)</i></span></h1>
@@ -96,6 +97,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </nf-tile>
             </nf-grid>
         </nf-container>
+        <nf-footer></nf-footer>
     </template>
 
     <script>
