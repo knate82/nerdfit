@@ -11,21 +11,30 @@
                 width: 100%;
                 height: 100%;
             }
-            .card {
-                padding: 30px;
-                margin: 10px;
-                width:25%;
+            .cards{
                 display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                align-content: stretch;
+                align-items: stretch;
+            }
+            .card {
+                display: flex;
+                padding: 10px;
+                width: 300px;
+                margin: 5px;
             }
             img {
-              max-width: 100%;
+                max-width: 100%;
             }
         </style>
        <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar> 
         <nf-container paddingtop="80" paddingbottom="80" direction="column">
-            <nf-profile-card class="card" user-data="{{userData}}"></nf-profile-card>
-            <nf-friend-card class="card" user-data="{{userData}}"></nf-friend-card>
-            <nf-trophy-case-card class="card" user-data="{{userData}}"></nf-trophy-case-card>
+            <div class="cards">
+                <nf-profile-card class="card" user-data="{{userData}}"></nf-profile-card>
+                <nf-friend-card class="card" user-data="{{userData}}"></nf-friend-card>
+                <nf-trophy-case-card class="card" user-data="{{userData}}"></nf-trophy-case-card>
+            </div>
             <nf-game-selection user-data="{{userData}}"></nf-game-selection>
         </nf-container>
         <nf-footer></nf-footer>
