@@ -14,13 +14,25 @@
             }
             section {
               display: flex;
-              justify-content: center;
-              align-items: center;
+              justify-content: flex-start;
+              width: 100%;
             }
             .item {
               display: flex;
               flex-direction: column;
-              min-width: 33.3%;
+              border: 2px solid gray;
+              width: 33%;
+              position: relative;
+            }
+            .item img {
+              max-width: 100%;
+            }
+            .item p {
+              position: absolute;
+              bottom: 10px;
+              left: 10px;
+              font-size: 1rem;
+              font-weight: 600;
             }
             @media screen and (min-width:992px) {
               section {
@@ -40,15 +52,8 @@
         <section class="game-selection">
           <template is="dom-repeat" items="{{gamesArr}}">
             <div class="item" on-tap="selectGame">
-              <div>
-                
-                <img src="{{item.imgSrc}}"></img>
-                
-                <h2>{{item.name}}</h2>
-                <p>{{item.playersAvailable}} Player Max</p>
-              </div>
-              <!-- <iron-image src="{{item.imgSrc}}" preload sizing="cover" hidden="{{!item.imgSrc}}"></iron-image> -->
-              
+              <img hidden="{{!item.imgSrc}}"  src="{{item.imgSrc}}"></img>
+              <p>{{item.playersAvailable}} Player Max</p>
             </div>
           </template>
         </section>
