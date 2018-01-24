@@ -32,7 +32,6 @@
                 background: linear-gradient(-90deg, var(--light-blue), var(--blue));
                 z-index: var(--gradient-bar-z);
             }
-
         </style>
         <section id="nf-navigation">
             <nf-container justifycontent="space-between" align-items="center" selected="[[page]]" gutter="20" direction="row" contained>
@@ -64,21 +63,21 @@
                     isMobile: Boolean
                 }
             }
-            _findScreenSize() {
-                var width = window.innerWidth;
-                if(width <= 992) {
-                    this.isMobile = true;
-                } else {
-                    this.isMobile = false;
-                }
-            }
-            ready() {
-                super.ready();
+            // _findScreenSize() {
+            //     var width = window.innerWidth;
+            //     if(width <= 992) {
+            //         this.isMobile = true;
+            //     } else {
+            //         this.isMobile = false;
+            //     }
+            // }
+            // ready() {
+            //     super.ready();
 
-                window.onload = () => {
-                    _findScreenSize();
-                }
-            }
+            //     window.onload = () => {
+            //         _findScreenSize();
+            //     }
+            // }
         }
 
         window.customElements.define(NfNavbar.is, NfNavbar);
