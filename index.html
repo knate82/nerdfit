@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
     <title>NerdFit</title>
-    <meta name="description" content="My App description">
+    <meta name="description" content="Help those of us with desk jobs get into shape.">
 
     <!--
       The `<base>` tag below is present to support two advanced deployment options:
@@ -40,12 +40,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <!-- Add to homescreen for Chrome on Android. Fallback for manifest.json -->
     <meta name="mobile-web-app-capable" content="yes">
-    <meta name="application-name" content="My App">
+    <meta name="application-name" content="NerdFit">
 
     <!-- Add to homescreen for Safari on iOS -->
     <meta name="apple-mobile-web-app-capable" content="yes">
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-    <meta name="apple-mobile-web-app-title" content="My App">
+    <meta name="apple-mobile-web-app-title" content="NerdFit">
 
     <!-- Homescreen icons -->
     <link rel="apple-touch-icon" href="images/manifest/icon-48x48.png">
@@ -90,100 +90,97 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <!-- Load your application shell -->
     <link rel="import" href="src/nf-app.html">
 
-    <!-- Font Awesome -->
-    <script src="https://use.fontawesome.com/ac98bb4abf.js"></script>
-
     <!-- Add any global styles for body, document, etc. -->
     <style>
 
-      @font-face {
-        font-family: 'Questrial';
-        src: url('src/assets/fonts/Questrial-Regular.ttf') format('truetype');
-      }
+@font-face {
+  font-family: 'Questrial';
+  src: url('src/assets/fonts/Questrial-Regular.ttf') format('truetype');
+}
 
-      /*import custom font*/
-      @charset "UTF-8";
+/*import custom font*/
+@charset "UTF-8";
 
-      @font-face {
-        font-family: "nerdfit";
-        src:url("src/assets/fonts/nerdfit.eot");
-        src:url("src/assets/fonts/nerdfit.eot?#iefix") format("embedded-opentype"),
-        url("src/assets/fonts/nerdfit.woff") format("woff"),
-        url("src/assets/fonts/nerdfit.ttf") format("truetype"),
-        url("src/assets/fonts/nerdfit.svg#nerdfit") format("svg");
-        font-weight: normal;
-        font-style: normal;
-      }
-      /*end import custom font*/
+@font-face {
+  font-family: "nerdfit";
+  src:url("src/assets/fonts/nerdfit.eot");
+  src:url("src/assets/fonts/nerdfit.eot?#iefix") format("embedded-opentype"),
+  url("src/assets/fonts/nerdfit.woff") format("woff"),
+  url("src/assets/fonts/nerdfit.ttf") format("truetype"),
+  url("src/assets/fonts/nerdfit.svg#nerdfit") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+/*end import custom font*/
 
-      html {
+html {
 
-        /*font*/
-        --primary-font: 'Questrial';
-        --fallback-font: 'Helvetica Neue';
-        --icon-font: 'nerdfit';
-        --base-font-size: 18px;
-        --line-height: 8px;
-        --font-step: 4px;
-        --small-font: .6;
+  /*font*/
+  --primary-font: 'Questrial';
+  --fallback-font: 'Helvetica Neue';
+  --icon-font: 'nerdfit';
+  --base-font-size: 18px;
+  --line-height: 8px;
+  --font-step: 4px;
+  --small-font: .6;
 
-        /*color*/
-        --black: #000000;
-        --white: #FFFFFF;
-        --blue: #173753;
-        --light-blue: #52E3F6;
-        --pink: #FF007F;
-        --green: #A7EC21;
-        --gray: #333333;
-        --lightgray: #888888;
-        --gradient: linear-gradient(-90deg, var(--light-blue), var(--blue));
-        --gradient-reverse: linear-gradient(-90deg, var(--blue), var(--light-blue));
+  /*color*/
+  --black: #000000;
+  --white: #FFFFFF;
+  --blue: #173753;
+  --light-blue: #52E3F6;
+  --pink: #FF007F;
+  --green: #A7EC21;
+  --gray: #333333;
+  --lightgray: #888888;
+  --gradient: linear-gradient(-90deg, var(--light-blue), var(--blue));
+  --gradient-reverse: linear-gradient(-90deg, var(--blue), var(--light-blue));
 
-        /*height*/
-        --nav-height: 60px;
-        --accent-bar-height: 5px;
-        --header-height: calc(var(--nav-height) + var(--accent-bar-height));
+  /*height*/
+  --nav-height: 60px;
+  --accent-bar-height: 5px;
+  --header-height: calc(var(--nav-height) + var(--accent-bar-height));
 
-        /*z-index*/
-        --header-z: 5000;
-        --gradient-bar-z: var(--header-z);
-        --header-dropdown-z: 6000;
+  /*z-index*/
+  --header-z: 5000;
+  --gradient-bar-z: var(--header-z);
+  --header-dropdown-z: 6000;
 
-        /*breakpoints (won't work in media queries)*/
-        --tablet: 750px;
-        --desktop: 1000px;
-        --desktophd: 1200px;
-        --below-tablet: calc(var(--tablet) - 1px);
-        --below-desktop: calc(var(--desktop) - 1px);
-        --below-desktophd: calc(var(--desktophd) - 1px);
+  /*breakpoints (won't work in media queries)*/
+  --tablet: 750px;
+  --desktop: 1000px;
+  --desktophd: 1200px;
+  --below-tablet: calc(var(--tablet) - 1px);
+  --below-desktop: calc(var(--desktop) - 1px);
+  --below-desktophd: calc(var(--desktophd) - 1px);
 
-        /*misc*/
-        --default-transition: all .15s ease-in-out;
+  /*misc*/
+  --default-transition: all .15s ease-in-out;
 
-      }
-      body {
-        margin: 0;
-        background-color: var(--white);
-        background-attachment: fixed;
-        display: flex;
-        flex-direction: column;
-      }
-      *{
-        box-sizing: border-box;
-        -webkit-font-smoothing: antialiased;
-        color: var(--gray);
-      }
-      p,h1,h2,h3,h4,h5,h6,label{
-        font-family: var(--fallback-font);
-        font-family: var(--primary-font);
-      }
+}
+body {
+  margin: 0;
+  background-color: var(--white);
+  background-attachment: fixed;
+  display: flex;
+  flex-direction: column;
+}
+*{
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+  color: var(--gray);
+}
+p,h1,h2,h3,h4,h5,h6,label{
+  font-family: var(--fallback-font);
+  font-family: var(--primary-font);
+}
 
-    </style>
-  </head>
-  <body>
-    <nf-app></nf-app>
-    <noscript>
-      Please enable JavaScript to view this website.
-    </noscript>
-  </body>
+</style>
+</head>
+<body>
+<nf-app></nf-app>
+<noscript>
+Please enable JavaScript to view this website.
+</noscript>
+</body>
 </html>

@@ -41,10 +41,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <!-- import Components -->
 <link rel="import" href="components/nf-container.html">
 <link rel="import" href="components/nf-game-menu.html">
-<link rel="import" href="components/nf-game-selection.html">
 <link rel="import" href="components/nf-grid.html">
 <link rel="import" href="components/nf-tile.html">
-<link rel="import" href="components/nf-profile-card.html">
 <link rel="import" href="components/nf-hero.html">
 <link rel="import" href="components/nf-image.html">
 <link rel="import" href="components/nf-account.html">
@@ -130,7 +128,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         selected="[[page]]"
         attr-for-selected="name"
         fallback-selection="home"
-        role="main" is-game="{{isGame}}">
+        role="main">
       <home-view name="home" is-game="{{isGame}}"></home-view>
       <dashboard-view user-data="{{userData}}" name="dashboard" is-game="{{isGame}}"></dashboard-view>
       <ttr-view user-data="{{userData}}" name="ttr" is-game="{{isGame}}"></ttr-view>
