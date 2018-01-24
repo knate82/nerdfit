@@ -1,6 +1,6 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 
-<dom-module id="nf-profile-card">
+<dom-module id="nf-friend-card">
     <template>
         <style include="nf-styles">
              :host {
@@ -9,16 +9,21 @@
                 border: 2px solid gray;
             }
 
-            .image {
-                border-radius: 50%;
-                width: 100px;
-                height: 100px;
-                overflow: hidden;
-            }
-
             iron-image {
                 width: 150px;
                 height: 200px;
+            }
+
+            h2 iron-icon{
+                --iron-icon-height: calc(var(--base-font-size) + calc(var(--font-step) * 3.5));
+                --iron-icon-width: calc(var(--base-font-size) + calc(var(--font-step) * 3.5));
+            }
+
+            ul {
+                margin-left:1em;
+            }
+            ul li{
+                margin-bottom:0.5em;
             }
         </style>
 
@@ -30,32 +35,29 @@
             on-metadata-changed="_dlUrlChange">
         </firebase-storage-ref>
 
-        <section class="profile-section">
-            <div class="main-content">
-                <div class="image">
-                    <iron-image src="{{userData.imgSrc}}" sizing="cover"></iron-image>
-                </div>
-                <div class="user-name">
-                    <h2>{{userData.userName}}</h2>
-                </div>
-                <div class="">
-                    <h3>{{userData.firstName}} {{userData.lastName}} <iron-icon class="lighter" icon="icons:create" title="Edit Username"></iron-icon></h3>
-                </div>
-            </div>
-            <div class="data">
-                <p><label class="inline">Steps:</label> {{userData.steps}} 100000000</p>
-                <p><label class="inline">Floors:</label> {{userData.floors}} 334</p>
+        <section>
+            <div class="friend-list">
+                <h2><iron-icon icon="social:people" title="Friend List"></iron-icon>Friends List</h2>
+                <ul>
+                    <li>Bob Hope</li>
+                    <li>Jimmy Durante</li>
+                    <li>Carl Sagan</li>
+                    <li>Ralph Wiggum</li>
+                    <li>Steve Buscemi</li>
+                    <li>Jimmy Fallon</li>
+                </ul>
             </div>
         </section>
+
     </template>
     <script>
         /**
          * @customElement
          * @polymer
          */
-        class NfProfileCard extends Polymer.Element {
+        class NfFriendCard extends Polymer.Element {
             static get is() {
-                return 'nf-profile-card';
+                return 'nf-friend-card';
             }
             static get properties() {
                 return {
@@ -74,6 +76,6 @@
             }
         }
 
-        window.customElements.define(NfProfileCard.is, NfProfileCard);
+        window.customElements.define(NfFriendCard.is, NfFriendCard);
     </script>
 </dom-module>

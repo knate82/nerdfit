@@ -1,0 +1,98 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-trophy">
+    <template>
+        <style include="nf-styles">
+             :host {
+                width: 115px;
+                height: 115px;
+                 display: inline-block;
+            }
+
+            svg {
+                width: 100px;
+                height: 100px;
+            }
+
+            .gold{
+                fill: gold;
+            }
+
+            .silver{
+                fill: #484848;
+            }
+
+            .bronze{
+                fill: #B98B00;
+            }
+            .trophyName{
+                text-align: center;
+            }
+
+        </style>
+
+        <firebase-storage-ref id="storageShiz"
+            path="users/[[userData.uid]]" 
+            metadata="{{metadata}}" 
+            storage-uri="{{gsUri}}" 
+            download-url="{{downloadUrl}}"
+            on-metadata-changed="_dlUrlChange">
+        </firebase-storage-ref>
+
+        <div class="trophy">
+            <?xml version="1.0" encoding="utf-8"?>
+
+            <svg version="1.1" class$="{{trophyColor}}" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 576 576" style="enable-background:new 0 0 576 576;" xml:space="preserve">
+            <path d="M188,32c0,0-36-4-27,33c0,0-118-23-68,111s163,201,163,201v69c0,0-18,67-63,67s-32,32-32,32h127V32H188z M122,163
+                c-28-92,39-68,39-68l19,169C140,226,122,163,122,163z"/>
+            <g>
+                <path d="M391,35.9c3.8,0,13.2,0.7,18.1,6.9c3.7,4.7,4.3,11.8,2,21.3l-1.5,6.1l6.1-1.2c0.1,0,7.5-1.4,17.6-1.4
+                    c29.3,0,43.1,11.1,49.6,20.3c12.4,17.8,11.1,47-3.7,86.8c-11.3,30.2-26.7,59.4-46,86.9c-15.4,22-33.3,42.9-53.1,62.2
+                    c-33.8,32.8-61.9,49.7-62.2,49.9l-2,1.2v2.3v69v0.5l0.1,0.5c0.2,0.7,4.8,17.5,15.1,34.5c14,23.2,31.9,35.4,51.8,35.4
+                    c13.7,0,23.1,3.2,27.2,9.2c3.4,5.1,2.7,11.4,1.8,14.8H292V36h96l0.2,0l0.2,0C388.4,36,389.4,35.9,391,35.9 M390.8,274.5l8-7.6
+                    c21.1-20.1,36.1-46.9,44.9-66c9.4-20.3,13.9-35.7,14.2-36.8c9.3-30.4,9.3-52.1,0.1-64.5c-5.6-7.5-14.5-11.5-25.9-11.5
+                    c-9.8,0-18.1,2.9-18.4,3.1l-2.3,0.8l-0.3,2.5l-19,169L390.8,274.5 M391,31.9c-1.8,0-3,0.1-3,0.1H288v513h127c0,0,13-32-32-32
+                    s-63-67-63-67v-69c0,0,113-67,163-201c37.2-99.7-18.7-112.5-49.7-112.5C422.7,63.5,415,65,415,65C422.4,34.6,399.4,31.9,391,31.9
+                    L391,31.9z M396,264l19-169c0,0,7.9-2.8,17.1-2.8c17.7,0,40.3,10.4,21.9,70.8C454,163,436,226,396,264L396,264z"/>
+            </g>
+            </svg>
+            <div class="trophyName">
+                Trophy Name
+            </div>
+        </div>
+
+    </template>
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class Nftrophy extends Polymer.Element {
+            static get is() {
+                return 'nf-trophy';
+            }
+            static get properties() {
+                return {
+                    userData: {
+                        type: Object,
+                        observer: "_userDataChange"
+                    },
+                    trophyColor: {
+                        type: String,
+                        notify: true
+                    }
+                }
+            }
+            ready() {
+                super.ready();
+                console.log("hello");
+            }
+            _userDataChange(newVal) {
+                console.log(newVal);
+            }
+        }
+
+        window.customElements.define(Nftrophy.is, Nftrophy);
+    </script>
+</dom-module>

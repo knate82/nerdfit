@@ -1,19 +1,21 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
 <link rel="import" href="./components/nf-profile-card.html">
+<link rel="import" href="./components/nf-friend-card.html">
 <link rel="import" href="components/nf-game-selection.html">
+<link rel="import" href="components/nf-trophy-case-card.html">
 
 <dom-module id="dashboard-view">
     <template>
         <style include="shared-styles">
             :host {
-                display: flex;
-                flex-direction: column;
                 width: 100%;
                 height: 100%;
             }
-            nf-profile-card {
+            .card {
                 padding: 30px;
                 margin: 10px;
+                width:25%;
+                display: flex;
             }
             img {
               max-width: 100%;
@@ -21,7 +23,9 @@
         </style>
        <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar> 
         <nf-container paddingtop="80" paddingbottom="80" direction="column">
-            <nf-profile-card user-data="{{userData}}"></nf-profile-card>
+            <nf-profile-card class="card" user-data="{{userData}}"></nf-profile-card>
+            <nf-friend-card class="card" user-data="{{userData}}"></nf-friend-card>
+            <nf-trophy-case-card class="card" user-data="{{userData}}"></nf-trophy-case-card>
             <nf-game-selection user-data="{{userData}}"></nf-game-selection>
         </nf-container>
         <nf-footer></nf-footer>
