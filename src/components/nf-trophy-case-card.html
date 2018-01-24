@@ -1,6 +1,7 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../components/nf-trophy.html">
 
-<dom-module id="nf-profile-card">
+<dom-module id="nf-trophy-case-card">
     <template>
         <style include="nf-styles">
              :host {
@@ -9,17 +10,11 @@
                 border: 2px solid gray;
             }
 
-            .image {
-                border-radius: 50%;
-                width: 100px;
-                height: 100px;
-                overflow: hidden;
+            h2 iron-icon{
+                --iron-icon-height: calc(var(--base-font-size) + calc(var(--font-step) * 3.5));
+                --iron-icon-width: calc(var(--base-font-size) + calc(var(--font-step) * 3.5));
             }
 
-            iron-image {
-                width: 150px;
-                height: 200px;
-            }
         </style>
 
         <firebase-storage-ref id="storageShiz"
@@ -30,32 +25,25 @@
             on-metadata-changed="_dlUrlChange">
         </firebase-storage-ref>
 
-        <section class="profile-section">
-            <div class="main-content">
-                <div class="image">
-                    <iron-image src="{{userData.imgSrc}}" sizing="cover"></iron-image>
-                </div>
-                <div class="user-name">
-                    <h2>{{userData.userName}}</h2>
-                </div>
-                <div class="">
-                    <h3>{{userData.firstName}} {{userData.lastName}} <iron-icon class="lighter" icon="icons:create" title="Edit Username"></iron-icon></h3>
-                </div>
-            </div>
-            <div class="data">
-                <p><label class="inline">Steps:</label> {{userData.steps}} 100000000</p>
-                <p><label class="inline">Floors:</label> {{userData.floors}} 334</p>
+        <section>
+            <div class="trophy-case">
+                <h2><iron-icon icon="icons:stars" title="Trophy Case"></iron-icon>Trophy Case</h2>
+                <nf-trophy trophy-color="gold"></nf-trophy>
+                <nf-trophy trophy-color="silver"></nf-trophy>
+                <nf-trophy trophy-color="bronze"></nf-trophy>
+                <nf-trophy trophy-color="gold"></nf-trophy>
             </div>
         </section>
+
     </template>
     <script>
         /**
          * @customElement
          * @polymer
          */
-        class NfProfileCard extends Polymer.Element {
+        class NftrophyCaseCard extends Polymer.Element {
             static get is() {
-                return 'nf-profile-card';
+                return 'nf-trophy-case-card';
             }
             static get properties() {
                 return {
@@ -74,6 +62,6 @@
             }
         }
 
-        window.customElements.define(NfProfileCard.is, NfProfileCard);
+        window.customElements.define(NftrophyCaseCard.is, NftrophyCaseCard);
     </script>
 </dom-module>

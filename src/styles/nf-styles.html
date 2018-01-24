@@ -28,44 +28,44 @@
                 line-height: calc(calc(var(--base-font-size) + var(--line-height)) * var(--small-font));
             }
             h5{
-                font-size: calc(var(--base-font-size) + calc(var(--font-step) * 2));
-                line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 2)) + --line-height);
+                font-size: calc(var(--base-font-size) + calc(var(--font-step) * 1.5));
+                line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 1.5)) + --line-height);
             }
             h5.small, h5 .small{
                 font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 2)) * var(--small-font));
                 line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 2)) + --line-height) * var(--small-font));
             }
             h4{
+                font-size: calc(var(--base-font-size) + calc(var(--font-step) * 2.5));
+                line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 2.5)) + --line-height);
+            }
+            h4.small, h4 .small{
+                font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 2.5)) * var(--small-font));
+                line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 2.5)) + --line-height) * var(--small-font));
+            }
+            h3{
                 font-size: calc(var(--base-font-size) + calc(var(--font-step) * 3));
                 line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 3)) + --line-height);
             }
-            h4.small, h4 .small{
+            h3.small, h3 .small{
                 font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 3)) * var(--small-font));
                 line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 3)) + --line-height) * var(--small-font));
             }
-            h3{
+            h2{
+                font-size: calc(var(--base-font-size) + calc(var(--font-step) * 3.5));
+                line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 3.5)) + --line-height);
+            }
+            h2.small, h2 .small{
+                font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 3.5)) * var(--small-font));
+                line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 3.5)) + --line-height) * var(--small-font));
+            }
+            h1{
                 font-size: calc(var(--base-font-size) + calc(var(--font-step) * 4));
                 line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 4)) + --line-height);
             }
-            h3.small, h3 .small{
+            h1.small, h1 .small{
                 font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 4)) * var(--small-font));
                 line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 4)) + --line-height) * var(--small-font));
-            }
-            h2{
-                font-size: calc(var(--base-font-size) + calc(var(--font-step) * 5));
-                line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 5)) + --line-height);
-            }
-            h2.small, h2 .small{
-                font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 5)) * var(--small-font));
-                line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 5)) + --line-height) * var(--small-font));
-            }
-            h1{
-                font-size: calc(var(--base-font-size) + calc(var(--font-step) * 9));
-                line-height: calc(calc(var(--base-font-size) + calc(var(--font-step) * 9)) + --line-height);
-            }
-            h1.small, h1 .small{
-                font-size: calc(calc(var(--base-font-size) + calc(var(--font-step) * 9)) * var(--small-font));
-                line-height: calc(calc(calc(var(--base-font-size) + calc(var(--font-step) * 9)) + --line-height) * var(--small-font));
             }
             p{ margin-bottom: 10px; }
             h1,h2,h3,h4,h5,h6{ margin-bottom: 20px; }
@@ -122,6 +122,17 @@
             }
             /*end import custom font*/
 
+            .light{ opacity: 0.75}
+            .lighter{ opacity: 0.5}
+            .lightest{ opacity: 0.25}
+
+            label.inline{
+                font-weight:bold;
+                margin-right:1em;
+                width:6em;
+                text-align:right;
+                display: inline-block;
+            }
         </style>
     </template>
 </dom-module>
