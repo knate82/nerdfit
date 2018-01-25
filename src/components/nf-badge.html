@@ -1,0 +1,94 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-badge">
+    <template>
+        <style include="nf-styles">
+             :host {
+                width: 115px;
+                height: 115px;
+                 display: inline-block;
+            }
+
+            svg {
+                width: 100px;
+                height: 100px;
+            }
+
+            .gold{
+                fill: gold;
+            }
+
+            .silver{
+                fill: #484848;
+            }
+
+            .bronze{
+                fill: #B98B00;
+            }
+            .badgeBlock{
+            }
+            .badge{
+                width:100px;
+                height:100px;
+                padding:.25em;
+            }
+            .badgeName{
+                text-align: center;
+            }
+
+        </style>
+
+        <firebase-storage-ref id="storageShiz"
+            path="users/[[userData.uid]]" 
+            metadata="{{metadata}}" 
+            storage-uri="{{gsUri}}" 
+            download-url="{{downloadUrl}}"
+            on-metadata-changed="_dlUrlChange">
+        </firebase-storage-ref>
+
+        <div class="badgeBlock">
+            <img src="src/assets/images/badges/badge_{{badgeId}}.png" class="badge" title="{{badgeName}}"/>
+        </div>
+
+    </template>
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class Nfbadge extends Polymer.Element {
+            static get is() {
+                return 'nf-badge';
+            }
+            static get properties() {
+                return {
+                    userData: {
+                        type: Object,
+                        observer: "_userDataChange"
+                    },
+                    badgeId: {
+                        type: String,
+                        notify: true
+                    },
+                    badgeName: {
+                        type: String,
+                        notify: true
+                    },
+                    badgeColor: {
+                        type: String,
+                        notify: true
+                    }
+                }
+            }
+            ready() {
+                super.ready();
+                console.log("hello");
+            }
+            _userDataChange(newVal) {
+                console.log(newVal);
+            }
+        }
+
+        window.customElements.define(Nfbadge.is, Nfbadge);
+    </script>
+</dom-module>
