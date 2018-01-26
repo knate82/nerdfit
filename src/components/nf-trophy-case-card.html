@@ -21,23 +21,18 @@
 
         </style>
 
-        <firebase-query
-            id="badges"
-            app-name="nerdfit"
-            path="badges"
-            data="{{badgeData}}">
-        </firebase-query>
-
         <section>
             <div class="trophy-case">
                 <h2><iron-icon icon="icons:stars" title="Trophy Case"></iron-icon>Trophy Case</h2>
-                <template is="dom-repeat" items="{{badges}}">
-                    <nf-badge  badge-id="{{badges.id}}" badge-name="badges.name"></nf-badge>
-                </template>
+                <div class="badge-container">
+                    <!-- <template is="dom-repeat" items="{{userBadges}}">
+                    <nf-badge  badge-id="{{userBadges.id}}" badge-name="userBadges.name"></nf-badge>
+                </template> -->
                 
-                <!-- <nf-badge badge-color="silver" badge-id="ticket_to_run_250" badge-name="Played Ticket to Run 250 Times"></nf-badge>
+                <nf-badge badge-color="silver" badge-id="ticket_to_run_250" badge-name="Played Ticket to Run 250 Times"></nf-badge>
                 <nf-badge badge-color="bronze" badge-id="star_500" badge-name="Play 500 games"></nf-badge>
-                <nf-badge badge-color="gold" badge-id="friend_5" badge-name="Have 5 friends"></nf-badge> -->
+                <nf-badge badge-color="gold" badge-id="friend_5" badge-name="Have 5 friends"></nf-badge>
+                </div>
 
             </div>
         </section>
@@ -58,32 +53,41 @@
                         type: Object,
                         observer: "_userDataChange"
                     },
-                    badgeData: {
-                        type: Object,
-                        observer:"_badgeDataChange"
+                    badges: {
+                        type: Array,
+                        observer: "_badgesChange"
                     },
-                    badges: Array
+                    userBadges: {
+                        type: Array,
+                        notify: true,
+                        observer: "_userBadgesChange"
+                    }
                 }
             }
             ready() {
                 super.ready();
-                console.log("hello");
+
             }
-            _badgeDataChange(badges) {
-                this.badgeData =  Object.keys(badges).map(key => badges[key]);
-                console.log(badges);
+            _userBadgesChange(newVal) {
+                console.log("userBadges ", newVal);
             }
-            _userDataChange(newVal) {
-                console.log(newVal);
-                this.badges = newVal.achievements.badges;
-                console.log(this.badges);
-                for(var i = 0; i < this.badges.length; i++) {
-                    for(var x = 0; x < this.badgeData.length; x++) {
-                        if(this.badges[i] === this.badgeData[x].id) {
-                            this.badges[i] = this.badgeData[x];
+            _badgesChange(badges) {
+                if(badges) {
+                    if(this.userData.achievements.badges) {
+                        var userTempBadges = this.userData.achievements.badges;
+                        for(var i = 0; i < userTempBadges.length; i++) {
+                            for(var x = 0; x < badges.length; x++) {
+                                if(userTempBadges[i] === badges[x].length) {
+                                    this.push('userBadges', badges[x]);
+                                }
+                            }
                         }
                     }
                 }
+                console.log(badges);
+            }
+            _userDataChange(newVal) {
+                
             }
         }
 

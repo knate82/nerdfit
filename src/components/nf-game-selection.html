@@ -78,9 +78,7 @@
               ]
             }
             _gamesChanged(games) {
-              console.log(games);
               this.gamesArr =  Object.keys(games).map(key => games[key]);
-              console.log(this.gamesArr);
             }
             selectGame(e) {
               console.log(e.currentTarget.id);

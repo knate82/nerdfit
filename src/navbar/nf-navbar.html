@@ -37,7 +37,7 @@
             <nf-container justifycontent="space-between" align-items="center" selected="[[page]]" gutter="20" direction="row" contained>
                 <nf-logo></nf-logo>
                 <nf-links page="[[page]]" signed-in="{{signedIn}}"></nf-links>
-                <nf-account user-data="{{userData}}" page="{{page}}" signed-in="{{signedIn}}"></nf-account>
+                <nf-account user-data="{{userData}}" page="{{page}}" badges="{{badges}}" signed-in="{{signedIn}}"></nf-account>
             </nf-container>
         </section>
         <div class="accent-bar"></div>
@@ -54,6 +54,10 @@
                 return {
                     userData: {
                         type: Object,
+                        notify: true
+                    },
+                    badges: {
+                        type: Array,
                         notify: true
                     },
                     page: {

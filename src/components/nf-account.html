@@ -65,6 +65,13 @@
                 path="/users/[[user.uid]]"
                 data="{{userData}}">
         </firebase-document>
+        <firebase-document
+            id="query"
+            app-name="nerdfit"
+            path="/badges"
+            data="{{badgeData}}">
+        </firebase-document>
+
         <section id="login" selected="[[page]]" hidden="{{signedIn}}">
             <paper-button on-tap='toggleLoginForm'>Login</paper-button>
 
@@ -144,7 +151,17 @@
                     page: {
                         type: String,
                         notify: true
-                    }
+                    },
+                    badgeData: {
+                        type: Object,
+                        notify: true,
+                        observer: "_badgeDataChanged"
+                    },
+                    tempBadges: {
+                        type: Array,
+                        notify: true
+                    },
+                    badges: Array
                 }
             }
             toggleLoginForm() {
@@ -169,9 +186,23 @@
                 }
             }
             _userDataChanged(newVal) {
-                // if(this.userData) {
-                //     this.userData.uid = this.user.uid;
-                // }
+                console.log(newVal);
+                this._organizeBadges();
+            }
+            _organizeBadges() {
+                if(this.tempBadges) {
+                    for(var i = 0; i < this.userData.achievements.badges.length; i++) {
+                        for(var x = 0; x < this.tempBadges.length; x++) {
+                            if(this.userData.achievements.badges[i] === this.tempBadges[x].id) {
+                                this.push("badges", this.tempBadges[x]);
+                            }
+                        }
+                    }
+                    this.userData.badges = this.badges;
+                }
+            }
+            _badgeDataChanged(badges) {
+                this.tempBadges =  Object.keys(badges).map(key => badges[key]);
             }
 //            submitSignup() {
 //

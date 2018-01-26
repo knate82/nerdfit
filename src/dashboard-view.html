@@ -34,12 +34,12 @@
                 max-width: 100%;
             }
         </style>
-       <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar> 
+       <nf-navbar user-data="{{userData}}" selected="[[page]]" badges={{badges}} role="navigation"></nf-navbar> 
         <nf-container paddingtop="80" paddingbottom="80" direction="column">
             <div class="cards">
                 <nf-profile-card class="card" user-data="{{userData}}"></nf-profile-card>
                 <nf-friend-card class="card" user-data="{{userData}}"></nf-friend-card>
-                <nf-trophy-case-card class="card" user-data="{{userData}}"></nf-trophy-case-card>
+                <nf-trophy-case-card class="card" badges="{{badges}}" user-data="{{userData}}"></nf-trophy-case-card>
             </div>
             <nf-game-selection user-data="{{userData}}"></nf-game-selection>
         </nf-container>
@@ -54,11 +54,7 @@
                     userData: {
                         type: Object
                     },
-                    isGame: {
-                        type: Boolean,
-                        value: false,
-                        notify: true
-                    }
+                    badges: Array,
                 }
             }
 
