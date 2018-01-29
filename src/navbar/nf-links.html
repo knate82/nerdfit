@@ -13,6 +13,17 @@
                 flex-direction: row;
                 justify-content: flex-start;
             }
+            ul {
+                margin:0;
+                padding:0;
+                list-style-type: none;
+            }
+            ul li{
+                margin:0.25em;
+                padding:0.25em;
+                display:inline-block;
+                background-color:white;
+            }
             a{
                 padding: 0 10px;
                 text-decoration: none;
@@ -28,14 +39,32 @@
             a:hover{
                 color: var(--light-blue);
             }
+            .hamburger{
+                display: none;
+            }
+            @media screen and (max-width:768px){
+                iron-icon.hamburger:hover{
+                    display: block;
+                }
+                ul{
+                    align:right;
+                    background-color:white;
+                }
+                ul li{
+                    display:none;
+                }
+            }
         </style>
 
         <iron-selector selected="[[page]]" attr-for-selected="name" role="navigation">
-            <a name="home-view" href="[[rootPath]]home">Store</a>
-            <a name="home-view" href="[[rootPath]]home">About</a>
-            <a name="home-view" href="[[rootPath]]home">Contact</a>
-            <a name="dashboard" href="[[rootPath]]dashboard" hidden="{{!signedIn}}">Dashboard</a>
-            <a name="ttr" href="[[rootPath]]ttr" hidden="{{!signedIn}}">Ticket To Run</a>
+            <iron-icon icon="icons:menu" title="Menu" class="hamburger"></iron-icon>
+            <ul>
+                <li><a name="home-view" href="[[rootPath]]home">Store</a></li>
+                <li><a name="home-view" href="[[rootPath]]home">About</a></li>
+                <li><a name="home-view" href="[[rootPath]]home">Contact</a></li>
+                <li><a name="dashboard" href="[[rootPath]]dashboard" hidden="{{!signedIn}}">Dashboard</a></li>
+                <li><a name="ttr" href="[[rootPath]]ttr" hidden="{{!signedIn}}">Ticket To Run</a></li>
+            </ul>
         </iron-selector>
 
     </template>
