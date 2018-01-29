@@ -1,0 +1,200 @@
+{
+  "badges": {
+    "trophies": [{
+        "id": "trophy_gold",
+        "name": "earned gold trophy in a game",
+        "rank": "1"
+      },
+      {
+        "id": "trophy_gold_5",
+        "name": "earned gold trophy in 5 games",
+        "rank": "5"
+      },
+      {
+        "id": "trophy_gold_10",
+        "name": "earned gold trophy in 10 games",
+        "rank": "10"
+      },
+      {
+        "id": "trophy_gold_25",
+        "name": "earned gold trophy in 25 games",
+        "rank": "25"
+      },
+      {
+        "id": "trophy_gold_50",
+        "name": "earned gold trophy in 50 games",
+        "rank": "50"
+      },
+      {
+        "id": "trophy_silver",
+        "name": "earned silver trophy in a game",
+        "rank": "1"
+      },
+      {
+        "id": "trophy_silver_5",
+        "name": "earned silver trophy in 5 games",
+        "rank": "5"
+      },
+      {
+        "id": "trophy_silver_10",
+        "name": "earned silver trophy in 10 games",
+        "rank": "10"
+      },
+      {
+        "id": "trophy_silver_25",
+        "name": "earned silver trophy in 25 games",
+        "rank": "25"
+      },
+      {
+        "id": "trophy_silver_50",
+        "name": "earned silver trophy in 50 games",
+        "rank": "50"
+      },
+      {
+        "id": "trophy_bronze",
+        "name": "earned bronze trophy in a game",
+        "rank": "1"
+      },
+      {
+        "id": "trophy_bronze_5",
+        "name": "earned bronze trophy in 5 games",
+        "rank": "5"
+      },
+      {
+        "id": "trophy_bronze_10",
+        "name": "earned bronze trophy in 10 games",
+        "rank": "10"
+      },
+      {
+        "id": "trophy_bronze_25",
+        "name": "earned bronze trophy in 25 games",
+        "rank": "25"
+      }, {
+        "id": "trophy_bronze_50",
+        "name": "earned bronze trophy in 50 games",
+        "rank": "50"
+      }]
+  },
+  "gameConstructors": {
+    "adventureEverest": {
+      "active": false,
+      "category": "adventure",
+      "imgSrc": "https://firebasestorage.googleapis.com/v0/b/nerdfit-app.appspot.com/o/app%2FadventureEverest%2FadventureEverest.jpg?alt=media&token=45f024b1-d3cd-4e2a-9550-b1010232b1de",
+      "name": "Adventure Everest",
+      "id": "adventureEverest",
+      "playersAvailable": 10
+    },
+    "ticketToRun": {
+      "active": false,
+      "category": "strategy",
+      "imgSrc": "https://firebasestorage.googleapis.com/v0/b/nerdfit-app.appspot.com/o/app%2Fttr%2Fttr-demo.png?alt=media&token=6e6ed35a-c773-4ae5-a2ed-c48e8a3ab973",
+      "name": "Ticket To Run",
+      "id": "ticketToRun",
+      "playersAvailable": 5,
+      "cities": {
+        "atlanta": {
+          "connections": {
+            "raleigh": [
+              "atlanta_raleigh_1",
+              "atlanta_raleigh_2"
+            ],
+            "newOrleans": [
+              "atlanta_newOrleans_1",
+              "atlanta_newOrleans_2"
+            ],
+            "miami": [
+              "atlanta_miami"
+            ],
+            "nashville": [
+              "atlanta_nashville"
+            ],
+            "charleston": [
+              "atlanta_charleston"
+            ]
+          }
+        },
+        "boston": {
+          "connections": {
+            "montreal": [
+              "montreal_boston_1",
+              "montreal_boston_2"
+            ],
+            "newYork": [
+              "boston_newYork_1",
+              "boston_newYork_2"
+            ]
+          }
+        },
+        "calgary": {
+          "connections": {
+            "vancouver": [
+              "vancouver_calgary"
+            ],
+            "helena": [
+              "helena_calgary"
+            ],
+            "seattle": [
+              "seattle_calgary"
+            ],
+            "winnipeg": [
+              "calgary_winnipeg"
+            ]
+          }
+        },
+        "charleston": {
+          "connections": {
+            "atlanta": [
+              "atlanta_charleston"
+            ],
+            "raleigh": [
+              "raleigh_charleston"
+            ],
+            "miami": [
+              "charleston_miami"
+            ]
+          }
+        },
+        "chicago": {
+          "connections": {
+            "duluth": [
+              "duluth_chicago"
+            ],
+            "saintLouis": [
+              "saintLouis_chicago_1",
+              "saintLouis_chicago_2"
+            ],
+            "omaha": [
+              "omaha_chicago"
+            ],
+            "pittsburgh": [
+              "chicago_pittsburgh_1",
+              "chicago_pittsburgh_2"
+            ],
+            "toronto": [
+              "chicago_toronto"
+            ]
+          }
+        },
+        "dallas": {
+          "connections": {
+            "okalahomaCity": [
+              "oklahomaCity_dallas_1",
+              "oklahomaCity_dallas_2"
+            ],
+            "houston": [
+              "dallas_houston_1",
+              "dallas_houston_2"
+            ],
+            "littleRock": [
+              "dallas_littleRock"
+            ],
+            "elPaso": [
+              "elPaso_dallas"
+            ]
+          }
+        },
+        
+      }
+    }
+  }
+}

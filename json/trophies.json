@@ -1,0 +1,76 @@
+{
+	"trophies": [{
+			"id": "trophy_gold",
+			"name": "earned gold trophy in a game",
+			"rank": "1"
+		},
+		{
+			"id": "trophy_gold_5",
+			"name": "earned gold trophy in 5 games",
+			"rank": "5"
+		},
+		{
+			"id": "trophy_gold_10",
+			"name": "earned gold trophy in 10 games",
+			"rank": "10"
+		},
+		{
+			"id": "trophy_gold_25",
+			"name": "earned gold trophy in 25 games",
+			"rank": "25"
+		},
+		{
+			"id": "trophy_gold_50",
+			"name": "earned gold trophy in 50 games",
+			"rank": "50"
+		},
+		{
+			"id": "trophy_silver",
+			"name": "earned silver trophy in a game",
+			"rank": "1"
+		},
+		{
+			"id": "trophy_silver_5",
+			"name": "earned silver trophy in 5 games",
+			"rank": "5"
+		},
+		{
+			"id": "trophy_silver_10",
+			"name": "earned silver trophy in 10 games",
+			"rank": "10"
+		},
+		{
+			"id": "trophy_silver_25",
+			"name": "earned silver trophy in 25 games",
+			"rank": "25"
+		},
+		{
+			"id": "trophy_silver_50",
+			"name": "earned silver trophy in 50 games",
+			"rank": "50"
+		},
+		{
+			"id": "trophy_bronze",
+			"name": "earned bronze trophy in a game",
+			"rank": "1"
+		},
+		{
+			"id": "trophy_bronze_5",
+			"name": "earned bronze trophy in 5 games",
+			"rank": "5"
+		},
+		{
+			"id": "trophy_bronze_10",
+			"name": "earned bronze trophy in 10 games",
+			"rank": "10"
+		},
+		{
+			"id": "trophy_bronze_25",
+			"name": "earned bronze trophy in 25 games",
+			"rank": "25"
+		}, {
+			"id": "trophy_bronze_50",
+			"name": "earned bronze trophy in 50 games",
+			"rank": "50"
+		}]
+}
