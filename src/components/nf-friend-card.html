@@ -25,19 +25,31 @@
             ul li{
                 margin-bottom:0.5em;
             }
+            .btn-primary {
+                padding: 10px;
+                font-weight: 600;
+            }
         </style>
 
-        <firebase-storage-ref id="storageShiz"
-            path="users/[[userData.uid]]" 
-            metadata="{{metadata}}" 
-            storage-uri="{{gsUri}}" 
-            download-url="{{downloadUrl}}"
-            on-metadata-changed="_dlUrlChange">
-        </firebase-storage-ref>
+        <firebase-query 
+            id="findFriends"
+            app-name="nerdfit"
+            path="users/[[userData.uid]]/friends" 
+            data="{{friendData}}">
+        </firebase-query>
+        <firebase-query
+            id="getFriend"
+            app-name="nerdfit"
+            path="users/[[thisFriend]]"
+            data="{{friend}}">
+        </firebase-query>
 
         <section>
             <div class="friend-list">
                 <h2><iron-icon icon="social:people" title="Friend List"></iron-icon>Friends List</h2>
+                <template is="dom-repeat" items="myFriends">
+
+                </template>
                 <ul>
                     <li>Bob Hope</li>
                     <li>Jimmy Durante</li>
@@ -46,7 +58,17 @@
                     <li>Steve Buscemi</li>
                     <li>Jimmy Fallon</li>
                 </ul>
+                <paper-button class="btn-primary" raised on-tap="toggleFindFriends">Find Friends</paper-button>
             </div>
+            <paper-dialog id="findFriends" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+                <iron-form id="findFriend" on-iron-form-presubmit="formPreSubmit">
+                    <form>
+                        <paper-input id="email" label="Friends Email" type="text" min-length="2"></paper-input>
+                        <paper-input id="firstName" label="First Name" type="text" min-length="2"></paper-input>
+                        <paper-button on-tap="searchFriends" raised >Search</paper-button>
+                    </form>
+                </iron-form>
+            </paper-dialog>
         </section>
 
     </template>
@@ -62,17 +84,40 @@
             static get properties() {
                 return {
                     userData: {
-                        type: Object,
-                        observer: "_userDataChange"
+                        type: Object
+                    },
+                    friendData: {
+                        type: Object
+                    },
+                    myFriends: {
+                        type: Array
                     }
                 }
             }
-            ready() {
-                super.ready();
-               
+            static get observers() {
+                return [
+                    "_friendDataChanged(friendData.*)",
+                    "myFriendsChanged(myFriends.*)"
+                ]
             }
-            _userDataChange(newVal) {
+            toggleFindFriends() {
                 
+            }
+            _friendDataChanged(friendData) {
+                if(friendData.length > 0) {
+                    doc = this.queryFriend;
+                    for(var i = 0; i < friendData.length; i++) {
+                        doc.path = "users/" + friendData[i];
+                        doc.query().then((response) => {
+                            this.myFriends.push(response);
+                        }).catch((error) => {
+                            console.log(error);
+                        })
+                    }
+                }
+            }
+            _myFriendsChanged(myFriends) {
+                console.log(myFriends);
             }
         }
 

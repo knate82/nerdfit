@@ -60,13 +60,13 @@
         </style>
         <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
         <firebase-document
-                id="query"
+                id="userQuery"
                 app-name="nerdfit"
                 path="/users/[[user.uid]]"
                 data="{{userData}}">
         </firebase-document>
         <firebase-document
-            id="query"
+            id="badgesQuery"
             app-name="nerdfit"
             path="/badges"
             data="{{badgeData}}">
@@ -110,7 +110,7 @@
             <div class="profile-links">
                 <ul>
                     <li><paper-button on-tap="toggleProfileForm">Edit Profile</paper-button></li>
-                    <li><paper-button on-tap="logoutUser">Friends</paper-button></li>
+                    <li><paper-button on-tap="toggleFriends">Friends</paper-button></li>
                     <li><paper-button on-tap="logoutUser">Logout</paper-button></li>
                 </ul>
             </div>
@@ -174,7 +174,16 @@
             toggleProfileForm() {
                 this.$.profileEdit.toggle();
             }
+            addUser(path, data, key) {
+                key = key || null;
+                var doc = this.$.userQuery;
+                doc.path = null;
+                doc.data = data;
+                doc.saveValue(path, key);
+                return success;
+            }
             submitSignup() {
+                var user = {};
                 var email = this.$.email.value;
                 var password = this.$.password.value;
                 var firstName = this.$.firstName.value;
@@ -183,15 +192,22 @@
                 if(email && password) {
                     this.$.auth.createUserWithEmailAndPassword(email, password)
                         .then((response) => {
-                            this.$.userData.email = email;
-                            this.$.userData.firstName = firstName;
-                            this.$.userData.lastName = lastName;
-                            this.$.userData.userName = userName;
-                            this.$.signupForm.close();
+                            user.email = email;
+                            user.firstName = firstName;
+                            user.lastName = lastName;
+                            user.userName = userName;
+                            this.addUser("users", user, response.uid)
+                            .then(() => {
+                                this.$.signupForm.close();
+                                window.location.pathname = "dashboard"; 
+                            })
+                            .catch((error) => {
+                                console.log(error);
+                            });
                         })
                         .catch(function(error){
                             console.log(error);
-                        })
+                        });
                 }
             }
             submitLogin() {
@@ -201,11 +217,12 @@
                 if(email && password) {
                     this.$.auth.signInWithEmailAndPassword(email, password)
                         .then((response) => {
-                            this.page = '/dashboard';
                             this.$.form.close();
+                            window.location.pathname = "dashboard";
                         })
                         .catch(function(error){
                             console.log(error);
+                            alert("Incorrect Username and/or Password.  Please Try again.");
                         });
                 }
             }
@@ -241,7 +258,7 @@
             }
             logoutUser() {
                 this.$.auth.signOut();
-                this.page = 'home';
+                window.location.pathname = 'home';
             }
         }
 
