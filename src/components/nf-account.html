@@ -2,7 +2,7 @@
 
 <dom-module id="nf-account">
     <template>
-        <style>
+        <style include="nf-styles">
             :host {
                 align-self: center;
             }
@@ -78,11 +78,20 @@
             <paper-dialog id="form" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
                 <iron-form id="loginForm" on-iron-form-presubmit="formPreSubmit">
                     <form>
-                        <paper-input id="loginEmail" error-message="Invalid Email Address" label="Email" type="email" min-length="5"></paper-input>
-                        <paper-input id="loginPassword" label="Password" type="password"></paper-input>
+                        <block>
+                        <label html-for="loginEmail">Email</label>
+                        <input type="text" id="loginEmail" type="email" min-length="5" />
+                        </block>
+                        <block>
+                        <label html-for="loginPassword">Password</label>
+                        <input type="text" id="loginPassword" type="password" min-length="5" />
+                        </block>
+                        <!--<paper-input id="loginEmail" error-message="Invalid Email Address" label="Email" type="email" min-length="5"></paper-input>-->
+                        <!--<paper-input id="loginPassword" label="Password" type="password"></paper-input>-->
                         <div class="buttons">
-                            <paper-button on-tap="submitLogin" raised >Login</paper-button>
-                            <paper-button on-tap="newUser">Sign Up</paper-button>
+                            <paper-button class="btn-primary" on-tap="submitLogin" raised >Login</paper-button>
+                            <span class="btn-fake">New User?</span>
+                            <paper-button class="btn-link" on-tap="newUser">Sign Up</paper-button>
                         </div>
                     </form>
                 </iron-form>
@@ -90,14 +99,35 @@
             <paper-dialog id="signupForm" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
                 <iron-form id="signupForm" on-iron-form-presubmit="formPreSubmit">
                     <form>
-                        <paper-input id="firstName" label="First Name" type="text" required></paper-input>
-                        <paper-input id="lastName" label="Last Name" type="text" required></paper-input>
-                        <paper-input id="userName" label="User Name" type="text" required></paper-input>
-                        <paper-input id="email" label="Email" type="email" min-length="5" required></paper-input>
-                        <paper-input id="password" label="Password" type="password" min-length="8" required></paper-input>
+                        <block>
+                        <label html-for="firstName">First Name</label>
+                        <input type="text" name="firstName" id="firstName" required />
+                        </block>
+                        <block>
+                        <label html-for="lastName">Last Name</label>
+                        <input type="text" name="lastName" id="lastName" required />
+                        </block>
+                        <block>
+                        <label html-for="dateOfBirth">Date of Birth</label>
+                        <input type="date" name="dateOfBirth" id="dateOfBirth" required />
+                        </block>
+                        <block>
+                        <label html-for="screenName">Screen Name</label>
+                        <input type="text" name="screenName" id="screenName" required />
+                        </block>
+                        <block>
+                        <label html-for="password">Password</label>
+                        <input type="text" name="password" id="password" required  min-length="8"/>
+                        </block>
+
+                        <!--<paper-input id="firstName" label="First Name" type="text" required></paper-input>-->
+                        <!--<paper-input id="lastName" label="Last Name" type="text" required></paper-input>-->
+                        <!--<paper-input id="userName" label="User Name" type="text" required></paper-input>-->
+                        <!--<paper-input id="email" label="Email" type="email" min-length="5" required></paper-input>-->
+                        <!--<paper-input id="password" label="Password" type="password" min-length="8" required></paper-input>-->
                         <div class="buttons">
-                            <paper-button on-tap="submitSignup" raised>Submit</paper-button>
-                            <paper-button on-tap="cancelSignup">Cancel</paper-button>
+                            <paper-button class="btn-primary" on-tap="submitSignup" raised>Submit</paper-button>
+                            <paper-button class="btn-link" on-tap="cancelSignup">Cancel</paper-button>
                         </div>
                     </form>
                 </iron-form>

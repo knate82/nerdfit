@@ -90,7 +90,22 @@
             .btn-primary {
                 background-color: var(--blue);
                 color: var(--white);
+                padding:.75em;
+                margin:.25em .25em .25em 0;
             }
+            .btn-link {
+                background-color: transparent;
+                color: var(--blue);
+                padding:.75em;
+                margin:.25em .25em .25em 0;
+            }
+            .btn-fake {
+                background-color: transparent;
+                color: var(--blue);
+                padding:.75em;
+                margin:.25em .25em .25em 0;
+            }
+
             .unbold{ font-weight: 100; }
             .font-inverse{ color: var(--white); }
             i, span{ color: inherit; }
@@ -131,12 +146,51 @@
             .lighter{ opacity: 0.5}
             .lightest{ opacity: 0.25}
 
+            .block{
+                display:block;
+            }
             label.inline{
                 font-weight:bold;
                 margin-right:1em;
                 width:6em;
                 text-align:right;
                 display: inline-block;
+            }
+            form block{
+                display: block;
+                padding-bottom:.5em;
+            }
+            form input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]), form select, form textarea{
+                font-size:1em;
+                font-family: var(--fallback-font);
+                font-family: var(--primary-font);
+                padding:0 0.25em;
+            }
+
+            form label{
+                font-weight:600;
+                width:8em;
+                display:inline-block;
+                margin-bottom:0.5em;
+            }
+            form input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]), form select{
+                width:20em;
+                height:2em;
+                border:1px solid var(--lightgray);
+                border-radius:3px;
+                margin:0;
+                background-color:#FFF;
+            }
+
+            form textarea{
+                width:28em;
+                height:7em;
+                border:1px solid var(--lightgray);
+                border-radius:3px;
+            }
+            form input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):focus{
+                border:1px solid var(--lightgray);
+                outline: none;
             }
         </style>
     </template>
