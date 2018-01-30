@@ -20,18 +20,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             *{ margin: 0; padding: 0; }
         </style>
         <nf-container paddingtop="80" paddingbottom="80" direction="column" contained>
-            <nf-grid columns="12" guttery="40">
+            <nf-grid columns="1" guttery="40">
+                <h3>Contact</h3>
+            </nf-grid>
+            <nf-grid columns="3" guttery="40">
+
+                <form>
                 <paper-input id="Name" label="Name" type="text" required></paper-input>
                 <paper-input id="EmailAddress" label="Email Address" type="text" required></paper-input>
-                <paper-dropdown-menu label="Subject">
-                    <paper-listbox slot="dropdown-content" selected="1">
-                        <paper-item>Tech support</paper-item>
-                        <paper-item>Investment Interest</paper-item>
-                        <paper-item>Other</paper-item>
-                    </paper-listbox>
-                </paper-dropdown-menu>
+                    <select>
+                        <option value="Tech Support">Tech Support</option>
+                        <option value="Investment Interest">Investment Interest</option>
+                        <option value="Other">Other</option>
+                    </select>
                 <paper-textarea label="Message"></paper-textarea>
                 <paper-button id="Submit" name="submit" value="submit" class="btn-primary">Submit</paper-button>
+                </form>
             </nf-grid>
         </nf-container>
     </template>
