@@ -24,6 +24,9 @@
                 display:inline-block;
                 background-color:white;
             }
+            ul div:not([hidden]) {
+                display: inline-block;
+            }
             a{
                 padding: 0 10px;
                 text-decoration: none;
@@ -60,10 +63,14 @@
             <iron-icon icon="icons:menu" title="Menu" class="hamburger"></iron-icon>
             <ul>
                 <li><a name="home-view" href="[[rootPath]]home">Store</a></li>
-                <li><a name="home-view" href="[[rootPath]]home">About</a></li>
-                <li><a name="home-view" href="[[rootPath]]home">Contact</a></li>
-                <li><a name="dashboard" href="[[rootPath]]dashboard" hidden="{{!signedIn}}">Dashboard</a></li>
-                <li><a name="ttr" href="[[rootPath]]ttr" hidden="{{!signedIn}}">Ticket To Run</a></li>
+                <div hidden="{{signedIn}}">
+                    <li><a name="home-view" href="[[rootPath]]home">About</a></li>
+                    <li><a name="home-view" href="[[rootPath]]home">Contact</a></li>
+                </div>
+                <div hidden="{{!signedIn}}">
+                    <li><a name="dashboard" href="[[rootPath]]dashboard">Dashboard</a></li>
+                    <li><a name="ttr" href="[[rootPath]]ttr">Ticket To Run</a></li>
+                </div>
             </ul>
         </iron-selector>
 

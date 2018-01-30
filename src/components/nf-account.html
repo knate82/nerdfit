@@ -105,7 +105,12 @@
         </section>
         <section id="profile" selected="[[page]]" hidden="{{!signedIn}}">
             <div id="profile-image">
-                <iron-image style="width:50px; height:50px;" sizing="contain" src="{{userData.imgSrc}}" ></iron-image>
+                <template is="dom-if" if="{{hasImg}}">
+                    <iron-image style="width:50px; height:50px;" sizing="contain" src="{{userData.imgSrc}}" ></iron-image>
+                </template>
+                <template is="dom-if" if="{{!hasImg}}">
+                        <iron-image style="width:50px; height:50px;" sizing="contain" src="../assets/noImg.png" ></iron-image>
+                </template>
             </div>
             <div class="profile-links">
                 <ul>
@@ -165,7 +170,8 @@
                     badges: {
                         type: Array,
                         value: []
-                    }
+                    },
+                    hasImg: Boolean
                 }
             }
             toggleLoginForm() {
@@ -199,7 +205,7 @@
                             this.addUser("users", user, response.uid)
                             .then(() => {
                                 this.$.signupForm.close();
-                                window.location.pathname = "dashboard"; 
+                                window.location.pathname = "dashboard";
                             })
                             .catch((error) => {
                                 console.log(error);
@@ -229,8 +235,14 @@
             static get observers() {
                 return [
                     '_badgeDataChanged(badgeData)',
-                    '_organizeBadges(tempBadges, userData.achievements.badges, badges)'
+                    '_organizeBadges(tempBadges, userData.achievements.badges, badges)',
+                    '_userDataChanged(user.*)'
                 ]
+            }
+            _userDataChanged(user) {
+                if(user.imgSrc) {
+                    
+                }
             }
             _badgeDataChanged(badges) {
                 this.tempBadges =  Object.keys(badges).map(key => badges[key]);

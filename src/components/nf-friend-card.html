@@ -29,12 +29,16 @@
                 padding: 10px;
                 font-weight: 600;
             }
+            .btn-primary iron-icon {
+                color: white;
+                padding-right: 4px;
+            }
         </style>
 
         <firebase-query 
             id="findFriends"
             app-name="nerdfit"
-            path="users/[[userData.uid]]/friends" 
+            path="users/[[user.uid]]/friends" 
             data="{{friendData}}">
         </firebase-query>
         <firebase-query
@@ -47,16 +51,10 @@
         <section>
             <div class="friend-list">
                 <h2><iron-icon icon="social:people" title="Friend List"></iron-icon>Friends List</h2>
-                <template is="dom-repeat" items="myFriends">
-
-                </template>
                 <ul>
-                    <li>Bob Hope</li>
-                    <li>Jimmy Durante</li>
-                    <li>Carl Sagan</li>
-                    <li>Ralph Wiggum</li>
-                    <li>Steve Buscemi</li>
-                    <li>Jimmy Fallon</li>
+                    <template is="dom-repeat" items="{{myFriends}}">
+                        <li>{{item.firstName}} {{item.lastName}}</li>
+                    </template>
                 </ul>
                 <paper-button class="btn-primary" raised on-tap="toggleFindFriends"><iron-icon icon="social:person-add"></iron-icon>Find Friends</paper-button>
             </div>
@@ -96,8 +94,7 @@
             }
             static get observers() {
                 return [
-                    "_friendDataChanged(friendData.*)",
-                    "myFriendsChanged(myFriends.*)"
+                    "_userDataChanged(userData.*)"
                 ]
             }
             toggleFindFriends() {
@@ -115,6 +112,9 @@
                         })
                     }
                 }
+            }
+            _userDataChanged(newVal) {
+                
             }
             _myFriendsChanged(myFriends) {
                 console.log(myFriends);
