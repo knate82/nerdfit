@@ -1,4 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./nf-add-friends.html">
 
 <dom-module id="nf-friend-card">
     <template>
@@ -57,16 +58,13 @@
                     </template>
                 </ul>
                 <paper-button class="btn-primary" raised on-tap="toggleFindFriends"><iron-icon icon="social:person-add"></iron-icon>Find Friends</paper-button>
+                <paper-dialog id="findFriends">
+                    <h2>Find Friends</h2>
+                    <paper-dialog-scrollable>
+                        <nf-add-friends></nf-add-friends>
+                    </paper-dialog-scrollable>
+                </paper-dialog>
             </div>
-            <paper-dialog id="findFriends" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
-                <iron-form id="findFriend" on-iron-form-presubmit="formPreSubmit">
-                    <form>
-                        <paper-input id="email" label="Friends Email" type="text" min-length="2"></paper-input>
-                        <paper-input id="firstName" label="First Name" type="text" min-length="2"></paper-input>
-                        <paper-button on-tap="searchFriends" raised >Search</paper-button>
-                    </form>
-                </iron-form>
-            </paper-dialog>
         </section>
 
     </template>
@@ -98,7 +96,7 @@
                 ]
             }
             toggleFindFriends() {
-                
+                this.$.findFriends
             }
             _friendDataChanged(friendData) {
                 if(friendData.length > 0) {
@@ -114,7 +112,7 @@
                 }
             }
             _userDataChanged(newVal) {
-                
+
             }
             _myFriendsChanged(myFriends) {
                 console.log(myFriends);

@@ -1,0 +1,48 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-add-friends">
+  <template>
+      <style>
+        :host {
+          width: 95%;
+          margin: auto;
+        }
+      </style>
+      <firebase-query
+        id="friendsQuery"
+        app-name="nerdfit"
+        path="/users"
+        data="{{allUsers}}">
+		</firebase-query>
+		
+      <div class="add-friends-container">
+			<template is="dom-repeat" items="{{allUsers}}">
+				<div class="person-image">
+					<img src="{{item.imgSrc}}">
+				</div>
+				<div class="person-name">
+					<p>{{item.firstName}} {{item.lastName}}</p>
+				</div>
+				<paper-button class="btn-primary" raised>Add</paper-button>
+				<paper-button on-tap="removeFromList">Remove</paper-button>
+			</template>
+      </div>
+  </template>
+  <script>
+  /**
+         * @customElement
+         * @polymer
+         */
+        class NfAddFriends extends Polymer.Element {
+            static get is() { return 'nf-add-friends'; }
+            static get properties() {
+                return {
+                  userData: Object,
+                  allUsers: Array
+                }
+            }
+        }
+
+        window.customElements.define(NfAddFriends.is, NfAddFriends);
+  </script>
+</dom-module>
