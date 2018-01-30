@@ -10,7 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
 <link rel="import" href="../../bower_components/polymer/polymer-element.html">
 
-<dom-module id="contact-form">
+<dom-module id="nf-contact-form">
     <template>
         <style include="nf-styles">
             :host {
@@ -22,22 +22,19 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
         <nf-container paddingtop="80" paddingbottom="80" direction="column" contained>
             <nf-grid columns="12" guttery="40">
-                <paper-input bind-value="{{bindValue}}">
-                    <input value="{{value::input}}">
-                </paper-input>
                 <paper-input id="Name" label="Name" type="text" required></paper-input>
-                <paper-input id="EmailAddress">Email Address</paper-input>
-                <paper-input id="Request Info">Request Info</paper-input>
+                <paper-input id="EmailAddress" label="Email Address" type="text" required></paper-input>
+                <paper-input id="Request Info" label="Request Info"></paper-input>
                 <paper-select></paper-select>
                 <paper-textarea label="Message"></paper-textarea>
-                <paper-button id="Submit" name="submit" value="submit">Submit</paper-button>
+                <paper-button id="Submit" name="submit" value="submit" class="btn-primary">Submit</paper-button>
             </nf-grid>
         </nf-container>
     </template>
 
     <script>
-        class ContactForm extends Polymer.Element {
-            static get is() { return 'contact-form'; }
+        class NfContactForm extends Polymer.Element {
+            static get is() { return 'nf-contact-form'; }
             static get properties() {
                 return {
                     hide: {
@@ -54,6 +51,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             }
         }
 
-        window.customElements.define(ContactForm.is, ContactForm);
+        window.customElements.define(NfContactForm.is, NfContactForm);
     </script>
 </dom-module>
