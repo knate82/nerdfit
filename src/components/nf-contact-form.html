@@ -22,15 +22,15 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         </style>
         <nf-container paddingtop="80" paddingbottom="80" direction="column" contained>
             <nf-grid columns="12" guttery="40">
-                TestyMcTesterson
-                <iron-input bind-value="{{bindValue}}">
+                <paper-input bind-value="{{bindValue}}">
                     <input value="{{value::input}}">
-                </iron-input>
-                <iron-input>Name</iron-input>
-                <iron-input>Email Address</iron-input>
-                <iron-input>Name</iron-input>
-                <iron-input>Request Info</iron-input>
-                <paper-button>Submit</paper-button>
+                </paper-input>
+                <paper-input id="Name" label="Name" type="text" required></paper-input>
+                <paper-input id="EmailAddress">Email Address</paper-input>
+                <paper-input id="Request Info">Request Info</paper-input>
+                <paper-select></paper-select>
+                <paper-textarea label="Message"></paper-textarea>
+                <paper-button id="Submit" name="submit" value="submit">Submit</paper-button>
             </nf-grid>
         </nf-container>
     </template>
