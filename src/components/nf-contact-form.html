@@ -25,7 +25,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 <paper-input id="Name" label="Name" type="text" required></paper-input>
                 <paper-input id="EmailAddress" label="Email Address" type="text" required></paper-input>
                 <paper-input id="Request Info" label="Request Info"></paper-input>
-                <paper-select></paper-select>
+                <paper-dropdown-menu label="Subject">
+                    <paper-listbox slot="dropdown-content" selected="1">
+                        <paper-item>Tech support</paper-item>
+                        <paper-item>Investment Interest</paper-item>
+                        <paper-item>Other</paper-item>
+                    </paper-listbox>
+                </paper-dropdown-menu>
                 <paper-textarea label="Message"></paper-textarea>
                 <paper-button id="Submit" name="submit" value="submit" class="btn-primary">Submit</paper-button>
             </nf-grid>
