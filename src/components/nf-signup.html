@@ -10,6 +10,16 @@
         display: flex;
         flex-direction: column;
       }
+      .checkbox-group {
+        max-width: 100%;
+        display: flex;
+      }
+      .checkbox-group input {
+        width: 20px;
+      }
+      .checkbox-group input:not(nth-child(1n)) {
+        margin-left: 5px;
+      }
     </style>
     <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
     <firebase-document id="query" app-name="nerdfit" path="/users/[[user.uid]]" data="{{userData}}">
@@ -32,14 +42,19 @@
             <label html-for="dateOfBirth">Date of Birth</label>
             <input type="date" name="dateOfBirth" id="dateOfBirth" required />
           </block>
-          <block>
-            <label html-for="screenName">Screen Name</label>
-            <input type="text" name="screenName" id="screenName" required />
+          <block class="checkbox-group">
+            <input type="radio" name="gender" value="male"> Male
+            <input type="radio" name="gender" value="female"> Female
+            <input type="radio" name="gender" value="other"> Other
           </block>
           <block>
             <label html-for="password">Password</label>
             <input type="text" name="password" id="password" required min-length="8" />
           </block>
+          <block>
+              <label html-for="email">Screen Name</label>
+              <input type="text" name="email" id="email" required />
+            </block>
           <paper-button class="btn-conversion" on-tap="submitSignup" raised>Sign Up</paper-button>
         </form>
       </iron-form>
@@ -61,14 +76,14 @@
         var password = this.$.password.value;
         var firstName = this.$.firstName.value;
         var lastName = this.$.lastName.value;
-        var userName = this.$.userName.value;
+        var screenName = this.$.screenName.value;
         if (email && password) {
           this.$.auth.createUserWithEmailAndPassword(email, password)
             .then((response) => {
               user.email = email;
               user.firstName = firstName;
               user.lastName = lastName;
-              user.userName = userName;
+              user.screenName = screenName;
               this.addUser("users", user, response.uid)
                 .then(() => {
                   window.location.pathname = "dashboard";
