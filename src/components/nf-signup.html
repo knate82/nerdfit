@@ -71,7 +71,6 @@
               user.userName = userName;
               this.addUser("users", user, response.uid)
                 .then(() => {
-                  this.$.signupForm.close();
                   window.location.pathname = "dashboard";
                 })
                 .catch((error) => {
