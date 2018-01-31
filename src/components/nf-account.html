@@ -74,7 +74,6 @@
 
         <section id="login" selected="[[page]]" hidden="{{signedIn}}">
             <paper-button on-tap='toggleLoginForm'>Login</paper-button>
-
             <paper-dialog id="form" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
                 <iron-form id="loginForm" on-iron-form-presubmit="formPreSubmit">
                     <form>
@@ -88,44 +87,6 @@
                         </block>
                         <div class="buttons">
                             <paper-button class="btn-primary" on-tap="submitLogin" raised >Login</paper-button>
-                            <span class="btn-fake">New User?</span>
-                            <paper-button class="btn-link" on-tap="newUser">Sign Up</paper-button>
-                        </div>
-                    </form>
-                </iron-form>
-            </paper-dialog>
-            <paper-dialog id="signupForm" entry-animation="scale-up-animation" exit-animation="fade-out-animation">
-                <iron-form id="signupForm" on-iron-form-presubmit="formPreSubmit">
-                    <form>
-                        <block>
-                        <label html-for="firstName">First Name</label>
-                        <input type="text" name="firstName" id="firstName" required />
-                        </block>
-                        <block>
-                        <label html-for="lastName">Last Name</label>
-                        <input type="text" name="lastName" id="lastName" required />
-                        </block>
-                        <block>
-                        <label html-for="dateOfBirth">Date of Birth</label>
-                        <input type="date" name="dateOfBirth" id="dateOfBirth" required />
-                        </block>
-                        <block>
-                        <label html-for="screenName">Screen Name</label>
-                        <input type="text" name="screenName" id="screenName" required />
-                        </block>
-                        <block>
-                        <label html-for="password">Password</label>
-                        <input type="text" name="password" id="password" required  min-length="8"/>
-                        </block>
-
-                        <!--<paper-input id="firstName" label="First Name" type="text" required></paper-input>-->
-                        <!--<paper-input id="lastName" label="Last Name" type="text" required></paper-input>-->
-                        <!--<paper-input id="userName" label="User Name" type="text" required></paper-input>-->
-                        <!--<paper-input id="email" label="Email" type="email" min-length="5" required></paper-input>-->
-                        <!--<paper-input id="password" label="Password" type="password" min-length="8" required></paper-input>-->
-                        <div class="buttons">
-                            <paper-button class="btn-primary" on-tap="submitSignup" raised>Submit</paper-button>
-                            <paper-button class="btn-link" on-tap="cancelSignup">Cancel</paper-button>
                         </div>
                     </form>
                 </iron-form>
@@ -182,14 +143,6 @@
                         },
                         notify: true
                     },
-                    signUp: {
-                        type: Boolean,
-                        notify: true
-                    },
-                    page: {
-                        type: String,
-                        notify: true
-                    },
                     badgeData: {
                         type: Object,
                         observer: "_badgeDataChanged"
@@ -215,34 +168,6 @@
                 doc.data = data;
                 doc.saveValue(path, key);
                 return success;
-            }
-            submitSignup() {
-                var user = {};
-                var email = this.$.email.value;
-                var password = this.$.password.value;
-                var firstName = this.$.firstName.value;
-                var lastName = this.$.lastName.value;
-                var userName = this.$.userName.value;
-                if(email && password) {
-                    this.$.auth.createUserWithEmailAndPassword(email, password)
-                        .then((response) => {
-                            user.email = email;
-                            user.firstName = firstName;
-                            user.lastName = lastName;
-                            user.userName = userName;
-                            this.addUser("users", user, response.uid)
-                            .then(() => {
-                                this.$.signupForm.close();
-                                window.location.pathname = "dashboard";
-                            })
-                            .catch((error) => {
-                                console.log(error);
-                            });
-                        })
-                        .catch(function(error){
-                            console.log(error);
-                        });
-                }
             }
             submitLogin() {
                 var email = this.$.loginEmail.value;
@@ -291,9 +216,6 @@
             }
             newUser() {
                 this.$.form.toggle();
-                this.$.signupForm.toggle();
-            }
-            cancelSignup() {
                 this.$.signupForm.toggle();
             }
             logoutUser() {
