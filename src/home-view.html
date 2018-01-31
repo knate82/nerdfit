@@ -19,44 +19,84 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 display: flex;
                 flex-direction: column;
             }
-            *{ margin: 0; padding: 0; }
+
+            * {
+                margin: 0;
+                padding: 0;
+            }
+
             h2.title {
                 color: var(--white);
                 font-size: 2.5em;
             }
+
             h2.title.small {
                 font-size: 2em;
             }
-            .icon-pointer{
+
+            .icon-pointer {
                 font-size: 40px;
                 line-height: 40px;
             }
-            .icon.green{ color: #65ff3a; }
-            .icon.red{ color: #ff2114; }
-            .icon.purple{ color: #b20592; }
-            .icon.orange{ color: #ff6e21; }
-            .icon.yellow{ color: #fcff56; }
-            .icon.blue{ color: #1c80cc; }
-            .icon.gray{ color: #a0a9b2; }
-            .icon.white{ color: #fff; }
-            .icon.black{ color: #000; }
+
+            .icon.green {
+                color: #65ff3a;
+            }
+
+            .icon.red {
+                color: #ff2114;
+            }
+
+            .icon.purple {
+                color: #b20592;
+            }
+
+            .icon.orange {
+                color: #ff6e21;
+            }
+
+            .icon.yellow {
+                color: #fcff56;
+            }
+
+            .icon.blue {
+                color: #1c80cc;
+            }
+
+            .icon.gray {
+                color: #a0a9b2;
+            }
+
+            .icon.white {
+                color: #fff;
+            }
+
+            .icon.black {
+                color: #000;
+            }
         </style>
-        <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar> 
+        <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar>
         <nf-hero backgroundimage="src/assets/images/nf-logo-bg.jpg" isFiltered="true">
             <nf-container alignitems="flex-start" fontcolor="inverse" direction="row" contained>
                 <div class="title-box">
                     <h2 class="title">NerdFit <span class="small"><i>(adjective)</i></span></h2>
-                    <h2 class="title small">In good health, as leveraged by a person's propensity for indulging in pop culture</h2>
+                    <h2 class="title small">In good health, as leveraged by a person's propensity for indulging in pop
+                        culture</h2>
                 </div>
                 <nf-signup></nf-signup>
             </nf-container>
         </nf-hero>
+        <nf-container paddingtop="80" paddingbottom="80" backgroundcolor="gradient">
+            <nf-container contained>
+                <nf-grid columns="12">
+                    <nf-tile x="3" xspan="8" fontcolor="inverse">
+                        <h2 class="center">It's time to use your greatest strength against your greatest weakness</h2>
+                        <h3 class="center"><span class="small unbold">(Hint: it's super effective!)</span></h3>
+                    </nf-tile>
+                </nf-grid>
+            </nf-container>
+        </nf-container>
         <nf-container paddingtop="80" paddingbottom="80" direction="column" contained>
-            <nf-grid columns="12" singlecolumnbreakpoint="tablet" marginbottom="40">
-                <nf-tile x="3" xspan="8">
-                    <h2>It's time to use your greatest strength against your greatest weakness <span class="small unbold">(it's super effective!)</span></h2>
-                </nf-tile>
-            </nf-grid>
             <nf-grid columns="2" singlecolumnbreakpoint="mobile" guttery="40">
                 <nf-tile>
                     <h3>How it works</h3>
@@ -66,57 +106,39 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         <li>Add some friends to your team as both support and competition</li>
                         <li>Select a game, and invite your team to compete</li>
                     </ul>
-                    <h3>How are we different?</h3>
-                    <p>Simply put, we have done everything possible to add the diversity that is lacking in other fitness apps. We do this in the following ways:</p>
-                    <ul>
-                        <li>We offer connections to a myriad of devices to allow you to play with a larger number of friends</li>
-                        <li>We offer numerous different game-play styles, competitive solo, cooperative team, and competitive team based games</li>
-                        <li>We offer a variety of games: cooperative race to the finish, goal-based races, and multiple-route racing.</li>
-                        <li>We offer a variety of maps to increase the personal investment, such as race to Everest, Victorian England, and many others</li>
-                    </ul>
-                    <i class="icon icon-pointer green"></i>
-                    <i class="icon icon-pointer red"></i>
-                    <i class="icon icon-pointer purple"></i>
-                    <i class="icon icon-pointer orange"></i>
-                    <i class="icon icon-pointer yellow"></i>
-                    <i class="icon icon-pointer blue"></i>
-                    <i class="icon icon-pointer gray"></i>
-                    <i class="icon icon-pointer black"></i>
+                    <nf-image filename="nf-logo-bg-fpo.png" title="fpo" shape="circle" width="300px" height="300px"
+                              y="left"></nf-image>
                 </nf-tile>
-                <nf-tile breakpointorder="-1">
-                    <nf-image filename="nf-logo-bg-fpo.png" title="fpo" shape="circle" width="300px" height="300px" y="left"></nf-image>
+                <nf-tile>
+                    <h3>How are we different?</h3>
+                    <p>Simply put, we have done everything possible to add the diversity that is lacking in other
+                        fitness apps. We believe that our method of gamification allows for the best experience, no
+                        matter what your level of physical activity is, and increasing the incentive to increase your
+                        exercise or make your current regimen more valuable.</p>
+                    <ul>
+                        <li>We offer connections to a myriad of devices to allow you to play with a larger number of
+                            friends
+                        </li>
+                        <li>We offer numerous different game-play styles, competitive solo, cooperative team, and
+                            competitive team based games
+                        </li>
+                        <li>We offer a variety of games: cooperative race to the finish, goal-based races, and
+                            multiple-route racing.
+                        </li>
+                        <li>We offer a variety of maps to increase the personal investment, such as racing up Everest,
+                            Victorian England, crossing the United States, and many others.
+                        </li>
+                    </ul>
+                    <i class="icon icon-pointer green"></i> <i class="icon icon-pointer red"></i> <i
+                        class="icon icon-pointer purple"></i> <i class="icon icon-pointer orange"></i> <i
+                        class="icon icon-pointer yellow"></i> <i class="icon icon-pointer blue"></i> <i
+                        class="icon icon-pointer gray"></i> <i class="icon icon-pointer black"></i>
                 </nf-tile>
             </nf-grid>
         </nf-container>
         <nf-container contained>
-            <nf-grid columns="1" marginbottom="40">
+            <nf-grid columns="1" paddingtop="40" marginbottom="40">
                 <nf-contact-form></nf-contact-form>
-            </nf-grid>
-        </nf-container>
-        <nf-container paddingtop="80" paddingbottom="80" backgroundcolor="gradient">
-            <nf-container contained>
-                <nf-grid columns="12" singlecolumnbreakpoint="tablet">
-                    <nf-tile x="3" xspan="8" fontcolor="inverse">
-                        <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-                    </nf-tile>
-                    <nf-tile x="3" xspan="8" fontcolor="inverse">
-                        <p>
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
-                        </p>
-                    </nf-tile>
-                </nf-grid>
-            </nf-container>
-        </nf-container>
-        <nf-container paddingtop="80" paddingbottom="80" contained>
-            <nf-grid columns="2" guttery="40" singlecolumnbreakpoint="tablet">
-                <nf-tile>
-                    <h2>Lorem ipsum dolor sit amet, consectetur adipisicing elit.</h2>
-                </nf-tile>
-                <nf-tile>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium delectus eligendi, et natus odit officiis reprehenderit voluptatum? Aspernatur commodi, dolores ducimus expedita id laboriosam, laudantium necessitatibus, non sunt tempora tenetur.
-                    </p>
-                </nf-tile>
             </nf-grid>
         </nf-container>
         <nf-footer></nf-footer>
@@ -124,7 +146,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <script>
         class HomeView extends Polymer.Element {
-            static get is() { return 'home-view'; }
+            static get is() {
+                return 'home-view';
+            }
+
             static get properties() {
                 return {
                     hide: {
@@ -135,7 +160,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 }
             }
         }
-        
+
         window.customElements.define(HomeView.is, HomeView);
     </script>
 </dom-module>
