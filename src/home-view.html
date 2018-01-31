@@ -19,7 +19,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 flex-direction: column;
             }
             *{ margin: 0; padding: 0; }
-
+            h2.title {
+                color: var(--white);
+                font-size: 2.5em;
+            }
+            h2.title.small {
+                font-size: 2em;
+            }
             .icon-pointer{
                 font-size: 40px;
                 line-height: 40px;
@@ -33,12 +39,47 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .icon.gray{ color: #a0a9b2; }
             .icon.white{ color: #fff; }
             .icon.black{ color: #000; }
+            .signup-form {
+                background-color: var(--white);
+                padding: 20px;
+                border-radius: 2%;
+            }
         </style>
         <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar> 
         <nf-hero backgroundimage="src/assets/images/nf-logo-bg.jpg" isFiltered="true">
-            <nf-container alignitems="flex-start" fontcolor="inverse" direction="column" contained>
-                <h1>Nerdfit <span class="small"><i>(adjective)</i></span></h1>
-                <h1 class="small">In good health, as leveraged by a person's propensity for indulging in pop culture</h1>
+            <nf-container alignitems="flex-start" fontcolor="inverse" direction="row" contained>
+                <div class="title-box">
+                    <h2 class="title">NerdFit <span class="small"><i>(adjective)</i></span></h2>
+                    <h2 class="title small">In good health, as leveraged by a person's propensity for indulging in pop culture</h2>
+                </div>
+                <div class="signup-form">
+                    <iron-form id="signupForm" on-iron-form-presubmit="formPreSubmit">
+                        <h3>Don't have an account?<br>Start playing today!</h3>
+                        <form>
+                            <block>
+                            <label html-for="firstName">First Name</label>
+                            <input type="text" name="firstName" id="firstName" required />
+                            </block>
+                            <block>
+                            <label html-for="lastName">Last Name</label>
+                            <input type="text" name="lastName" id="lastName" required />
+                            </block>
+                            <block>
+                            <label html-for="dateOfBirth">Date of Birth</label>
+                            <input type="date" name="dateOfBirth" id="dateOfBirth" required />
+                            </block>
+                            <block>
+                            <label html-for="screenName">Screen Name</label>
+                            <input type="text" name="screenName" id="screenName" required />
+                            </block>
+                            <block>
+                            <label html-for="password">Password</label>
+                            <input type="text" name="password" id="password" required  min-length="8"/>
+                            </block>
+                            <paper-button class="btn-primary" on-tap="submitSignup" raised>Submit</paper-button>
+                        </form>
+                    </iron-form>
+                </div>
             </nf-container>
         </nf-hero>
         <nf-container paddingtop="80" paddingbottom="80" direction="column" contained>
