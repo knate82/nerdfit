@@ -95,23 +95,25 @@
                 margin:0;
                 padding:0 0 1em 0em;
             }
+            paper-button {
+                padding:.75em;
+                margin:.25em .25em .25em 0;
+            }
             .btn-primary {
                 background-color: var(--blue);
                 color: var(--white);
-                padding:.75em;
-                margin:.25em .25em .25em 0;
+            }
+            .btn-conversion {
+                background-color: var(--darkgreen);
+                color: var(--white);
             }
             .btn-link {
                 background-color: transparent;
                 color: var(--blue);
-                padding:.75em;
-                margin:.25em .25em .25em 0;
             }
             .btn-fake {
                 background-color: transparent;
                 color: var(--blue);
-                padding:.75em;
-                margin:.25em .25em .25em 0;
             }
 
             .unbold{ font-weight: 100; }
@@ -204,6 +206,7 @@
                 height:7em;
                 border:1px solid var(--lightgray);
                 border-radius:3px;
+                resize: none;
             }
             form input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):focus{
                 border:1px solid var(--lightgray);
