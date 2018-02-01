@@ -8,11 +8,6 @@
         display: flex;
         justify-content: space-between;
       }
-      label {
-        font-weight: 600;
-        display: inline-block;
-        margin-bottom: 0.5em;
-      }
       .radio-set {
         display: block;
         position: relative;
@@ -74,13 +69,13 @@
       }
     </style>    
     <div class="radio-set">
-      <label for="male">Male
+      <label html-for="male">Male
           <input type="radio" on-tap="setGender" name="gender" value="male" id="male">
           <span class="checkmark"></span>
       </label>
     </div>
     <div class="radio-set">
-      <label for="female">Female
+      <label html-for="female">Female
         <input type="radio" on-tap="setGender"  name="gender" value="female" id="female">
         <span class="checkmark"></span>
       </label>
