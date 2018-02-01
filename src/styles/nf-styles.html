@@ -212,6 +212,11 @@
                 border:1px solid var(--lightgray);
                 outline: none;
             }
+            @media only screen and (max-width: 749px) {
+                form input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]), form select {
+                width: 17.35em;
+                }
+            }
         </style>
     </template>
 </dom-module>

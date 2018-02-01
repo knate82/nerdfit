@@ -1,0 +1,115 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-gender-select">
+  <template>
+    <style include="nf-styles">
+      :host {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+      label {
+        font-weight: 600;
+        display: inline-block;
+        margin-bottom: 0.5em;
+      }
+      .radio-set {
+        display: block;
+        position: relative;
+        padding-left: 35px;
+        margin-bottom: 12px;
+        cursor: pointer;
+        font-size: 22px;
+        -webkit-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
+      }
+      /* Hide the browser's default radio button */
+      .radio-set input {
+        position: absolute;
+        opacity: 0;
+      }
+      /* Create a custom radio button */
+      .checkmark {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 25px;
+        width: 25px;
+        background-color: #eee;
+        border-radius: 50%;
+      }
+
+      /* On mouse-over, add a grey background color */
+      .radio-set:hover input ~ .checkmark {
+        background-color: #ccc;
+      }
+
+      /* When the radio button is checked, add a blue background */
+      .radio-set input:checked ~ .checkmark {
+        background-color: #2196F3;
+      }
+
+      /* Create the indicator (the dot/circle - hidden when not checked) */
+      .checkmark:after {
+        content: "";
+        position: absolute;
+        display: none;
+      }
+
+      /* Show the indicator (dot/circle) when checked */
+      .radio-set input:checked ~ .checkmark:after {
+        display: block;
+      }
+
+      /* Style the indicator (dot/circle) */
+      .radio-set .checkmark:after {
+        top: 9px;
+        left: 9px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background: white;
+      }
+    </style>    
+    <div class="radio-set">
+      <label for="male">Male
+          <input type="radio" on-tap="setGender" name="gender" value="male" id="male">
+          <span class="checkmark"></span>
+      </label>
+    </div>
+    <div class="radio-set">
+      <label for="female">Female
+        <input type="radio" on-tap="setGender"  name="gender" value="female" id="female">
+        <span class="checkmark"></span>
+      </label>
+    </div>
+    <!-- <div class="radio-set">
+      <label for="other">Other
+        <input type="radio" on-tap="setGender"  name="gender" value="other" id="other">
+        <span class="checkmark"></span>
+      </label>
+    </div> -->
+  </template>
+  <script>
+    class NfGenderSelect extends Polymer.Element {
+      static get is() {
+        return "nf-gender-select"
+      }
+      static get properties() {
+        return {
+          gender: {
+            type: String,
+            notify: true
+          }
+        }
+      }
+      setGender(e) {
+        var id = e.currentTarget.id;
+        this.gender = id;
+      }
+    }
+    window.customElements.define(NfGenderSelect.is, NfGenderSelect);
+  </script>
+</dom-module>

@@ -74,16 +74,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             .icon.black {
                 color: #000;
             }
+            @media only screen and (max-width: 749px) {
+                nf-hero nf-container, nf-signup {
+                    width: 100%;
+                }
+            }
         </style>
-        <nf-navbar user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar>
+        <nf-navbar user={{user}}  user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar>
         <nf-hero backgroundimage="src/assets/images/nf-logo-bg.jpg" isFiltered="true">
-            <nf-container alignitems="flex-start" fontcolor="inverse" direction="row" contained>
+            <nf-container alignitems="flex-start" fontcolor="inverse" direction="mobile-column-tabletup-row" contained>
                 <div class="title-box">
                     <h2 class="title">NerdFit <span class="small"><i>(adjective)</i></span></h2>
                     <h2 class="title small">In good health, as leveraged by a person's propensity for indulging in pop
                         culture</h2>
                 </div>
-                <nf-signup></nf-signup>
+                <nf-signup user={{user}}></nf-signup>
             </nf-container>
         </nf-hero>
         <nf-container paddingtop="80" paddingbottom="80" backgroundcolor="gradient">

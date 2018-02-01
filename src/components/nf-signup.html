@@ -1,4 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./nf-gender-select.html">
 
 <dom-module id="nf-signup">
   <template>
@@ -10,19 +11,15 @@
         display: flex;
         flex-direction: column;
       }
+      nf-gender-select {
+        margin-top: 13px;
+      }
       .checkbox-group {
-        max-width: 100%;
-        display: flex;
-      }
-      .checkbox-group input {
-        width: 20px;
-      }
-      .checkbox-group input:not(nth-child(1n)) {
-        margin-left: 5px;
+        padding-bottom: 0;
       }
     </style>
     <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
-    <firebase-document id="query" app-name="nerdfit" path="/users/[[user.uid]]" data="{{userData}}">
+    <firebase-document id="query" app-name="nerdfit">
     </firebase-document>
 
     <div class="signup-form">
@@ -31,30 +28,32 @@
           <br>Start playing today!</h3>
         <form>
           <block>
-            <label html-for="firstName">First Name</label>
+            <label for="firstName">First Name</label>
             <input type="text" name="firstName" id="firstName" required />
           </block>
           <block>
-            <label html-for="lastName">Last Name</label>
+            <label for="lastName">Last Name</label>
             <input type="text" name="lastName" id="lastName" required />
           </block>
           <block>
-            <label html-for="dateOfBirth">Date of Birth</label>
+            <label for="dateOfBirth">Date of Birth</label>
             <input type="date" name="dateOfBirth" id="dateOfBirth" required />
           </block>
           <block class="checkbox-group">
-            <input type="radio" name="gender" value="male"> Male
-            <input type="radio" name="gender" value="female"> Female
-            <input type="radio" name="gender" value="other"> Other
+            <nf-gender-select id="gender-select" gender="{{gender}}"></nf-gender-select>
           </block>
           <block>
-            <label html-for="password">Password</label>
-            <input type="text" name="password" id="password" required min-length="8" />
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required min-length="8" />
           </block>
           <block>
-              <label html-for="email">Screen Name</label>
-              <input type="text" name="email" id="email" required />
-            </block>
+            <label for="email">Email</label>
+            <input type="email" name="email" id="email" required />
+          </block>
+          <block>
+            <label for="screenName">Screen Name</label>
+            <input type="text" name="screenName" id="screenName" required />
+          </block>
           <paper-button class="btn-conversion" on-tap="submitSignup" raised>Sign Up</paper-button>
         </form>
       </iron-form>
@@ -67,30 +66,41 @@
       }
       static get properties() {
         return {
-
+          gender: String
         }
+      }
+      addUser(path, data, key) {
+        key = key || null;
+        var doc = this.$.query;
+        doc.path = null;
+        doc.data = data;
+        doc.saveValue(path, key).then(() => {
+          window.location.pathname = "dashboard";
+        }).catch(function(error){
+          console.log(error);
+        })
+        
       }
       submitSignup() {
         var user = {};
+        var gender = this.gender;
         var email = this.$.email.value;
         var password = this.$.password.value;
         var firstName = this.$.firstName.value;
         var lastName = this.$.lastName.value;
         var screenName = this.$.screenName.value;
+        var birthday = this.$.dateOfBirth.value;
         if (email && password) {
           this.$.auth.createUserWithEmailAndPassword(email, password)
             .then((response) => {
+              console.log(response);
               user.email = email;
               user.firstName = firstName;
               user.lastName = lastName;
               user.screenName = screenName;
+              user.gender = gender;
+              user.birthday = birthday;
               this.addUser("users", user, response.uid)
-                .then(() => {
-                  window.location.pathname = "dashboard";
-                })
-                .catch((error) => {
-                  console.log(error);
-                });
             })
             .catch(function (error) {
               console.log(error);

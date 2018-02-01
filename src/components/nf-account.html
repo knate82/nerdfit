@@ -24,7 +24,8 @@
                 color: var(--white);
             }
             #profile {
-                width: 8em;
+                width: 50px;
+                height: 50px;
                 flex-direction: column;
                 justify-content: center;
             }
@@ -38,7 +39,9 @@
             .profile-links {
                 background-color: var(--white);
                 display: none;
+                width: 150px;
                 flex-direction: column;
+                padding-top: 55px;
             }
             .profile-links ul {
                 width: 100%;
@@ -51,6 +54,10 @@
                 text-align: center;
             }
             .profile-links li:hover {
+                background-color: var(--gray);
+                color: var(--white);
+            }
+            .profile-links li paper-button:hover {
                 background-color: var(--gray);
                 color: var(--white);
             }
@@ -87,12 +94,13 @@
                         </block>
                         <div class="buttons">
                             <paper-button class="btn-primary" on-tap="submitLogin" raised >Login</paper-button>
+                            <paper-button class="btn-link" on-tap="toggleLoginForm">Cancel</paper-button>
                         </div>
                     </form>
                 </iron-form>
             </paper-dialog>
         </section>
-        <section id="profile" style="width:20px; height:20px"  selected="[[page]]" hidden="{{!signedIn}}">
+        <section id="profile" selected="[[page]]" hidden="{{!signedIn}}">
             <div id="profile-image">
                 <template is="dom-if" if="{{hasImg}}">
                     <iron-image style="width:50px; height:50px;" sizing="contain" src="{{userData.imgSrc}}" ></iron-image>
@@ -161,14 +169,6 @@
             toggleProfileForm() {
                 this.$.profileEdit.toggle();
             }
-            addUser(path, data, key) {
-                key = key || null;
-                var doc = this.$.userQuery;
-                doc.path = null;
-                doc.data = data;
-                doc.saveValue(path, key);
-                return success;
-            }
             submitLogin() {
                 var email = this.$.loginEmail.value;
                 var password = this.$.loginPassword.value;
@@ -213,10 +213,6 @@
                     this.userData.badges = this.badges;
                     console.log(this.userData);
                 }
-            }
-            newUser() {
-                this.$.form.toggle();
-                this.$.signupForm.toggle();
             }
             logoutUser() {
                 this.$.auth.signOut();
