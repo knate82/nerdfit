@@ -6,20 +6,18 @@
       :host {
         width: 100%;
         display: flex;
-        justify-content: flex-start;
+        justify-content: space-between;
       }
       label {
-        font-weight: 600;
         display: inline-block;
-        font-size: 1.3em;
         margin-bottom: 0.5em;
+        width: auto;
       }
       .radio-set {
         display: block;
         position: relative;
         padding-left: 25px;
         margin-bottom: 12px;
-        margin-right:2em;
         cursor: pointer;
         -webkit-user-select: none;
         -moz-user-select: none;
@@ -66,14 +64,14 @@
       }
 
       /* Style the indicator (dot/circle) */
-      /* .radio-set .checkmark:after {
-        top: 5px;
-        left: 5px;
-        width: 8px;
-        height: 8px;
+      .radio-set .checkmark:after {
+        top: 4px;
+        left: 4px;
+        width: 9px;
+        height: 9px;
         border-radius: 50%;
         background: white;
-      }  */
+      }
     </style>    
     <div class="radio-set">
       <label html-for="male">Male

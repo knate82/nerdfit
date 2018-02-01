@@ -43,10 +43,6 @@
             <nf-gender-select id="gender-select" gender="{{gender}}"></nf-gender-select>
           </block>
           <block>
-            <label for="password">Password</label>
-            <input type="password" name="password" id="password" required min-length="8" />
-          </block>
-          <block>
             <label for="email">Email</label>
             <input type="email" name="email" id="email" required />
           </block>
@@ -54,6 +50,12 @@
             <label for="screenName">Screen Name</label><div>(This name will appear on leaderboards, etc.)</div>
             <input type="text" name="screenName" id="screenName" required />
           </block>
+          <block>
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" required min-length="8" />
+          </block>
+
+
           <paper-button class="btn-conversion" on-tap="submitSignup" raised>Sign Up</paper-button>
         </form>
       </iron-form>
