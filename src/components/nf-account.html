@@ -41,7 +41,6 @@
                 display: none;
                 width: 150px;
                 flex-direction: column;
-                padding-top: 55px;
             }
             .profile-links ul {
                 width: 100%;
@@ -52,13 +51,15 @@
                 list-style: none;
                 width: 100%;
                 text-align: center;
+                padding: 0;
             }
-            .profile-links li:hover {
+            .profile-links li:hover,
+            .profile-links li paper-button:hover{
                 background-color: var(--gray);
                 color: var(--white);
+                cursor: pointer;
             }
-            .profile-links li paper-button:hover {
-                background-color: var(--gray);
+            .profile-links li:hover paper-button{
                 color: var(--white);
             }
             .buttons {
@@ -105,8 +106,8 @@
                 <template is="dom-if" if="{{hasImg}}">
                     <iron-image style="width:50px; height:50px;" sizing="contain" src="{{userData.imgSrc}}" ></iron-image>
                 </template>
-                <template is="dom-if" if="{{!hasImg}}">
-                        <iron-image style="width:50px; height:50px;" sizing="contain" src="../assets/noImg.png" ></iron-image>
+                <template is="dom-if" if="!{{hasImg}}">
+                        <iron-image style="width:50px; height:50px;" sizing="contain" src="/src/assets/images/noImg.png" ></iron-image>
                 </template>
             </div>
             <div class="profile-links">
