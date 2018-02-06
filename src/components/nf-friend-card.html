@@ -41,31 +41,25 @@
             path="users/[[user.uid]]/friends" 
             data="{{friendData}}">
         </firebase-query>
-        <firebase-query
-            id="getFriend"
-            app-name="nerdfit"
-            path="users/[[thisFriend]]"
-            data="{{friend}}">
-        </firebase-query>
 
         <section>
             <div class="friend-list">
                 <h2><iron-icon icon="social:people" title="Friend List"></iron-icon>Friends List</h2>
                 <ul>
-                    <template is="dom-repeat" items="{{myFriends}}">
+                    <template is="dom-repeat" items="{{friendData}}">
                         <li>{{item.firstName}} {{item.lastName}}</li>
                     </template>
                 </ul>
                 <paper-button class="btn-primary" raised on-tap="toggleFindFriends"><iron-icon icon="social:person-add"></iron-icon>Find Friends</paper-button>
-                <paper-dialog id="findFriends">
-                    <h2><iron-icon ></iron-icon> Find Friends</h2>
-                    <paper-dialog-scrollable>
-                        <nf-add-friends></nf-add-friends>
-                    </paper-dialog-scrollable>
-                </paper-dialog>
             </div>
         </section>
-
+        <paper-dialog id="findFriends" with-backdrop>
+            <h2><iron-icon ></iron-icon> Find Friends</h2>
+            <paper-dialog-scrollable>
+                <nf-add-friends user-data={{userData}}></nf-add-friends>
+            </paper-dialog-scrollable>
+            <paper-button class="btn-link" on-tap="toggleFindFriends" raised>Close</paper-button>
+        </paper-dialog>
     </template>
     <script>
         /**
@@ -95,7 +89,7 @@
                 ]
             }
             toggleFindFriends() {
-                this.$.findFriends
+                this.$.findFriends.toggle();
             }
             _friendDataChanged(friendData) {
                 if(friendData.length > 0) {
