@@ -33,6 +33,15 @@
             img {
                 max-width: 100%;
             }
+            @media screen and (max-width:768px) {
+                .cards{
+                    flex-direction: column;
+                }
+                .card{
+                    width:100%;
+                }
+
+            }
         </style>
        <nf-navbar user-data="{{userData}}" selected="[[page]]" badges={{badges}} role="navigation"></nf-navbar> 
         <nf-container paddingtop="80" paddingbottom="80" direction="column">
