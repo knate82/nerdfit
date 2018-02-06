@@ -17,12 +17,15 @@
 		
       <div class="add-friends-container">
 			<template is="dom-repeat" items="{{allUsers}}">
-				<div class="person-image">
-					<img src="{{item.imgSrc}}">
-				</div>
-				<div class="person-name">
-					<p>{{item.firstName}} {{item.lastName}}</p>
-				</div>
+        <div class="person">
+            <div class="person-image">
+              <img src="{{item.imgSrc}}">
+            </div>
+            <div class="person-name">
+              <p>{{item.firstName}} {{item.lastName}}</p>
+            </div>
+            <paper-button id="[[item.id]]" on-tap="addFriend">Add Friend</paper-button>
+        </div>
 				<paper-button class="btn-primary" raised>Add</paper-button>
 				<paper-button on-tap="removeFromList">Remove</paper-button>
 			</template>
@@ -40,6 +43,18 @@
                   userData: Object,
                   allUsers: Array
                 }
+            }
+            static get observers() {
+              return [
+                "_userDataChanged(userData.*)",
+                "_allUsersChanged(allUsers.*)"
+              ]
+            }
+            _userDataChanged(user) {
+              console.log(user);
+            }
+            _allUsersChanged(allUsers) {
+              console.log(allUsers);
             }
         }
 
