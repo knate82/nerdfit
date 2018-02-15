@@ -22,8 +22,7 @@
     </style>
     <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
     <firebase-document id="query" app-name="nerdfit"></firebase-document>
-    <firebase-storage-ref id="photo" app-name="nerdfit" storage-uri="{{gsUri}}" download-url="{{downloadUrl}}">
-    </firebase-storage-ref>
+    <firebase-storage-ref id="photo" app-name="nerdfit"></firebase-storage-ref>
 
     <div class="signup-form">
       <iron-form id="signupForm" on-iron-form-presubmit="formPreSubmit">
@@ -82,8 +81,8 @@
         doc.data = data;
         doc.saveValue(path, key).then(() => {
           var photo = this.$.photo;
-          photo.path = "users/" + this.user.uid;
-          photo.put("../assets/images/noImg.png");
+          photo.path = "users/" + this.user.uid + "/noImg.png";
+          photo.put("../assets/images/noImg.png", '');
           window.location.pathname = "dashboard";
         }).catch(function (error) {
           console.log(error);
