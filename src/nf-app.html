@@ -1,21 +1,6 @@
-<!--
-@license
-Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
-This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
-The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
-The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
-Code distributed by Google as part of the polymer project is also
-subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
--->
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
-<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
-<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
-<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
-<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
 <!-- Iron Shiz -->
@@ -59,7 +44,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="lazy-import" href="home-view.html">
 <link rel="lazy-import" href="dashboard-view.html">
 <link rel="lazy-import" href="ttr-view.html">
-<link rel="lazy-import" href="nf-view404.html">
+<!-- <link rel="lazy-import" href="nf-view404.html"> -->
 
 <dom-module id="nf-app">
   <template>
@@ -102,7 +87,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <home-view name="home" selected="[[page]]"></home-view>
       <dashboard-view user-data="{{userData}}" badges="{{badges}}" name="dashboard" selected="[[page]]"></dashboard-view>
       <ttr-view user-data="{{userData}}" name="ttr" selected="[[page]]"></ttr-view>
-      <my-view404 name="my-view404"></my-view404>
+      <!-- <my-view404 name="my-view404"></my-view404> -->
     </iron-pages>
 
   </template>
@@ -123,7 +108,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           subroute: String,
           // This shouldn't be neccessary, but the Analyzer isn't picking up
           // Polymer.Element#rootPath
-          rootPath: String
+          rootPath: String,
+          badges: Array
         };
       }
 

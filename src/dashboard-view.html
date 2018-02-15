@@ -43,7 +43,7 @@
 
             }
         </style>
-       <nf-navbar user-data="{{userData}}" selected="[[page]]" badges={{badges}} role="navigation"></nf-navbar> 
+       <nf-navbar user-data="{{userData}}" selected="[[page]]" badges="{{badges}}" role="navigation"></nf-navbar> 
         <nf-container paddingtop="80" paddingbottom="80" direction="column">
             <div class="cards">
                 <nf-profile-card class="card" user-data="{{userData}}"></nf-profile-card>
@@ -63,7 +63,7 @@
                     userData: {
                         type: Object
                     },
-                    badges: Array,
+                    badges: Array
                 }
             }
 
