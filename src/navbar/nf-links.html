@@ -82,8 +82,10 @@
          */
         class NfLinks extends Polymer.Element {
             static get is() { return 'nf-links'; }
-            yourMom() {
-                console.log(this.signedIn);
+            properties() {
+                return {
+                    rootPath: String
+                }
             }
         }
 

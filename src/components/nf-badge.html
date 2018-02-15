@@ -35,8 +35,9 @@
 
         </style>
 
-        <firebase-storage-ref id="storageShiz"
+        <firebase-storage-ref id="photo"
             path="users/[[userData.uid]]" 
+            app-name="nerdfit"
             metadata="{{metadata}}" 
             storage-uri="{{gsUri}}" 
             download-url="{{downloadUrl}}"
@@ -44,7 +45,10 @@
         </firebase-storage-ref>
 
         <div class="badgeBlock">
-            <img src="/src/assets/images/badges/badge_{{badgeId}}.png" class="badge" title="{{badgeName}}"/>
+            <img 
+                src="/src/assets/images/badges/badge_{{badgeId}}.png" 
+                class="badge" 
+                title="{{badgeName}}"/>
         </div>
 
     </template>

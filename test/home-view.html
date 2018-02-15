@@ -14,23 +14,23 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>home-view</title>
+    <title>nf-app</title>
 
     <script src="../bower_components/webcomponentsjs/webcomponents-lite.js"></script>
     <script src="../bower_components/web-component-tester/browser.js"></script>
 
     <!-- Import the element to test -->
-    <link rel="import" href="../src/home-view.html">
+    <link rel="import" href="../src/nf-app.html">
   </head>
   <body>
     <test-fixture id="BasicView">
       <template>
-        <home-view></home-view>
+        <nf-app></nf-app>
       </template>
     </test-fixture>
 
     <script>
-      suite('home-view tests', function() {
+      suite('nf-app tests', function() {
         test('Number in circle should be 1', function() {
           var myView = fixture('BasicView');
           var circle = myView.shadowRoot.querySelector('.circle');
