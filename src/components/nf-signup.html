@@ -80,9 +80,11 @@
         doc.path = null;
         doc.data = data;
         doc.saveValue(path, key).then(() => {
-          var photo = this.$.photo;
-          photo.path = "users/" + this.user.uid + "/noImg.png";
-          photo.put("../assets/images/noImg.png", '');
+          // var photo = this.$.photo;
+          // var file = "../assets/images/noImg.png";
+          // photo.path = "nerdfit-app.appspot.com/"
+          // photo.storageUri = path + "/" + key+ "/";
+          // photo.put(file, '');
           window.location.pathname = "dashboard";
         }).catch(function (error) {
           console.log(error);
