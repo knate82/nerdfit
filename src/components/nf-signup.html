@@ -20,9 +20,29 @@
         padding-bottom: 0;
       }
     </style>
-    <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
-    <firebase-document id="query" app-name="nerdfit"></firebase-document>
-    <firebase-storage-ref id="photo" app-name="nerdfit"></firebase-storage-ref>
+    <firebase-auth id="auth" 
+      app-name="nerdfit" 
+      user="{{user}}" 
+      on-error="handleError" 
+      signed-in="{{signedIn}}">
+    </firebase-auth>
+    <firebase-document 
+      id="query" 
+      app-name="nerdfit">
+    </firebase-document>
+    <firebase-storage-ref 
+      id="photo" 
+      app-name="nerdfit">
+    </firebase-storage-ref>
+    <firebase-storage-upload-task
+      task="[[task]]"
+      bytes-transferred="{{bytesTransferred}}"
+      total-bytes="{{totalBytes}}"
+      state="{{state}}"
+      download-url="{{downloadUrl}}"
+      metadata="{{metadata}}"
+      path="{{path}}">
+    </firebase-storage-upload-task>
 
     <div class="signup-form">
       <iron-form id="signupForm" on-iron-form-presubmit="formPreSubmit">
@@ -58,10 +78,13 @@
             <input type="password" name="password" id="password" required min-length="8" />
           </block>
 
-
           <paper-button class="btn-conversion" on-tap="submitSignup" raised>Sign Up</paper-button>
         </form>
       </iron-form>
+      <paper-dialog id="addPhoto" with-backdrop>
+        <h2>For a better experience<br><small>upload a profile photo!</small></h2>
+        <input id="takePhoto" type="file" name="image" accept="image/*" capture="environment">
+      </paper-dialog>
     </div>
   </template>
   <script>
@@ -85,7 +108,8 @@
           // photo.path = "nerdfit-app.appspot.com/"
           // photo.storageUri = path + "/" + key+ "/";
           // photo.put(file, '');
-          window.location.pathname = "dashboard";
+          this.$.addPhoto.open();
+          // window.location.pathname = "dashboard";
         }).catch(function (error) {
           console.log(error);
         })
