@@ -30,7 +30,7 @@
       id="query" 
       app-name="nerdfit">
     </firebase-document>
-    <firebase-storage-ref 
+    <!-- <firebase-storage-ref 
       id="photo" 
       app-name="nerdfit">
     </firebase-storage-ref>
@@ -42,7 +42,7 @@
       download-url="{{downloadUrl}}"
       metadata="{{metadata}}"
       path="{{path}}">
-    </firebase-storage-upload-task>
+    </firebase-storage-upload-task> -->
 
     <div class="signup-form">
       <iron-form id="signupForm" on-iron-form-presubmit="formPreSubmit">
@@ -68,11 +68,12 @@
             <label for="email">Email</label>
             <input type="email" name="email" id="email" required />
           </block>
-          <block>
+          <!-- Will add in screen name a bit later, but really want them unique if we are going to have them. -->
+          <!-- <block>
             <label for="screenName">Screen Name</label>
             <div>(This name will appear on leaderboards, etc.)</div>
             <input type="text" name="screenName" id="screenName" required />
-          </block>
+          </block> -->
           <block>
             <label for="password">Password</label>
             <input type="password" name="password" id="password" required min-length="8" />
@@ -102,14 +103,19 @@
         var doc = this.$.query;
         doc.path = null;
         doc.data = data;
-        doc.saveValue(path, key).then(() => {
+        doc.saveValue().then(() => {
+          /******************************/
+          /**  TODO: The comments are  **/
+          /** for future when we allow **/
+          /**  for user Images         **/
+          /******************************/
           // var photo = this.$.photo;
           // var file = "../assets/images/noImg.png";
           // photo.path = "nerdfit-app.appspot.com/"
           // photo.storageUri = path + "/" + key+ "/";
           // photo.put(file, '');
-          this.$.addPhoto.open();
-          // window.location.pathname = "dashboard";
+          // this.$.addPhoto.open();
+          window.location.pathname = "dashboard";
         }).catch(function (error) {
           console.log(error);
         })
@@ -131,7 +137,6 @@
               user.email = email;
               user.firstName = firstName;
               user.lastName = lastName;
-              user.screenName = screenName;
               user.gender = gender;
               user.birthday = birthday;
               this.addUser("users", user, response.uid)
