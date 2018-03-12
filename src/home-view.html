@@ -151,8 +151,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     <script>
         class HomeView extends Polymer.Element {
+            
             static get is() {
                 return 'home-view';
+            }
+
+            ready() {
+                super.ready();
+                // if(this.userData) {
+                //     window.location.pathname = "dashboard";
+                // }
             }
 
             static get properties() {
@@ -161,9 +169,18 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                         type: Boolean,
                         value: false,
                         notify: true
+                    },
+                    userData: {
+                        type: Object,
+                        observer: "_userData"
                     }
                 }
             }
+
+            _userData() {
+               
+            }
+
         }
 
         window.customElements.define(HomeView.is, HomeView);

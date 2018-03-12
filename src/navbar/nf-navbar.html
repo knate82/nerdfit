@@ -50,7 +50,9 @@
          * @polymer
          */
         class NfNavbar extends Polymer.Element {
+
             static get is() { return 'nf-navbar'; }
+
             static get properties() {
                 return {
                     userData: {
@@ -65,24 +67,10 @@
                         type: String,
                         notify: true
                     },
-                    isMobile: Boolean
+                    isMobile: Boolean,
                 }
             }
-            // _findScreenSize() {
-            //     var width = window.innerWidth;
-            //     if(width <= 992) {
-            //         this.isMobile = true;
-            //     } else {
-            //         this.isMobile = false;
-            //     }
-            // }
-            // ready() {
-            //     super.ready();
 
-            //     window.onload = () => {
-            //         _findScreenSize();
-            //     }
-            // }
         }
 
         window.customElements.define(NfNavbar.is, NfNavbar);
