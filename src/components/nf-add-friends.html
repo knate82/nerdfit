@@ -18,9 +18,6 @@
       <div class="add-friends-container">
 			<template is="dom-repeat" items="{{allUsers}}">
         <div class="person">
-            <div class="person-image">
-              <img src="{{item.imgSrc}}">
-            </div>
             <div class="person-name">
               <p>{{item.firstName}} {{item.lastName}}</p>
             </div>
@@ -41,7 +38,10 @@
             static get properties() {
                 return {
                   userData: Object,
-                  allUsers: Array
+                  allUsers: {
+                    type: Array,
+                    value: []
+                  }
                 }
             }
             static get observers() {
@@ -51,7 +51,7 @@
               ]
             }
             _userDataChanged(user) {
-              console.log(user);
+              // console.log(user);
             }
             _allUsersChanged(allUsers) {
               console.log(allUsers);
