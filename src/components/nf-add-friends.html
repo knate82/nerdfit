@@ -12,7 +12,8 @@
         id="friendsQuery"
         app-name="nerdfit"
         path="/users"
-        data="{{allUsers}}">
+        data="{{allUsers}}"
+        log>
 		  </firebase-query>
 		
       <div class="add-friends-container">
@@ -35,12 +36,13 @@
          */
         class NfAddFriends extends Polymer.Element {
             static get is() { return 'nf-add-friends'; }
+            
             static get properties() {
                 return {
-                  userData: Object,
+                  // userData: Object,
                   allUsers: {
-                    type: Array,
-                    value: []
+                    type: Object,
+                    value: {}
                   }
                 }
             }
