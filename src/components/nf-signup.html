@@ -20,7 +20,7 @@
         padding-bottom: 0;
       }
     </style>
-    <firebase-auth id="auth" 
+    <!-- <firebase-auth id="auth" 
       app-name="nerdfit" 
       user="{{user}}" 
       on-error="handleError" 
@@ -29,7 +29,7 @@
     <firebase-document 
       id="query" 
       app-name="nerdfit">
-    </firebase-document>
+    </firebase-document> -->
     <!-- <firebase-storage-ref 
       id="photo" 
       app-name="nerdfit">
@@ -131,19 +131,19 @@
         var screenName = this.$.screenName.value;
         var birthday = this.$.dateOfBirth.value;
         if (email && password) {
-          this.$.auth.createUserWithEmailAndPassword(email, password)
-            .then((response) => {
-              console.log(response);
-              user.email = email;
-              user.firstName = firstName;
-              user.lastName = lastName;
-              user.gender = gender;
-              user.birthday = birthday;
-              this.addUser("users", user, response.uid)
-            })
-            .catch(function (error) {
-              console.log(error);
-            });
+        auth.createUserWithEmailAndPassword(email, password)
+          .then((response) => {
+            console.log(response);
+            user.email = email;
+            user.firstName = firstName;
+            user.lastName = lastName;
+            user.gender = gender;
+            user.birthday = birthday;
+            this.addUser("users", user, response.uid)
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
         }
       }
     }

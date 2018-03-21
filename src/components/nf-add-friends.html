@@ -8,13 +8,10 @@
           margin: auto;
         }
       </style>
-      <firebase-query
-        id="friendsQuery"
-        app-name="nerdfit"
-        path="/users"
-        data="{{users}}"
-        log>
-      </firebase-query>
+      <firebase-document 
+        id="friendQuery" 
+        app-name="nerdfit">
+      </firebase-document>
       <div class="add-friends-container">
 			<template is="dom-repeat" items="{{allUsers}}">
         <div class="person">
@@ -38,14 +35,20 @@
             
             ready() {
               super.ready();
+              var doc = this.$.friendQuery;
+              doc._initializeStoredValue()
+              doc.getStoredValue(doc.path).then((response) => {
+                console.log(response);
+                this.users = response;
+              });
             }
 
             static get properties() {
                 return {
                   // userData: Object,
                   users: {
-                    type: Array,
-                    value: []
+                    type: Object,
+                    value: {}
                   }
                 }
             }
