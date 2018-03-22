@@ -41,8 +41,6 @@
         <firebase-query
         id="addFriendsQuery" 
         app-name="nerdfit"
-        path="users/"
-        data="{{allUsers}}"
         log>
       </firebase-query>
         <section>
@@ -79,7 +77,11 @@
                         type: Object
                     },
                     friends: Array,
-                    allUsers: Array
+                    allUsers: {
+                        type: Array,
+                        value: [],
+                        notify: true
+                    }
                 }
             }
             static get observers() {
@@ -95,7 +97,12 @@
                     var val = snapshot.val()
                     console.log(val);
                     if(val) {
-                        this.set("allUsers", val);
+                        var tempArr = [];
+                        var users = Object.keys(val).map(function(key) {
+                            tempArr.push(val[key]);
+                        });
+                        console.log(tempArr);
+                        this.set("allUsers", tempArr);
                         this.$.findFriends.toggle();
                     }
                 }, err => {
