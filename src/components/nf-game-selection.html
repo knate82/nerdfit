@@ -41,20 +41,20 @@
             }
         </style>
         <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
-        <firebase-query
+        <firebase-document
           id="queryGames"
           app-name="nerdfit"
           path="/availableGames"
           data="{{games}}">
-        </firebase-query>
+        </firebase-document>
 
         <section class="game-selection">
-          <template is="dom-repeat" items="{{games}}">
+          <!-- <template is="dom-repeat" items="{{games}}">
             <div on-tap="selectGame" id="{{item.id}}" class="item" on-tap="selectGame">
               <img hidden="{{!item.imgSrc}}"  src="{{item.imgSrc}}"></img>
               <p>{{item.playersAvailable}} Player Max</p>
             </div>
-          </template>
+          </template> -->
         </section>
         
     </template>
@@ -68,7 +68,11 @@
             static get properties() {
                 return {
                   userData: Object,
-                  games: Array
+                  games: {
+                    type: Object,
+                    observer: '_gamesChanged'
+                  }
+                  
                   // gamesArr: Array
                 }
             }
@@ -78,7 +82,8 @@
               ]
             }
             _gamesChanged(games) {
-              this.gamesArr =  Object.keys(games).map(key => games[key]);
+              console.log('games changed: ', games);
+              // this.gamesArr =  Object.keys(games).map(key => games[key]);
             }
             selectGame(e) {
               console.log(e.currentTarget.id);

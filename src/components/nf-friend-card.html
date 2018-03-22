@@ -38,6 +38,13 @@
                 padding-right: 4px;
             }
         </style>
+        <firebase-query
+        id="addFriendsQuery" 
+        app-name="nerdfit"
+        path="users/"
+        data="{{allUsers}}"
+        log>
+      </firebase-query>
         <section>
             <div class="friend-list">
                 <h2><iron-icon icon="social:people" title="Friend List"></iron-icon>Friends List</h2>
@@ -52,7 +59,7 @@
         <paper-dialog id="findFriends" with-backdrop>
             <h2><iron-icon ></iron-icon> Find Friends</h2>
             <paper-dialog-scrollable>
-                <nf-add-friends user-data={{userData}}></nf-add-friends>
+                <nf-add-friends all-users={{allUsers}}></nf-add-friends>
             </paper-dialog-scrollable>
             <paper-button class="btn-link" on-tap="toggleFindFriends" raised>Close</paper-button>
         </paper-dialog>
@@ -72,18 +79,34 @@
                         type: Object
                     },
                     friends: Array,
+                    allUsers: Array
                 }
             }
             static get observers() {
                 return [
-                    "_friendsChanged(friends.*)"
+                    "_friendsChanged(friends.*)",
+                    "_allUsersChanged(allUsers.*)"
                 ]
             }
             toggleFindFriends() {
-                this.$.findFriends.toggle();
+                var db = this.$.addFriendsQuery.db;
+                var ref = db.ref("users");
+                ref.once("value", snapshot => {
+                    var val = snapshot.val()
+                    console.log(val);
+                    if(val) {
+                        this.set("allUsers", val);
+                        this.$.findFriends.toggle();
+                    }
+                }, err => {
+                    console.log(err);
+                });
             }
             _friendsChanged(friends) {
                 // console.log(friends);
+            }
+            _allUsersChanged(users) {
+                console.log(users);
             }
         }
 

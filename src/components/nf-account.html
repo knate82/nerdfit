@@ -79,9 +79,6 @@
          <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
         <firebase-document id="userQuery" app-name="nerdfit" path="/users/[[user.uid]]" data="{{userData}}">
         </firebase-document>
-        <firebase-document id="friendQuery" app-name="nerdfit" path="/users/[[user.uid]]/friends" data="{{friendsData}}"></firebase-document>
-        <!-- <firebase-document id="badgesQuery" app-name="nerdfit" path="/badges" data="{{badgeData}}">
-        </firebase-document> -->
 
         <section id="login" selected="[[page]]" hidden="{{signedIn}}">
             <paper-button on-tap='toggleLoginForm'>Login</paper-button>

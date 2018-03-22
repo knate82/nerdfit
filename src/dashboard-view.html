@@ -43,14 +43,21 @@
 
             }
         </style>
+        <firebase-query
+        id="addFriendsQuery" 
+        app-name="nerdfit"
+        path="users/"
+        data="{{allUsers}}"
+        log>
+      </firebase-query>
        <nf-navbar user-data="{{userData}}" user="{{user}}" selected="[[page]]" badges="{{badges}}" role="navigation"></nf-navbar> 
         <nf-container paddingtop="80" paddingbottom="80" direction="column">
             <div class="cards">
                 <nf-profile-card class="card" user-data="{{userData}}"></nf-profile-card>
                 <nf-friend-card class="card" friends="{{friends}}"></nf-friend-card>
-                <nf-trophy-case-card class="card" badges="{{badges}}" user-data="{{userData}}"></nf-trophy-case-card>
+                <nf-trophy-case-card class="card" trophies="{{trophies}}" user-data="{{userData}}"></nf-trophy-case-card>
             </div>
-            <nf-game-selection user-data="{{userData}}"></nf-game-selection>
+            <!-- <nf-game-selection user-data="{{userData}}"></nf-game-selection> -->
         </nf-container>
         <nf-footer></nf-footer>
     </template>
@@ -71,15 +78,18 @@
                         value: {},
                         observer: "_userDataChanged"
                     },
-                    badges: Array
+                    trophies: Array
                 }
             }
             _userChanged(newVal, oldVal) {
-                
+
             }
             _userDataChanged(newVal, oldVal) {
                 if(newVal.friends) {
                     this.set("friends", newVal.friends);
+                }
+                if(newVal.trophies) {
+                    this.set("trophies", newVal.trophies);
                 }
             }
         }

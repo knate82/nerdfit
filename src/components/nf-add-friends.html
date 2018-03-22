@@ -8,13 +8,13 @@
           margin: auto;
         }
       </style>
-      <firebase-query
+      <!-- <firebase-query
         id="addFriendsQuery" 
         app-name="nerdfit"
         path="users/"
         data="{{allUsers}}"
         log>
-      </firebase-query>
+      </firebase-query> -->
       <div class="add-friends-container">
 			<template is="dom-repeat" items="{{allUsers}}">
         <div class="person">
@@ -42,13 +42,13 @@
             }
             attached() {
               super.attached();
-              var doc = this.$.friendQuery.db;
-              var docRef = doc.ref("users");
-              docRef.on("value", (snap) => {
-                console.log(snap.val());
-              }, (err) => {
-                console.log("Error: ", err.data);
-              });
+              // var doc = this.$.friendQuery.db;
+              // var docRef = doc.ref("users");
+              // docRef.on("value", (snap) => {
+              //   console.log(snap.val());
+              // }, (err) => {
+              //   console.log("Error: ", err.data);
+              // });
             }
 
             static get properties() {
@@ -70,7 +70,7 @@
               // console.log(user);
             }
             _allUsersChanged(users) {
-              // console.log(users);
+              console.log(users);
             }
             addFriend(e) {
               console.log(e);
