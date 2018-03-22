@@ -7,6 +7,9 @@
           width: 95%;
           margin: auto;
         }
+          .friendDetails{
+              margin:0 0 0 2em;
+          }
       </style>
       <!-- <firebase-query
         id="addFriendsQuery" 
@@ -19,12 +22,15 @@
 			<template is="dom-repeat" items="{{allUsers}}">
         <div class="person">
             <div class="person-name">
-              <p>{{item.firstName}} {{item.lastName}}</p>
+                <div>
+                    <iron-icon class="lighter" icon="icons:add-circle-outline" title="Add Friend" id="[[item.id]]" on-tap="addFriend"></iron-icon> {{item.firstName}} {{item.lastName}} <iron-icon on-tap="showDetails" class="lighter" icon="icons:arrow-drop-down"></iron-icon><iron-icon on-tap="showDetails" class="lighter hide" icon="icons:arrow-drop-up"></iron-icon>
+                    <div id="[[item.id]]" class="hide friendDetails">Email Address: [[item.email]]</div>
+                </div>
             </div>
-            <paper-button id="[[item.id]]" on-tap="addFriend">Add Friend</paper-button>
+            <!--<paper-button id="[[item.id]]" on-tap="addFriend">Add Friend</paper-button>-->
         </div>
-				<paper-button class="btn-primary" raised>Add</paper-button>
-				<paper-button on-tap="removeFromList">Remove</paper-button>
+				<!--<paper-button class="btn-primary" raised>Add</paper-button>
+				<paper-button on-tap="removeFromList">Remove</paper-button>-->
       </template>
       </div>
   </template>
@@ -78,6 +84,11 @@
               ref.once("value", snapshot => {
                 console.log(snapshot.val());
               })
+            }
+            showDetails(e){
+                console.log(e);
+                this.$.querySelector(e.id).classList.remove("hide");
+                this.$.querySelector(e).classList.remove("hide");
             }
         }
 
