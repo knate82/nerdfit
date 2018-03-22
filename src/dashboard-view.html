@@ -43,11 +43,11 @@
 
             }
         </style>
-       <nf-navbar user-data="{{userData}}" selected="[[page]]" badges="{{badges}}" role="navigation"></nf-navbar> 
+       <nf-navbar user-data="{{userData}}" user="{{user}}" selected="[[page]]" badges="{{badges}}" role="navigation"></nf-navbar> 
         <nf-container paddingtop="80" paddingbottom="80" direction="column">
             <div class="cards">
                 <nf-profile-card class="card" user-data="{{userData}}"></nf-profile-card>
-                <nf-friend-card class="card" user-data="{{userData}}"></nf-friend-card>
+                <nf-friend-card class="card" friends="{{friends}}"></nf-friend-card>
                 <nf-trophy-case-card class="card" badges="{{badges}}" user-data="{{userData}}"></nf-trophy-case-card>
             </div>
             <nf-game-selection user-data="{{userData}}"></nf-game-selection>
@@ -60,13 +60,29 @@
             static get is() { return 'dashboard-view'; }
             static get properties() {
                 return {
+                    user: {
+                        type: Object,
+                        value: {},
+                        observer: "_userChanged"
+                    },
+                    friends: Array,
                     userData: {
-                        type: Object
+                        type: Object,
+                        value: {},
+                        observer: "_userDataChanged"
                     },
                     badges: Array
                 }
             }
-
+            _userChanged(newVal, oldVal) {
+                console.log(newVal);
+            }
+            _userDataChanged(newVal, oldVal) {
+                console.log(newVal);
+                if(newVal.friends) {
+                    // this.set("friends", newVal.friends);
+                }
+            }
         }
 
         window.customElements.define(DashboardView.is, DashboardView);

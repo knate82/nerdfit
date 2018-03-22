@@ -55,6 +55,11 @@
 
             static get properties() {
                 return {
+                    user: {
+                        type: Object,
+                        notify: true,
+                        reflectToAttribute: true
+                    },
                     userData: {
                         type: Object,
                         notify: true

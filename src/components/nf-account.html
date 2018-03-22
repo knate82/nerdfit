@@ -86,8 +86,7 @@
          <firebase-auth id="auth" app-name="nerdfit" user="{{user}}" on-error="handleError" signed-in="{{signedIn}}"></firebase-auth>
         <firebase-document id="userQuery" app-name="nerdfit" path="/users/[[user.uid]]" data="{{userData}}">
         </firebase-document>
-        <!-- <firebase-storage-ref id="profilePicture"  path="users/[[user.uid]]" metadata="{{metadata}}" storage-uri="{{gsUri}}" download-url="{{imgSrcUrl}}">
-        </firebase-storage-ref> -->
+        <firebase-document id="friendQuery" app-name="nerdfit" path="/users/[[user.uid]]/friends" data="{{friendsData}}"></firebase-document>
         <!-- <firebase-document id="badgesQuery" app-name="nerdfit" path="/badges" data="{{badgeData}}">
         </firebase-document> -->
 
@@ -170,11 +169,7 @@
                     },
                     userData: {
                         type: Object,
-                        value: function () {
-                            return {
-                                'achievements.badges': {}
-                            };
-                        },
+                        value: {},
                         notify: true
                     },
                     badgeData: {
@@ -195,20 +190,6 @@
             toggleProfileForm() {
                 this.$.profileEdit.toggle();
             }
-            // _changePhoto(path, data, key) {
-            //     key = key || null;
-            //     var doc = this.$.query;
-            //     doc.path = null;
-            //     doc.data = data;
-            //     doc.saveValue(path, key).then(() => {
-            //         var photo = this.$.photo;
-            //         var metadata = "";
-            //         photo.path = "users/" + path;
-            //         photo.put("../assets/images/noImg.png", metadata);
-            //         window.location.pathname = "dashboard";
-            //     }).catch(function (error) {
-            //         console.log(error);
-            //     })
             submitLogin() {
                 var email = this.$.loginEmail.value;
                 var password = this.$.loginPassword.value;
@@ -220,7 +201,6 @@
                             window.location.pathname = "dashboard";
                         })
                         .catch(function (error) {
-                            console.log(error);
                             alert("Incorrect Username and/or Password.  Please Try again.");
                         });
                 }
@@ -233,9 +213,7 @@
                 ]
             }
             _userDataChanged(user) {
-                if (user.imgSrc) {
-
-                }
+                console.log(user);
             }
             _badgeDataChanged(badges) {
                 this.tempBadges = Object.keys(badges).map(key => badges[key]);
@@ -251,7 +229,6 @@
                         }
                     }
                     this.userData.badges = this.badges;
-                    console.log(this.userData);
                 }
             }
             logoutUser() {
