@@ -38,18 +38,11 @@
                 padding-right: 4px;
             }
         </style>
-        <!-- <firebase-document 
-            id="findFriends"
-            app-name="nerdfit"
-            path="users/[[user.uid]]/friends" 
-            data="{{friendData}}">
-        </firebase-document> -->
-
         <section>
             <div class="friend-list">
                 <h2><iron-icon icon="social:people" title="Friend List"></iron-icon>Friends List</h2>
                 <ul>
-                    <template is="dom-repeat" items="{{myFriends}}">
+                    <template is="dom-repeat" items="{{friends}}">
                         <li>{{item.firstName}} {{item.lastName}}</li>
                     </template>
                 </ul>
@@ -78,40 +71,19 @@
                     userData: {
                         type: Object
                     },
-                    friends: Object,
-                    myFriends: {
-                        type: Array
-                    }
+                    friends: Array,
                 }
             }
             static get observers() {
                 return [
-                    "_userDataChanged(userData.*)",
-                    "_friendsChanged(friends.*)",
+                    "_friendsChanged(friends.*)"
                 ]
             }
             toggleFindFriends() {
                 this.$.findFriends.toggle();
             }
-            _friendsChanged(friendData) {
-                console.log(friendData);
-                // if(friendData.length > 0) {
-                //     doc = this.queryFriend;
-                //     for(var i = 0; i < friendData.length; i++) {
-                //         doc.path = "users/" + friendData[i];
-                //         doc.query().then((response) => {
-                //             this.push("myFriends", response);
-                //         }).catch((error) => {
-                //             console.log(error);
-                //         })
-                //     }
-                // }
-            }
-            _userDataChanged(newVal) {
-
-            }
-            _myFriendsChanged(myFriends) {
-                console.log(myFriends);
+            _friendsChanged(friends) {
+                // console.log(friends);
             }
         }
 

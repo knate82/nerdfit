@@ -8,23 +8,25 @@
           margin: auto;
         }
       </style>
-      <firebase-document
+      <firebase-query
         id="addFriendsQuery" 
         app-name="nerdfit"
-        path="/users"
-        data="{{users}}">
-      </firebase-document>
+        path="users/"
+        data="{{allUsers}}"
+        log>
+      </firebase-query>
       <div class="add-friends-container">
 			<template is="dom-repeat" items="{{allUsers}}">
         <div class="person">
             <div class="person-name">
               <p>{{item.firstName}} {{item.lastName}}</p>
             </div>
-            <paper-button id="[[item.id]]" on-tap="addFriend">Add Friend</paper-button>
+            
         </div>
 				<paper-button class="btn-primary" raised>Add</paper-button>
 				<paper-button on-tap="removeFromList">Remove</paper-button>
-			</template>
+      </template>
+      <paper-button id="[[item.id]]" on-tap="addFriend">Add Friend</paper-button>
       </div>
   </template>
   <script>
@@ -37,35 +39,46 @@
             
             ready() {
               super.ready();
-              // var doc = this.$.friendQuery.db;
-              // var docRef = doc.ref("users");
-              // docRef.on("value", (snap) => {
-              //   console.log(snap.val());
-              // }, (err) => {
-              //   console.log("Error: ", err.data);
-              // });
+            }
+            attached() {
+              super.attached();
+              var doc = this.$.friendQuery.db;
+              var docRef = doc.ref("users");
+              docRef.on("value", (snap) => {
+                console.log(snap.val());
+              }, (err) => {
+                console.log("Error: ", err.data);
+              });
             }
 
             static get properties() {
                 return {
                   // userData: Object,
-                  users: {
-                    type: Object,
-                    value: {}
+                  allUsers: {
+                    type: Array,
+                    value: []
                   }
                 }
             }
             static get observers() {
               return [
                 "_userDataChanged(userData.*)",
-                "_allUsersChanged(users.*)"
+                "_allUsersChanged(allUsers.*)"
               ]
             }
             _userDataChanged(user) {
               // console.log(user);
             }
             _allUsersChanged(users) {
-              console.log(users);
+              // console.log(users);
+            }
+            addFriend(e) {
+              console.log(e);
+              var db = this.$.addFriendsQuery.db;
+              var ref = db.ref("users");
+              ref.once("value", snapshot => {
+                console.log(snapshot.val());
+              })
             }
         }
 

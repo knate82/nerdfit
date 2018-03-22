@@ -9,16 +9,9 @@
 
             iron-form {
                 margin: 0;
-                padding: 1.5em;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
-            }
-
-            paper-dialog {
-                min-width: 300px;
-                max-width: 400px;
-                border-radius: 15px;
             }
 
             paper-dialog paper-button {
@@ -213,7 +206,7 @@
                 ]
             }
             _userDataChanged(user) {
-                console.log(user);
+                // console.log(user);
             }
             _badgeDataChanged(badges) {
                 this.tempBadges = Object.keys(badges).map(key => badges[key]);

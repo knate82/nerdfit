@@ -75,12 +75,11 @@
                 }
             }
             _userChanged(newVal, oldVal) {
-                console.log(newVal);
+                
             }
             _userDataChanged(newVal, oldVal) {
-                console.log(newVal);
                 if(newVal.friends) {
-                    // this.set("friends", newVal.friends);
+                    this.set("friends", newVal.friends);
                 }
             }
         }
