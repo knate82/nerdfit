@@ -58,12 +58,17 @@
                 </div>
                 <div class="user-info">
                     <h3>{{userData.screenName}}</h2>
-                    <h4>{{userData.firstName}} {{userData.lastName}} <iron-icon class="lighter" icon="icons:create" title="Edit Username"></iron-icon></h3>
+                    <ul class="pretty">
+                        <li>{{userData.firstName}} {{userData.lastName}} <iron-icon class="lighter" icon="icons:create" title="Edit Username"></iron-icon></li>
+                        <li>{{userData.email}} <iron-icon class="lighter" icon="icons:create" title="Edit Email"></iron-icon></li>
+                        <li>{{userData.birthday}} <iron-icon class="lighter" icon="icons:create" title="Edit Email"></iron-icon></li>
+                        <li><span class="capitalize">{{userData.gender}}</span> <iron-icon class="lighter" icon="icons:create" title="Edit Email"></iron-icon></li>
+                    </ul>
                 </div>
             </div>
             <div class="data">
-                <p><label class="inline">Steps:</label> {{userData.steps}} 100000000</p>
-                <p><label class="inline">Floors:</label> {{userData.floors}} 334</p>
+                <p><label class="inline">Total Friends:</label> {{userData.friends.length}}</p>
+                <p><label class="inline">Total Steps:</label> {{userData.steps}} 100000000</p>
             </div>
         </section>
     </template>
