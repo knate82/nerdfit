@@ -37,9 +37,25 @@
                 color: white;
                 padding-right: 4px;
             }
-            /* paper-dialog {
-                max-height: 85vh;
-            } */
+            paper-dialog {
+                height: 400px;
+            }
+            paper-dialog section#scrollable {
+                height: 260px;
+                overflow: scroll;
+            }
+            @media only screen and (max-width: 768px) {
+                paper-dialog {
+                    height: 100%;
+                    top: 70px !important;
+                    border-radius: 0;
+                    width: 100%;
+                }
+                paper-dialog section#scrollable {
+                    height: 75vh;
+                    overflow: scroll;
+                }
+            }
         </style>
         <firebase-query
         id="addFriendsQuery" 
@@ -57,11 +73,11 @@
                 <paper-button class="btn-primary" raised on-tap="toggleFindFriends"><iron-icon icon="social:person-add"></iron-icon>Find Friends</paper-button>
             </div>
         </section>
-        <paper-dialog id="findFriends" with-backdrop>
+        <paper-dialog id="findFriends" scroll-action="lock" with-backdrop>
             <h2><iron-icon ></iron-icon> Find Friends</h2>
-            <paper-dialog-scrollable>
+            <section id="scrollable">
                 <nf-add-friends all-users={{allUsers}}></nf-add-friends>
-            </paper-dialog-scrollable>
+            </section>
             <paper-button class="btn-link" on-tap="toggleFindFriends" raised>Close</paper-button>
         </paper-dialog>
     </template>

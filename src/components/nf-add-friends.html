@@ -7,29 +7,23 @@
           width: 95%;
           margin: auto;
         }
-          .friendDetails{
-              margin:0 0 0 2em;
-          }
+        .friendDetails{
+            margin:0 0 0 2em;
+        }
       </style>
-      <!-- <firebase-query
-        id="addFriendsQuery" 
-        app-name="nerdfit"
-        path="users/"
-        data="{{allUsers}}"
-        log>
-      </firebase-query> -->
       <div class="add-friends-container">
-          <h3>Search by Email Address</h3>
-          <input type="text" name="searchFriend" id="searchFriend" /><iron-icon icon="icons:pageview" title="Search by Email"  on-tap="findFriend"></iron-icon>
-			<!--<template is="dom-repeat" items="{{allUsers}}">
-                <div class="person">
-                    <div class="person-name">
-                        <div>
-                            <iron-icon class="lighter link" icon="icons:add-circle-outline" title="Add Friend" id="[[item.id]]" on-tap="addFriend"></iron-icon> {{item.firstName}} {{item.lastName}} <iron-icon on-tap="showDetails" class="lighter link" icon="icons:arrow-drop-down"></iron-icon><iron-icon on-tap="showDetails" class="lighter link hide" icon="icons:arrow-drop-up"></iron-icon>
-                            <div id="[[item.id]]" class="hide friendDetails">Email Address: [[item.email]]</div>
-                        </div>
+			<template is="dom-repeat" items="{{allUsers}}">
+        <div class="person">
+            <div class="person-name">
+                <div>
+                  <div>
+                    <div>
+                      <iron-icon class="lighter" icon="icons:add-circle-outline" title="Add Friend" id="[[item.id]]" on-tap="addFriend"></iron-icon> {{item.firstName}} {{item.lastName}} 
                     </div>
-                    &lt;!&ndash;<paper-button id="[[item.id]]" on-tap="addFriend">Add Friend</paper-button>&ndash;&gt;
+                    <iron-icon on-tap="showDetails" class="lighter" icon="icons:arrow-drop-down"></iron-icon>
+                    <iron-icon on-tap="showDetails" class="lighter hide" icon="icons:arrow-drop-up"></iron-icon>
+                  </div>
+                  <div id="[[item.id]]" class="hide friendDetails">Email Address: [[item.email]]</div>
                 </div>
 				&lt;!&ndash;<paper-button class="btn-primary" raised>Add</paper-button>
 				<paper-button on-tap="removeFromList">Remove</paper-button>&ndash;&gt;
