@@ -64,7 +64,7 @@
         </firebase-query>
         <section>
             <div class="friend-list">
-                <h2><iron-icon icon="social:people" title="Friend List"></iron-icon> Friends List <iron-icon class="lighter" icon="icons:add-circle" title="Add Friend" id="[[item.id]]" on-tap="toggleFindFriends"></iron-icon></h2>
+                <h2><iron-icon icon="social:people" title="Friend List"></iron-icon> Friends List <iron-icon class="lighter" icon="icons:add-circle" title="Add Friend" id="[[item.id]]" on-tap="friendsView"></iron-icon></h2>
                 <ul>
                     <template is="dom-repeat" items="{{friends}}">
                         <li>{{item.firstName}} {{item.lastName}}</li>
@@ -72,13 +72,13 @@
                 </ul>
             </div>
         </section>
-        <paper-dialog id="findFriends" scroll-action="lock" with-backdrop>
+        <!-- <paper-dialog id="findFriends" scroll-action="lock" with-backdrop>
             <h2><iron-icon ></iron-icon> Find Friends</h2>
             <section id="scrollable">
                 <nf-add-friends all-users={{allUsers}}></nf-add-friends>
             </section>
             <paper-button class="btn-link" on-tap="toggleFindFriends" raised>Close</paper-button>
-        </paper-dialog>
+        </paper-dialog> -->
     </template>
     <script>
         /**
@@ -126,6 +126,9 @@
                 }, err => {
                     console.log(err);
                 });
+            }
+            friendsView() {
+                window.location.pathname = "friends";
             }
             _friendsChanged(friends) {
                 // console.log(friends);
