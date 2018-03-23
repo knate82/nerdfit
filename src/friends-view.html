@@ -6,9 +6,36 @@
            :host {
                width: 100%;
            }
+           section {
+               width: 95%;
+               margin: 0 auto;
+           }
+           button.add-friend {
+               background-color: var(--blue);
+               padding: 1em;
+               border-radius: 50%;
+               position: fixed;
+               bottom: 155px;
+               right: 1em;
+           }
+           button.add-friend iron-icon {
+               color: var(--white);
+               height: 30px;
+               width: 30px;
+           }
         </style>
-        <nf-container paddingtop="20" paddingbottom="80" direction="column"></nf-container>
-            <nf-friend-card friends="{{friends}}"></nf-friend-card>
+        <nf-container paddingtop="20" paddingbottom="80" direction="column">
+            <section>
+                <div class="friend-list">
+                    <h2><iron-icon icon="social:people" title="Friend List"></iron-icon> Friends List</h2>
+                    <ul>
+                        <template is="dom-repeat" items="{{friends}}">
+                            <li>{{item.firstName}} {{item.lastName}}</li>
+                        </template>
+                    </ul>
+                </div>
+                <button class="add-friend"><iron-icon icon="social:person-add" title="Add Friend"></iron-icon></button>
+            </section>
         </nf-container>
     </template>
 

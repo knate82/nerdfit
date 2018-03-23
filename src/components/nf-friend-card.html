@@ -53,11 +53,6 @@
                 }
             }
         </style>
-        <firebase-query
-            id="addFriendsQuery" 
-            app-name="nerdfit"
-            log>
-        </firebase-query>
         <section class="profile-section">
             <div class="cardHead"><iron-icon icon="social:people" title="Friend List"></iron-icon> Friends List</iron-icon></div>
             <section class="cardBody">
@@ -124,6 +119,9 @@
                 }, err => {
                     console.log(err);
                 });
+            }
+            friendsView() {
+                window.location.pathname = "friends";
             }
             _friendsChanged(friends) {
                 // console.log(friends);
