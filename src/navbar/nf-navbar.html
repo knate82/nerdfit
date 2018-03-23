@@ -4,7 +4,7 @@
     <template>
         <style>
             :host{
-                position: fixed;
+                /* position: fixed; */
                 top: 0;
                 left: 0;
                 right: 0;
@@ -37,7 +37,7 @@
         <section id="nf-navigation">
             <nf-container justifycontent="space-between" align-items="center" selected="[[page]]" gutter="20" direction="row" contained>
                 <nf-logo></nf-logo>
-                <nf-links page="[[page]]" signed-in="{{signedIn}}"></nf-links>
+                <!-- <nf-links page="[[page]]" signed-in="{{signedIn}}"></nf-links> -->
                 <nf-account user-data="{{userData}}" page="{{page}}" badges="{{badges}}" signed-in="{{signedIn}}"></nf-account>
             </nf-container>
         </section>
