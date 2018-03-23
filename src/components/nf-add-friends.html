@@ -19,19 +19,21 @@
         log>
       </firebase-query> -->
       <div class="add-friends-container">
-			<template is="dom-repeat" items="{{allUsers}}">
-        <div class="person">
-            <div class="person-name">
-                <div>
-                    <iron-icon class="lighter" icon="icons:add-circle-outline" title="Add Friend" id="[[item.id]]" on-tap="addFriend"></iron-icon> {{item.firstName}} {{item.lastName}} <iron-icon on-tap="showDetails" class="lighter" icon="icons:arrow-drop-down"></iron-icon><iron-icon on-tap="showDetails" class="lighter hide" icon="icons:arrow-drop-up"></iron-icon>
-                    <div id="[[item.id]]" class="hide friendDetails">Email Address: [[item.email]]</div>
+          <h3>Search by Email Address</h3>
+          <input type="text" name="searchFriend" id="searchFriend" /><iron-icon icon="icons:pageview" title="Search by Email"  on-tap="findFriend"></iron-icon>
+			<!--<template is="dom-repeat" items="{{allUsers}}">
+                <div class="person">
+                    <div class="person-name">
+                        <div>
+                            <iron-icon class="lighter link" icon="icons:add-circle-outline" title="Add Friend" id="[[item.id]]" on-tap="addFriend"></iron-icon> {{item.firstName}} {{item.lastName}} <iron-icon on-tap="showDetails" class="lighter link" icon="icons:arrow-drop-down"></iron-icon><iron-icon on-tap="showDetails" class="lighter link hide" icon="icons:arrow-drop-up"></iron-icon>
+                            <div id="[[item.id]]" class="hide friendDetails">Email Address: [[item.email]]</div>
+                        </div>
+                    </div>
+                    &lt;!&ndash;<paper-button id="[[item.id]]" on-tap="addFriend">Add Friend</paper-button>&ndash;&gt;
                 </div>
-            </div>
-            <!--<paper-button id="[[item.id]]" on-tap="addFriend">Add Friend</paper-button>-->
-        </div>
-				<!--<paper-button class="btn-primary" raised>Add</paper-button>
-				<paper-button on-tap="removeFromList">Remove</paper-button>-->
-      </template>
+				&lt;!&ndash;<paper-button class="btn-primary" raised>Add</paper-button>
+				<paper-button on-tap="removeFromList">Remove</paper-button>&ndash;&gt;
+            </template>-->
       </div>
   </template>
   <script>
@@ -89,6 +91,9 @@
                 console.log(e);
                 this.$.querySelector(e.id).classList.remove("hide");
                 this.$.querySelector(e).classList.remove("hide");
+            }
+            findfriend(e){
+                //Search database for friends.
             }
         }
 
