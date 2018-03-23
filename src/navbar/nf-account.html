@@ -110,7 +110,7 @@
                         <paper-button on-tap="toggleProfileForm">Edit Profile</paper-button>
                     </li>
                     <li>
-                        <paper-button on-tap="toggleFriends">Friends</paper-button>
+                        <paper-button on-tap="friendsView">Friends</paper-button>
                     </li>
                     <li>
                         <paper-button on-tap="logoutUser">Logout</paper-button>
@@ -137,9 +137,9 @@
                     </form>
                 </iron-form>
             </paper-dialog>
-            <paper-dialog id="friendsEdit" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
+            <!-- <paper-dialog id="friendsEdit" entry-animation="scale-up-animation" exit-animation="fade-out-animation" with-backdrop>
                 <nf-friends user-data="{{userData}}"></nf-friends>
-            </paper-dialog>
+            </paper-dialog> -->
         </section>
     </template>
     <script>
@@ -174,27 +174,6 @@
                     hasImg: Boolean
                 }
             }
-            toggleLoginForm() {
-                this.$.form.toggle();
-            }
-            toggleProfileForm() {
-                this.$.profileEdit.toggle();
-            }
-            submitLogin() {
-                var email = this.$.loginEmail.value;
-                var password = this.$.loginPassword.value;
-                var page = this.page;
-                if (email && password) {
-                    this.$.auth.signInWithEmailAndPassword(email, password)
-                        .then((response) => {
-                            this.$.form.close();
-                            window.location.pathname = "dashboard";
-                        })
-                        .catch(function (error) {
-                            alert("Incorrect Username and/or Password.  Please Try again.");
-                        });
-                }
-            }
             static get observers() {
                 return [
                     '_badgeDataChanged(badgeData)',
@@ -219,6 +198,30 @@
                         }
                     }
                     this.userData.badges = this.badges;
+                }
+            }
+            friendsView() {
+                window.location.pathname = "friends";
+            }
+            toggleLoginForm() {
+                this.$.form.toggle();
+            }
+            toggleProfileForm() {
+                this.$.profileEdit.toggle();
+            }
+            submitLogin() {
+                var email = this.$.loginEmail.value;
+                var password = this.$.loginPassword.value;
+                var page = this.page;
+                if (email && password) {
+                    this.$.auth.signInWithEmailAndPassword(email, password)
+                        .then((response) => {
+                            this.$.form.close();
+                            window.location.pathname = "dashboard";
+                        })
+                        .catch(function (error) {
+                            alert("Incorrect Username and/or Password.  Please Try again.");
+                        });
                 }
             }
             logoutUser() {

@@ -1,0 +1,51 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="friends-view">
+    <template>
+        <style include="nf-styles">
+           :host {
+               width: 100%;
+           }
+        </style>
+        
+        <nf-friend-card friends="{{friends}}"></nf-friend-card>
+        
+    </template>
+
+    <script>
+        class FriendsView extends Polymer.Element {
+            
+            static get is() {
+                return 'friends-view';
+            }
+
+            ready() {
+                super.ready();
+            }
+
+            static get properties() {
+                return {
+                    friends: {
+                        type: Array,
+                        notify: true
+                    },
+                    userData: {
+                        type: Object,
+                        notify: true,
+                        observer: "_userData"
+                    }
+                }
+            }
+
+            _userData(newVal) {
+                console.log(newVal);
+                if(newVal.friends) {
+                    this.set("friends", newVal.friends);
+                }
+            }
+
+        }
+
+        window.customElements.define(FriendsView.is, FriendsView);
+    </script>
+</dom-module>

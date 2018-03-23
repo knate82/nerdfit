@@ -33,17 +33,23 @@
 <link rel="import" href="components/nf-tile.html">
 <link rel="import" href="components/nf-hero.html">
 <link rel="import" href="components/nf-image.html">
-<link rel="import" href="components/nf-account.html">
 <link rel="import" href="components/nf-footer.html">
+<link rel="import" href="./components/nf-profile-card.html">
+<link rel="import" href="./components/nf-friend-card.html">
+<link rel="import" href="components/nf-game-selection.html">
+<link rel="import" href="components/nf-trophy-case-card.html">
 <!-- import Navbar and components -->
+<link rel="import" href="navbar/nf-account.html">
 <link rel="import" href="navbar/nf-navbar.html">
 <link rel="import" href="navbar/nf-links.html">
 <link rel="import" href="navbar/nf-logo.html">
 
 <link rel="import" href="my-icons.html">
 
+<!-- import views -->
 <link rel="lazy-import" href="home-view.html">
 <link rel="lazy-import" href="dashboard-view.html">
+<link rel="lazy-import" href="friends-view.html">
 <link rel="lazy-import" href="ttr-view.html">
 <!-- <link rel="lazy-import" href="nf-view404.html"> -->
 
@@ -95,6 +101,8 @@
 
       <!-- Main content -->
 
+    <nf-navbar user="{{user}}" user-data="{{userData}}" selected="[[page]]" role="navigation"></nf-navbar>
+
     <iron-pages
         selected="[[page]]"
         attr-for-selected="name"
@@ -102,9 +110,12 @@
         role="main">
       <home-view name="home" selected="[[page]]"></home-view>
       <dashboard-view user-data="{{userData}}" badges="{{badges}}" name="dashboard" selected="[[page]]"></dashboard-view>
-      <ttr-view user-data="{{userData}}" name="ttr" selected="[[page]]"></ttr-view>
+      <friends-view user-data="{{userData}}" name="friends" selected="[[page]]"></friends-view>
+      <!-- <ttr-view user-data="{{userData}}" name="ttr" selected="[[page]]"></ttr-view> -->
       <!-- <my-view404 name="my-view404"></my-view404> -->
     </iron-pages>
+
+    <nf-footer></nf-footer>
 
   </template>
 
