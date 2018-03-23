@@ -8,14 +8,6 @@
                 height: 100%;
                 box-shadow: 0px 0px 8px 4px rgba(199,197,199,1);
             }
-            section.profile-section {
-                display: flex;
-                flex-direction: column;
-                justify-content: flex-start;
-                align-items: flex-start;
-                width: 100%;
-                padding:1em;
-            }
             .image {
                 border-radius: 50%;
                 margin-right: 10px;
@@ -23,6 +15,7 @@
                 height: 100px;
                 overflow: hidden;
             }
+
             .main-content {
                 display: flex;
                 flex-direction: row;
@@ -41,6 +34,16 @@
                 width: 150px;
                 height: 200px;
             }
+            #editIcon{
+                float:right;
+                width:2.5em;
+                height:2.5em;
+                border-radius:50%;
+                background-color:var(--blue);
+                --iron-icon-fill-color: white;
+                text-align: center;
+                padding-top:.35em;
+            }
         </style>
 
         <firebase-storage-ref id="storageShiz"
@@ -52,24 +55,30 @@
         </firebase-storage-ref>
 
         <section class="profile-section">
-            <div class="main-content">
-                <div class="image">
-                    <iron-image src="{{userData.imgSrc}}" sizing="cover"></iron-image>
+            <div class="cardHead"><iron-icon icon="social:sentiment-satisfied" title="Edit Profile"></iron-icon> My Profile</div>
+            <section class="cardBody">
+                <div class="main-content">
+                    <div class="image">
+                        <iron-image src="{{userData.imgSrc}}" sizing="cover"></iron-image>
+                    </div>
+                    <div class="user-info">
+                        <h3>{{userData.screenName}}</h2>
+                            <ul class="pretty">
+                                <li>{{userData.firstName}} {{userData.lastName}}</li>
+                                <li>{{userData.email}}</li>
+                                <li>{{userData.birthday}}</li>
+                                <li><span class="capitalize">{{userData.gender}}</span></li>
+                            </ul>
+                    </div>
                 </div>
-                <div class="user-info">
-                    <h3>{{userData.screenName}}</h2>
+                <div class="data">
                     <ul class="pretty">
-                        <li>{{userData.firstName}} {{userData.lastName}} <iron-icon class="lighter link" icon="icons:create" title="Edit Username"></iron-icon></li>
-                        <li>{{userData.email}} <iron-icon class="lighter link" icon="icons:create" title="Edit Email"></iron-icon></li>
-                        <li>{{userData.birthday}} <iron-icon class="lighter link" icon="icons:create" title="Edit Email"></iron-icon></li>
-                        <li><span class="capitalize">{{userData.gender}}</span> <iron-icon class="lighter link" icon="icons:create" title="Edit Email"></iron-icon></li>
+                        <li><label class="inline">Total Friends:</label> {{userData.friends.length}}</li>
+                        <li><label class="inline">Total Steps:</label> {{userData.steps}} 100000000</li>
                     </ul>
                 </div>
-            </div>
-            <div class="data">
-                <p><label class="inline">Total Friends:</label> {{userData.friends.length}}</p>
-                <p><label class="inline">Total Steps:</label> {{userData.steps}} 100000000</p>
-            </div>
+                <div id="editIcon"><iron-icon class="link" icon="icons:create" title="Edit Profile"></iron-icon></div>
+            </section>
         </section>
     </template>
     <script>

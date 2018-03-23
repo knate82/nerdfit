@@ -10,10 +10,6 @@
                 box-shadow: 0px 0px 8px 4px rgba(199,197,199,1);
             }
 
-            h2 iron-icon{
-                --iron-icon-height: calc(var(--base-font-size) + calc(var(--font-step) * 3.5));
-                --iron-icon-width: calc(var(--base-font-size) + calc(var(--font-step) * 3.5));
-            }
             .trophy-case{
                 margin: 0px auto;
                 text-align: center;
@@ -22,16 +18,18 @@
 
         </style>
 
-        <section>
-            <div class="trophy-case">
-                <h2><iron-icon icon="icons:stars" title="Trophy Case"></iron-icon>Trophy Case</h2>
-                <div class="badge-container">
-                    <template is="dom-repeat" items="{{userData.badges}}">
-                        <nf-badge  badge-id="{{item.id}}" badge-name="{{item.name}}"></nf-badge>
-                    </template>
-                </div>
+        <section class="profile-section">
+            <div class="cardHead"><iron-icon icon="icons:stars" title="Trophy Case"></iron-icon>Trophy Case</div>
+            <section class="cardBody">
+                <div class="trophy-case">
+                    <div class="badge-container">
+                        <template is="dom-repeat" items="{{userData.badges}}">
+                            <nf-badge  badge-id="{{item.id}}" badge-name="{{item.name}}"></nf-badge>
+                        </template>
+                    </div>
 
-            </div>
+                </div>
+             <section>
         </section>
 
     </template>

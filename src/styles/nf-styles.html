@@ -238,6 +238,31 @@
                 padding: 1.5em;
                 border-radius: 15px;
             }
+            section.profile-section {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-start;
+                align-items: flex-start;
+                width: 100%;
+            }
+            .cardHead{
+                background: var(--blue);
+                color:#fff;
+                text-align:center;
+                font-size:1.6em;
+                width:100%;
+                line-height: 1.6em;
+                margin-bottom:.5em;
+            }
+            .cardHead iron-icon{
+                --iron-icon-height: calc(var(--base-font-size) + calc(var(--font-step) * 3.5));
+                --iron-icon-width: calc(var(--base-font-size) + calc(var(--font-step) * 3.5));
+                --iron-icon-fill-color: white;
+            }
+            .cardBody{
+                padding:15px;
+                width:100%;
+            }
             @media only screen and (max-width: 749px) {
                 input:not([type=button]):not([type=reset]):not([type=submit]):not([type=image]):not([type=radio]), form select {
                 width: 17.35em;
