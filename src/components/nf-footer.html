@@ -20,11 +20,17 @@
                 display: flex;
                 justify-content: center;
                 align-items: center;
+                flex-direction: column;
+                color: var(--blue);
+                cursor: pointer;
+            }
+            .menu-item.active, .menu-item:hover{
+                background-color:var(--light-blue);
             }
             .menu-icon {
-                height: 50px;
-                width: 50px;
-                color: grey;
+                height: 32px;
+                width: 32px;
+                color: var(--blue);
             }
             #footerBottom {
                 background: var(--blue);
@@ -34,17 +40,21 @@
             }
         </style>
         <section id="footerNav">
-            <div class="menu-item">
+            <div class="menu-item active">
                 <iron-icon icon="icons:dashboard" class="menu-icon"></iron-icon>
+                <div>Dashboard</div>
             </div>
             <div class="menu-item">
-                <iron-icon icon="maps:beenhere" class="menu-icon"></iron-icon>
+                <iron-icon icon="maps:local-activity" class="menu-icon"></iron-icon>
+                <div>Games</div>
             </div>
             <div class="menu-item">
                 <iron-icon icon="social:people" class="menu-icon"></iron-icon>
+                <div>Friends</div>
             </div>
             <div class="menu-item">
                 <iron-icon icon="social:person" class="menu-icon"></iron-icon>
+                <div>Profile</div>
             </div>
         </section>
         <section id="footerBottom">
