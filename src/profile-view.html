@@ -1,0 +1,45 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="profile-view">
+    <template>
+        <style include="nf-styles">
+           :host {
+             width: 100%;
+           }
+        </style>
+        <nf-container paddingtop="20" paddingbottom="80" direction="column">
+          <h2>Profile</h2>
+          <nf-game-selection></nf-game-selection>
+        </nf-container>
+    </template>
+
+    <script>
+        class ProfileView extends Polymer.Element {
+            
+            static get is() {
+                return 'profile-view';
+            }
+
+            ready() {
+                super.ready();
+            }
+
+            static get properties() {
+                return {
+                    Games: {
+                        type: Array,
+                        notify: true
+                    },
+                    userData: {
+                        type: Object,
+                        notify: true,
+                        observer: "_userData"
+                    }
+                }
+            }
+
+        }
+
+        window.customElements.define(ProfileView.is, ProfileView);
+    </script>
+</dom-module>
