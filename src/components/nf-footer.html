@@ -40,22 +40,22 @@
             }
         </style>
         <section id="footerNav">
-            <div class="menu-item active">
+            <section id="dashboard" class="menu-item" on-tap="navTap">
                 <iron-icon icon="icons:dashboard" class="menu-icon"></iron-icon>
                 <div>Dashboard</div>
-            </div>
-            <div class="menu-item">
+            </section>
+            <section id="games" class="menu-item" on-tap="navTap">
                 <iron-icon icon="maps:local-activity" class="menu-icon"></iron-icon>
                 <div>Games</div>
-            </div>
-            <div class="menu-item">
+            </section>
+            <section id="friends"  class="menu-item" on-tap="navTap">
                 <iron-icon icon="social:people" class="menu-icon"></iron-icon>
                 <div>Friends</div>
-            </div>
-            <div class="menu-item">
+            </section>
+            <section id="profile" class="menu-item" on-tap="navTap">
                 <iron-icon icon="social:person" class="menu-icon"></iron-icon>
                 <div>Profile</div>
-            </div>
+            </section>
         </section>
         <section id="footerBottom">
             <nf-container justifycontent="space-between" align-items="center" paddingtop="8" paddingbottom="8" contained>
@@ -78,6 +78,28 @@
          */
         class NfFooter extends Polymer.Element {
             static get is() { return 'nf-footer'; }
+            ready() {
+                super.ready();
+                if(this.$.footerNav) {
+                    var myPath = window.location.pathname;
+                    var list = this.$.footerNav.children;
+                    for(var i = 0; i < list.length; i++) {
+                        if(myPath === "/" + list[i].id) {
+                            list[i].classList.add("active");
+                        }
+                    }
+                }
+            }
+            navTap(e) {
+                var id = e.currentTarget.id;
+                var list = this.$.footerNav.children;
+                for(var i = 0; i < list.length; i++) {
+                    if(list[i].classList.contains("active")) {
+                        list[i].classList.remove("active");
+                    }
+                }
+                window.location.pathname = id;
+            }
         }
 
         window.customElements.define(NfFooter.is, NfFooter);
