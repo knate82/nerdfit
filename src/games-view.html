@@ -1,4 +1,5 @@
 <link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="./components/games/adventureeverest/adventure-everest.html">
 
 <dom-module id="games-view">
     <template>
@@ -6,10 +7,33 @@
            :host {
              width: 100%;
            }
+           h3 {
+             text-align: center;
+           }
+           section {
+             width: 100%;
+           }
+           adventure-everest {
+             height: 100%;
+             width: 100%;
+           }
         </style>
+        <firebase-document
+          id="queryGames"
+          app-name="nerdfit"
+          path="/availableGames"
+          data="{{games}}">
+        </firebase-document>
         <nf-container paddingtop="20" paddingbottom="80" direction="column">
-          <h2>Games</h2>
-          <nf-game-selection></nf-game-selection>
+          <!-- <h2>Games</h2>
+          <section hidden="{{!currentGames}}">
+            <h3>Current Games</h3>
+          </section> -->
+          <section>
+            <!-- <h3>Start A Game</h3>
+            <nf-game-selection games-arr="{{gamesArr}}"></nf-game-selection> -->
+            <adventure-everest></adventure-everest>
+          </section>
         </nf-container>
     </template>
 
@@ -26,16 +50,31 @@
 
             static get properties() {
                 return {
-                    Games: {
-                        type: Array,
-                        notify: true
+                    currentGames: {
+                      type: Boolean,
+                      value: false
                     },
                     userData: {
                         type: Object,
                         notify: true,
                         observer: "_userData"
+                    },
+                    games: {
+                      type: Object,
+                      observer: "_gamesChanged"
+                    },
+                    gamesArr: {
+                      type: Array,
+                      observer: "_gamesArrChanged"
                     }
                 }
+            }
+            _gamesChanged(games) {
+              console.log('games changed: ', games);
+              this.gamesArr =  Object.keys(games).map(key => games[key]);
+            }
+            _gamesArrChanged(gamesArr) {
+              console.log(gamesArr);
             }
 
         }

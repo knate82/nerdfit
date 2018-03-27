@@ -26,7 +26,8 @@
     "neon-animation": "PolymerElements/neon-animation#^2.1.0",
     "iron-dropdown": "^2.1.0",
     "iron-overlay-behavior": "PolymerElements/iron-overlay-behavior#^2.3.1",
-    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#^2.2.0"
+    "paper-dialog-scrollable": "PolymerElements/paper-dialog-scrollable#^2.2.0",
+    "google-map": "GoogleWebComponents/google-map#^2.0.4"
   },
   "resolutions": {
     "polymer": "^2.0.0",
