@@ -1,29 +1,31 @@
 <link rel="import" href="../../../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../../../bower_components/google-map/google-map.html">
 
 <dom-module id="adventure-everest">
   <template>
     <style>
       :host {
         width: 100%;
+        padding-bottom: 80px;
       }
       google-map {
         width: 100%;
         height: 600px;
       }
     </style>
-    <google-map 
-      latitude="27.992185"
-      longitude="86.876484"
-      zoom="14"
-      disable-default-ui
+    <section>
+      <img src="/src/assets/images/adventure_everest.svg">
+    </section>
+    <!-- <google-map 
+      latitude="27.992509"
+      longitude="86.891333"
+      fitToMarkers
       additional-map-options='{"mapTypeId":"satellite"}'
       api-key="AIzaSyBjg5A5CBEDyP2-7ae_3gatO5lUKswyt0Y">
       <google-map-marker
         latitude="28.003149"
         longitude="86.852837">
       </google-map-marker>
-      <google-map-poly fill-color="grey">
+      <google-map-poly fill-color="blue">
         <google-map-point
           latitude="28.003149"
           longitude="86.852837">
@@ -49,9 +51,6 @@
         latitude="27.987792"
         longitude="86.876199">
       </google-map-marker>
-      <!-- <google-map-poly>
-
-      </google-map-poly> -->
       <google-map-marker
         latitude="27.980024"
         longitude="86.902113">
@@ -76,7 +75,7 @@
         latitude="27.988068"
         longitude="86.925022">
       </google-map-marker>
-    </google-map>
+    </google-map> -->
   </template>
   <script>
     class AdventureEverest extends Polymer.Element {   
@@ -90,11 +89,12 @@
 
         static get properties() {
             return {
-                
+              
             }
         }
     }
-    
+
     window.customElements.define(AdventureEverest.is, AdventureEverest);
   </script>
+
 </dom-module>
