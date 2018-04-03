@@ -35,6 +35,10 @@
            .search-type-selection p.active {
                background-color: var(--light-blue)
            }
+           .search-type-selection .btn-link {
+                justify-self: flex-end;
+                text-transform: uppercase;
+           }
            paper-dialog {
                 top: 0 !important;
                 left: 0 !important;
@@ -45,6 +49,14 @@
                 border-radius: 0;
            }
         </style>
+        <firebase-query
+            id="query"
+            app-name="nerdfit"
+            path="{{path}}"
+            order-by-child="{{name}}"
+            equal-to="{{searchTerm}}"
+            data="{{newFriend}}">
+        </firebase-query>
         <nf-container paddingtop="20" paddingbottom="80" direction="column">
             <section>
                 <div class="friend-list">
@@ -55,30 +67,33 @@
                         </template>
                     </ul>
                 </div>
-                <button class="add-friend" on-click="toggleFindFriends"><iron-icon icon="social:person-add" title="Add Friend"></iron-icon></button>
+                <button class="add-friend" on-tap="toggleFindFriends"><iron-icon icon="social:person-add" title="Add Friend"></iron-icon></button>
             </section>
         </nf-container>
         <paper-dialog id="findFriends">
             <section class="search-type-selection">
-                <p id="typeEmail" class="active" on-click="toggleQuery">Email</p>
-                <p id="typeName" on-click="toggleQuery">Name</p>
+                <p id="typeEmail" class="active" on-tap="toggleQuery">Email</p>
+                <p id="typeName" on-tap="toggleQuery">Name</p>
+                <div class="btn-link" on-tap="toggleFindFriends">Close</div>
             </section>
             <section class="search-field">
-                <input type="search" placeholder="Email" id="query.email" hidden="{{!isEmail}}">
-                <input tupe="search" placeholder="Name" id="query.name" hidden="{{!isName}}">
+                <input type="search" placeholder="Email" id="queryEmail" hidden="{{!isEmail}}">
+                <input type="search" placeholder="Name" id="queryName" hidden="{{!isName}}">
+                <button class="secondary" on-tap="queryFriends">Search</button> 
             </section>
             <section class="results" hidden="{{!hasResults}}">
-                <template is="dom-repeat" item="{{queryResults}}">
+                <template is="dom-repeat" items="{{newFriend}}" as="friend">
                     <div class="item-container">
                         <div class="name-container">
-                            <p class="queryName">{{item.firstName}}</p>
-                            <p class="queryName">{{item.lastName}}</p>
+                            <p class="returnedQuery">{{friend.firstName}}</p>
+                            <p class="returnedQuery">{{friend.lastName}}</p>
+                            <p class="returnedQuery">{{friend.email}}</p>
                             <div class="cancel" on-click="toggleFindFriends">
                                 <p>Cancel</p>
                             </div>
                         </div>
                         <div class="add-button-container">
-                            <button id="{{item.uid}}" on-click="addFriend">Add Friend?</button>
+                            <button id="{{friend.$key}}" on-click="addFriend">Add Friend?</button>
                         </div>
                     </div>
                 </template>
@@ -109,6 +124,10 @@
                         value: false,
                         notify: true
                     },
+                    name: {
+                        type: String,
+                        value: ''
+                    },
                     hasResults: {
                         type: Boolean,
                         value: false,
@@ -118,10 +137,24 @@
                         type: Array,
                         notify: true
                     },
+                    searchTerm: {
+                        type: String,
+                    },
+                    path: {
+                        type: String,
+                        value: '',
+                        notify: true
+                    },
                     userData: {
                         type: Object,
                         notify: true,
                         observer: "_userData"
+                    },
+                    newFriend: {
+                        type: Array,
+                        notify: true,
+                        value: [],
+                        observer: "_newFriendFound"
                     }
                 }
             }
@@ -133,6 +166,14 @@
                 }
             }
 
+            _newFriendFound(newVal) {
+                console.log(newVal);
+                if(newVal.length > 0) {
+                    this.set("hasResults", true);
+                    this.set("newFriend", newVal);
+                }
+            }
+            
             toggleFindFriends() {
                 this.$.findFriends.toggle();
             }
@@ -153,6 +194,18 @@
                         this.$.typeEmail.classList.remove("active")
                     }
                 }
+            }
+
+            queryFriends() {
+                if(this.isEmail) {
+                    var value = this.$.queryEmail.value;
+                    this.name = "email";
+                } else if(this.isName) {
+                    var value = this.$.queryName.value;
+                    this.name = "firstName";
+                }
+                this.path = "/users";
+                this.set("searchTerm", value);
             }
 
         }
