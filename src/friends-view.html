@@ -23,6 +23,27 @@
                height: 30px;
                width: 30px;
            }
+           .search-type-selection {
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+           }
+           .search-type-selection p {
+               padding: .5em;
+               margin: 0;
+           }
+           .search-type-selection p.active {
+               background-color: var(--light-blue)
+           }
+           paper-dialog {
+                top: 0 !important;
+                left: 0 !important;
+                width: 100%;       
+                max-width: 100%;
+                position: absolute;
+                min-height: 100%;
+                border-radius: 0;
+           }
         </style>
         <nf-container paddingtop="20" paddingbottom="80" direction="column">
             <section>
@@ -34,9 +55,35 @@
                         </template>
                     </ul>
                 </div>
-                <button class="add-friend"><iron-icon icon="social:person-add" title="Add Friend"></iron-icon></button>
+                <button class="add-friend" on-click="toggleFindFriends"><iron-icon icon="social:person-add" title="Add Friend"></iron-icon></button>
             </section>
         </nf-container>
+        <paper-dialog id="findFriends">
+            <section class="search-type-selection">
+                <p id="typeEmail" class="active" on-click="toggleQuery">Email</p>
+                <p id="typeName" on-click="toggleQuery">Name</p>
+            </section>
+            <section class="search-field">
+                <input type="search" placeholder="Email" id="query.email" hidden="{{!isEmail}}">
+                <input tupe="search" placeholder="Name" id="query.name" hidden="{{!isName}}">
+            </section>
+            <section class="results" hidden="{{!hasResults}}">
+                <template is="dom-repeat" item="{{queryResults}}">
+                    <div class="item-container">
+                        <div class="name-container">
+                            <p class="queryName">{{item.firstName}}</p>
+                            <p class="queryName">{{item.lastName}}</p>
+                            <div class="cancel" on-click="toggleFindFriends">
+                                <p>Cancel</p>
+                            </div>
+                        </div>
+                        <div class="add-button-container">
+                            <button id="{{item.uid}}" on-click="addFriend">Add Friend?</button>
+                        </div>
+                    </div>
+                </template>
+            </section>
+        </paper-dialog>
     </template>
 
     <script>
@@ -52,6 +99,21 @@
 
             static get properties() {
                 return {
+                    isEmail: {
+                        type: Boolean,
+                        value: true,
+                        notify: true
+                    },
+                    isName: {
+                        type: Boolean,
+                        value: false,
+                        notify: true
+                    },
+                    hasResults: {
+                        type: Boolean,
+                        value: false,
+                        notify: true
+                    },
                     friends: {
                         type: Array,
                         notify: true
@@ -68,6 +130,28 @@
                 console.log(newVal);
                 if(newVal.friends) {
                     this.set("friends", newVal.friends);
+                }
+            }
+
+            toggleFindFriends() {
+                this.$.findFriends.toggle();
+            }
+
+            toggleQuery(e) {
+                if(e.currentTarget.id === "typeEmail" && !this.isEmail) {
+                    this.isEmail = true;
+                    this.$.typeEmail.classList.add("active");
+                    if(this.isName) {
+                        this.isName = false;
+                        this.$.typeName.classList.remove("active");
+                    }
+                } else if(e.currentTarget.id === "typeName" && !this.isName) {
+                    this.isName = true;
+                    this.$.typeName.classList.add("active");
+                    if(this.isEmail) {
+                        this.isEmail = false;
+                        this.$.typeEmail.classList.remove("active")
+                    }
                 }
             }
 
