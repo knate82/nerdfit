@@ -1,0 +1,51 @@
+<link rel="import" href="../../../bower_components/polymer/polymer-element.html">
+
+<dom-module id="nf-gameboard">
+    <template>
+        <style include="nf-styles">
+            :host{
+                display: flex;
+            }
+            * {
+                max-height: 100%;
+            }
+            section {
+                background: var(--blue);
+            }
+
+        </style>
+        <canvas id="gameCanvas">Your browser doesn't support this app</canvas>
+    </template>
+
+    <script>
+        /**
+         * @customElement
+         * @polymer
+         */
+        class NfGameboard  extends Polymer.Element {
+            static get is() { return 'nf-gameboard'; }
+
+            static get properties() {
+                return {
+                    gameData: {
+                        type: Object
+                    }
+                }
+            }
+
+            connected() {
+                this.gameInit();
+            }
+
+            gameInit() {
+                let canvas = this.$.gameCanvas;
+                let context = canvas.getContext("2d");
+                context.beginPath();
+                context.arc(75,75,35,0,Math.PI);
+                context.stroke();
+            }
+        }
+
+        window.customElements.define(NfGameboard.is, NfGameboard );
+    </script>
+</dom-module>
